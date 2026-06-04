@@ -25,6 +25,19 @@
     "trail_sigma": 0.5,
     "trough": null
   },
+  "FAS": {
+    "asset": "FAS",
+    "entry_price": 126.65,
+    "entry_sigma_log": 0.020146964218383683,
+    "entry_ts_ns": 1780572074014524000,
+    "last_close": 126.65,
+    "peak": 126.65,
+    "profit_target_sigmas": 3.0,
+    "qty": 397,
+    "state": "IN_LONG",
+    "trail_sigma": 2.0,
+    "trough": null
+  },
   "GLD": {
     "asset": "GLD",
     "entry_price": null,
@@ -48,6 +61,19 @@
     "profit_target_sigmas": null,
     "qty": 0,
     "state": "FLAT",
+    "trail_sigma": 2.0,
+    "trough": null
+  },
+  "LABU": {
+    "asset": "LABU",
+    "entry_price": 165.52,
+    "entry_sigma_log": 0.06144533937351356,
+    "entry_ts_ns": 1780572074014524000,
+    "last_close": 165.52,
+    "peak": 165.52,
+    "profit_target_sigmas": 3.0,
+    "qty": 303,
+    "state": "IN_LONG",
     "trail_sigma": 2.0,
     "trough": null
   },
@@ -90,6 +116,58 @@
     "trail_sigma": 2.0,
     "trough": null
   },
+  "NVDL": {
+    "asset": "NVDL",
+    "entry_price": 105.52,
+    "entry_sigma_log": 0.052922658302753854,
+    "entry_ts_ns": 1780572074014524000,
+    "last_close": 105.52,
+    "peak": 105.52,
+    "profit_target_sigmas": 3.0,
+    "qty": 476,
+    "state": "IN_LONG",
+    "trail_sigma": 2.0,
+    "trough": null
+  },
+  "SOXL": {
+    "asset": "SOXL",
+    "entry_price": 280.34,
+    "entry_sigma_log": 0.08718687175684876,
+    "entry_ts_ns": 1780572074014524000,
+    "last_close": 280.34,
+    "peak": 280.34,
+    "profit_target_sigmas": 3.0,
+    "qty": 179,
+    "state": "IN_LONG",
+    "trail_sigma": 2.0,
+    "trough": null
+  },
+  "TNA": {
+    "asset": "TNA",
+    "entry_price": 66.73,
+    "entry_sigma_log": 0.036408755513049625,
+    "entry_ts_ns": 1780572074014524000,
+    "last_close": 66.73,
+    "peak": 66.73,
+    "profit_target_sigmas": 3.0,
+    "qty": 753,
+    "state": "IN_LONG",
+    "trail_sigma": 2.0,
+    "trough": null
+  },
+  "TQQQ": {
+    "asset": "TQQQ",
+    "entry_price": 86.545,
+    "entry_sigma_log": 0.028389406442624863,
+    "entry_ts_ns": 1780572074014524000,
+    "last_close": 86.545,
+    "peak": 86.545,
+    "profit_target_sigmas": 3.0,
+    "qty": 581,
+    "state": "IN_LONG",
+    "trail_sigma": 2.0,
+    "trough": null
+  },
   "TSLA": {
     "asset": "TSLA",
     "entry_price": null,
@@ -101,6 +179,32 @@
     "qty": 0,
     "state": "FLAT",
     "trail_sigma": 0.5,
+    "trough": null
+  },
+  "TSLL": {
+    "asset": "TSLL",
+    "entry_price": 14.99,
+    "entry_sigma_log": 0.05191278015801851,
+    "entry_ts_ns": 1780572074014524000,
+    "last_close": 14.99,
+    "peak": 14.99,
+    "profit_target_sigmas": 3.0,
+    "qty": 3354,
+    "state": "IN_LONG",
+    "trail_sigma": 2.0,
+    "trough": null
+  },
+  "UPRO": {
+    "asset": "UPRO",
+    "entry_price": 147.68,
+    "entry_sigma_log": 0.018087738579620503,
+    "entry_ts_ns": 1780572074014524000,
+    "last_close": 147.68,
+    "peak": 147.68,
+    "profit_target_sigmas": 3.0,
+    "qty": 340,
+    "state": "IN_LONG",
+    "trail_sigma": 2.0,
     "trough": null
   }
 }

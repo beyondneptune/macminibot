@@ -96,6 +96,60 @@ from strategy_engine.per_asset_runner import (  # noqa: E402
 )
 
 STRATEGY_SHA = "trailing_stop_v1"
+
+# Adaptive config file paths (all optional — runner falls back to static
+# defaults if any are missing or older than max-age below).
+ACTIVE_UNIVERSE_PATH = PROJECT_ROOT / "data" / "active_universe.json"
+REGIME_STATE_PATH = PROJECT_ROOT / "data" / "regime_state.json"
+ASSET_OVERRIDES_PATH = PROJECT_ROOT / "data" / "asset_overrides.json"
+ADAPTIVE_MAX_AGE_DAYS = 14   # ignore stale adaptive configs
+
+
+def _load_json_if_fresh(path: Path, max_age_days: float) -> dict | None:
+    """Return parsed JSON if file exists and is younger than max_age_days."""
+    if not path.exists():
+        return None
+    try:
+        mtime = datetime.fromtimestamp(path.stat().st_mtime, tz=timezone.utc)
+        if (datetime.now(timezone.utc) - mtime).total_seconds() > max_age_days * 86400:
+            return None
+        import json as _json
+        return _json.loads(path.read_text("utf-8"))
+    except Exception:
+        return None
+
+
+def _resolve_universe(static_default: tuple[str, ...]) -> tuple[tuple[str, ...], str]:
+    """Read active_universe.json or fall back to static SUPPORTED_ASSETS.
+
+    Returns (tickers_tuple, source_label).
+    """
+    payload = _load_json_if_fresh(ACTIVE_UNIVERSE_PATH, ADAPTIVE_MAX_AGE_DAYS)
+    if payload and isinstance(payload.get("universe"), list) and payload["universe"]:
+        return tuple(payload["universe"]), f"adaptive ({ACTIVE_UNIVERSE_PATH.name})"
+    return tuple(static_default), "static SUPPORTED_ASSETS"
+
+
+def _resolve_regime() -> tuple[str, dict | None]:
+    """Read regime_state.json. Defaults to RISK_ON if file missing/stale.
+
+    Returns (regime_label, payload_dict_or_None).
+    """
+    payload = _load_json_if_fresh(REGIME_STATE_PATH, max_age_days=2)
+    if not payload:
+        return "RISK_ON_DEFAULT", None
+    regime = str(payload.get("regime", "RISK_ON")).upper()
+    if regime not in {"RISK_ON", "RISK_OFF"}:
+        regime = "RISK_ON_DEFAULT"
+    return regime, payload
+
+
+def _load_asset_overrides() -> dict:
+    """Read asset_overrides.json. Returns {} if missing/stale."""
+    payload = _load_json_if_fresh(ASSET_OVERRIDES_PATH, ADAPTIVE_MAX_AGE_DAYS)
+    if not payload:
+        return {}
+    return dict(payload.get("overrides", {}))
 ASSET_VENUE: dict[str, Venue] = {
     "AAPL": Venue.NASDAQ, "MSFT": Venue.NASDAQ, "GOOGL": Venue.NASDAQ,
     "AMZN": Venue.NASDAQ, "META": Venue.NASDAQ, "TSLA": Venue.NASDAQ,
@@ -309,11 +363,38 @@ def main() -> int:
                   "trail_sigma": 2.0, "profit_target_sigmas": 3.0,
                   "source": "one_pct_target_sim_2026_06_04"},
     }
+    # ---- ADAPTIVE LAYER 1: regime gate -------------------------------------
+    regime_label, regime_payload = _resolve_regime()
+    if regime_label == "RISK_OFF":
+        logger.warning("REGIME=RISK_OFF — skipping all new entries this fire. "
+                        "Payload: %s", regime_payload)
+        return 0
+    logger.info("REGIME=%s (source: %s)", regime_label,
+                 "regime_state.json" if regime_payload else "default fallback")
+
+    # ---- ADAPTIVE LAYER 2: dynamic universe --------------------------------
+    active_universe, universe_source = _resolve_universe(SUPPORTED_ASSETS)
+    logger.info("active universe (%s): %s", universe_source, list(active_universe))
+
+    # ---- ADAPTIVE LAYER 3: per-asset config overrides ----------------------
+    adaptive_overrides = _load_asset_overrides()
+    if adaptive_overrides:
+        logger.info("adaptive overrides loaded for %d assets", len(adaptive_overrides))
+        for tkr, ov in adaptive_overrides.items():
+            DAILY_OVERRIDES.setdefault(tkr, {}).update({
+                k: v for k, v in ov.items()
+                if k in {"model", "trail_sigma", "profit_target_sigmas", "scope", "source"}
+            })
+
     winners: dict[str, dict[str, Any]] = {}
-    for ticker in SUPPORTED_ASSETS:
+    for ticker in active_universe:
         if ticker in INTRADAY_MANAGED:
             continue  # intraday runner handles these
-        spec = winner_for(ticker)
+        try:
+            spec = winner_for(ticker)
+        except ValueError:
+            # asset isn't in SUPPORTED_ASSETS but came from active universe — try DAILY_OVERRIDES alone
+            spec = None
         if spec is None and ticker not in DAILY_OVERRIDES:
             continue
         # Start from deployed winner (or {} for newly added assets) and apply override.

@@ -1,0 +1,97 @@
+{
+  "as_of": "2026-06-04T11:31:26.678047+00:00",
+  "method": "trailing_21d_sharpe + 63d_momentum - atr_pct_penalty",
+  "n_candidates_scanned": 23,
+  "n_picked": 8,
+  "n_scored": 16,
+  "scores": {
+    "AAPU": {
+      "atr_pct_21d": 0.034406993866453336,
+      "composite": 1.955216160796633,
+      "momentum_63d_log": 0.29493172746755164,
+      "sharpe_21d": 6.995941122529188
+    },
+    "AMDL": {
+      "atr_pct_21d": 0.09041058586158668,
+      "composite": 1.8195199766155539,
+      "momentum_63d_log": 1.8237178208188167,
+      "sharpe_21d": 6.427848909856423
+    },
+    "SOXL": {
+      "atr_pct_21d": 0.08632374973246773,
+      "composite": 1.6809459679363794,
+      "momentum_63d_log": 1.5991111647608969,
+      "sharpe_21d": 6.668840898710062
+    },
+    "TECL": {
+      "atr_pct_21d": 0.051733387880190725,
+      "composite": 2.8002620534041753,
+      "momentum_63d_log": 0.9451131535902924,
+      "sharpe_21d": 9.122389207424188
+    },
+    "TNA": {
+      "atr_pct_21d": 0.047119522168225896,
+      "composite": -0.06163055714269938,
+      "momentum_63d_log": 0.23329152645420406,
+      "sharpe_21d": 1.795892146192206
+    },
+    "TQQQ": {
+      "atr_pct_21d": 0.03904107139418249,
+      "composite": 2.2894771214949676,
+      "momentum_63d_log": 0.5438529877184188,
+      "sharpe_21d": 7.471040765243378
+    },
+    "UPRO": {
+      "atr_pct_21d": 0.024368970231646244,
+      "composite": 2.009013975618677,
+      "momentum_63d_log": 0.25333822062762335,
+      "sharpe_21d": 5.585210019301469
+    },
+    "URTY": {
+      "atr_pct_21d": 0.04626532887402452,
+      "composite": -0.037562383916541264,
+      "momentum_63d_log": 0.22688090987540846,
+      "sharpe_21d": 1.7738826087767137
+    }
+  },
+  "skipped": [
+    {
+      "reason": "thin_volume(205588)",
+      "ticker": "RETL"
+    },
+    {
+      "reason": "thin_volume(286620)",
+      "ticker": "DRN"
+    },
+    {
+      "reason": "thin_volume(39735)",
+      "ticker": "CURE"
+    },
+    {
+      "reason": "thin_volume(25598)",
+      "ticker": "DUSL"
+    },
+    {
+      "reason": "thin_volume(9294)",
+      "ticker": "PILL"
+    },
+    {
+      "reason": "thin_volume(57905)",
+      "ticker": "WANT"
+    },
+    {
+      "reason": "no_bars",
+      "ticker": "GOOL"
+    }
+  ],
+  "universe": [
+    "TECL",
+    "TQQQ",
+    "UPRO",
+    "AAPU",
+    "AMDL",
+    "SOXL",
+    "URTY",
+    "TNA"
+  ]
+}

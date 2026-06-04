@@ -104,6 +104,23 @@ _ASSET_META: dict[str, tuple[str, str, Venue, str]] = {
     "FAS":   ("alpaca.daily_bars", "FAS",          Venue.ARCA,   "USD"),
     "LABU":  ("alpaca.daily_bars", "LABU",         Venue.ARCA,   "USD"),
     "TSLL":  ("alpaca.daily_bars", "TSLL",         Venue.NASDAQ, "USD"),
+    # Extended candidate pool for the weekly universe rotation
+    # (scripts/110_universe_rotation.py).
+    "RETL":  ("alpaca.daily_bars", "RETL",         Venue.ARCA,   "USD"),
+    "DRN":   ("alpaca.daily_bars", "DRN",          Venue.ARCA,   "USD"),
+    "URTY":  ("alpaca.daily_bars", "URTY",         Venue.ARCA,   "USD"),
+    "TECL":  ("alpaca.daily_bars", "TECL",         Venue.ARCA,   "USD"),
+    "CURE":  ("alpaca.daily_bars", "CURE",         Venue.ARCA,   "USD"),
+    "DPST":  ("alpaca.daily_bars", "DPST",         Venue.ARCA,   "USD"),
+    "DUSL":  ("alpaca.daily_bars", "DUSL",         Venue.ARCA,   "USD"),
+    "ERX":   ("alpaca.daily_bars", "ERX",          Venue.ARCA,   "USD"),
+    "PILL":  ("alpaca.daily_bars", "PILL",         Venue.ARCA,   "USD"),
+    "WANT":  ("alpaca.daily_bars", "WANT",         Venue.ARCA,   "USD"),
+    "MSFU":  ("alpaca.daily_bars", "MSFU",         Venue.NASDAQ, "USD"),
+    "AAPU":  ("alpaca.daily_bars", "AAPU",         Venue.NASDAQ, "USD"),
+    "AMZU":  ("alpaca.daily_bars", "AMZU",         Venue.NASDAQ, "USD"),
+    "GOOL":  ("alpaca.daily_bars", "GOOL",         Venue.NASDAQ, "USD"),
+    "AMDL":  ("alpaca.daily_bars", "AMDL",         Venue.NASDAQ, "USD"),
 }
 
 _ALPACA_BARS_PREFIX = "alpaca.daily_bars"

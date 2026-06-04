@@ -40,9 +40,12 @@ LEGACY_V2_ASSETS = ("AAPL", "MSFT", "GOOGL", "AMZN", "META", "TSLA", "NVDA", "GL
 
 
 def winner_for(asset: str) -> dict[str, Any] | None:
-    """Return the winning config dict for ``asset`` or ``None`` if no winner."""
-    if asset not in SUPPORTED_ASSETS:
-        raise ValueError(f"unknown asset {asset!r}; expected one of {SUPPORTED_ASSETS}")
+    """Return the winning config dict for ``asset`` or ``None`` if no winner.
+
+    Lenient: returns ``None`` for unknown assets (rather than raising).
+    The adaptive universe rotation can pick any liquid ETF; the caller is
+    responsible for supplying a DAILY_OVERRIDES entry for new tickers.
+    """
     try:
         mod = import_module(f"ml_research.asset_specialists.{asset.lower()}")
     except ModuleNotFoundError:
@@ -51,10 +54,18 @@ def winner_for(asset: str) -> dict[str, Any] | None:
 
 
 def compute_signal_for(asset: str, bars) -> float:
-    """Dispatch ``compute_signal`` to the asset's specialist module."""
-    if asset not in SUPPORTED_ASSETS:
-        raise ValueError(f"unknown asset {asset!r}; expected one of {SUPPORTED_ASSETS}")
-    mod = import_module(f"ml_research.asset_specialists.{asset.lower()}")
+    """Dispatch ``compute_signal`` to the asset's specialist module.
+
+    Lenient: falls back to ``buy_and_hold`` signal for unknown tickers
+    (so the adaptive universe rotation can pick names without a dedicated
+    specialist module).
+    """
+    try:
+        mod = import_module(f"ml_research.asset_specialists.{asset.lower()}")
+    except ModuleNotFoundError:
+        # Generic buy_and_hold fallback for adaptive-picked tickers
+        from ml_research.asset_specialists._signals import signal_buy_and_hold
+        return float(signal_buy_and_hold(bars))
     fn: Callable[[Any], float] = getattr(mod, "compute_signal")
     return float(fn(bars))
 

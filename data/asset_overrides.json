@@ -1,0 +1,62 @@
+{
+  "as_of": "2026-06-04T11:32:13.412060+00:00",
+  "default_when_missing": {
+    "model": "buy_and_hold",
+    "profit_target_sigmas": 3.0,
+    "trail_sigma": 2.0
+  },
+  "method": "60-bar train / 60-bar test, robust (tr_net>0 AND te_net>0)",
+  "overrides": {
+    "AAPU": {
+      "model": "buy_and_hold",
+      "profit_target_sigmas": 3.0,
+      "source": "fallback_no_robust_winner",
+      "trail_sigma": 2.0
+    },
+    "AMDL": {
+      "model": "buy_and_hold",
+      "profit_target_sigmas": 3.0,
+      "source": "fallback_no_robust_winner",
+      "trail_sigma": 2.0
+    },
+    "SOXL": {
+      "model": "buy_and_hold",
+      "profit_target_sigmas": null,
+      "source": "asset_config_rotation",
+      "te_net": 173993.01787302445,
+      "te_sharpe": 6.781876019712171,
+      "tr_sharpe": 0.6805443420480023,
+      "trail_sigma": 1.5
+    },
+    "TECL": {
+      "model": "buy_and_hold",
+      "profit_target_sigmas": 3.0,
+      "source": "fallback_no_robust_winner",
+      "trail_sigma": 2.0
+    },
+    "TNA": {
+      "model": "buy_and_hold",
+      "profit_target_sigmas": 3.0,
+      "source": "fallback_no_robust_winner",
+      "trail_sigma": 2.0
+    },
+    "TQQQ": {
+      "model": "buy_and_hold",
+      "profit_target_sigmas": 3.0,
+      "source": "fallback_no_robust_winner",
+      "trail_sigma": 2.0
+    },
+    "UPRO": {
+      "model": "buy_and_hold",
+      "profit_target_sigmas": 3.0,
+      "source": "fallback_no_robust_winner",
+      "trail_sigma": 2.0
+    },
+    "URTY": {
+      "model": "buy_and_hold",
+      "profit_target_sigmas": 3.0,
+      "source": "fallback_no_robust_winner",
+      "trail_sigma": 2.0
+    }
+  }
+}
