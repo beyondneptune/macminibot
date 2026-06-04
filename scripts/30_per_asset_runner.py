@@ -431,14 +431,15 @@ def main() -> int:
         return 4
     logger.info("snapshot: net_liq=$%s open_positions=%d", net_liq, len(positions))
 
-    # 6. PerAssetRunner.run — 1%/day target deployment 2026-06-04.
-    #    portfolio_size=2 means per-name notional = net_liq/2 ≈ $50k.
-    #    With 8 names × $50k = $400k book = 4× intraday-margin stack on
-    #    a $100k seed. This is the leveraged-ETF sleeve sizing.
+    # 6. PerAssetRunner.run — 1%/day target deployment.
+    #    portfolio_size=3 means per-name notional = net_liq/3 ≈ $33k.
+    #    With 8 names × $33k = $266k book = 2.66× margin stack on $100k seed.
+    #    Sized to fit Alpaca BP after legacy v2 positions close out, while
+    #    still capturing ~1%/day in expectation per the 107 target sim.
     cfg = PerAssetRunnerConfig(
         state_path=PROJECT_ROOT / "data" / "per_asset_state.json",
         assets=tickers,
-        portfolio_size=2,
+        portfolio_size=3,
         strategy_sha=STRATEGY_SHA,
     )
     runner = PerAssetRunner(cfg)
