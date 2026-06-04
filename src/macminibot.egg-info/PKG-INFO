@@ -1,0 +1,25 @@
+Metadata-Version: 2.4
+Name: macminibot
+Version: 0.1.0
+Summary: IBKR-driven systematic trading bot on a Mac mini M4 (greenfield).
+Author-email: weeoto <rafeeqinea@gmail.com>
+License: Proprietary
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+Requires-Dist: arcticdb
+Requires-Dist: ib_async
+Requires-Dist: polars
+Requires-Dist: pandas
+Requires-Dist: pyarrow
+Requires-Dist: lightgbm
+Requires-Dist: scikit-learn
+Requires-Dist: cvxpy
+Requires-Dist: numpy
+Requires-Dist: PyYAML
+Provides-Extra: dev
+Requires-Dist: pytest>=8.0; extra == "dev"
+Requires-Dist: pytest-cov; extra == "dev"
+Requires-Dist: mypy; extra == "dev"
+Requires-Dist: ruff; extra == "dev"
+
+macminibot — greenfield trading bot.

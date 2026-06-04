@@ -1,0 +1,69 @@
+==============================================================================
+CYCLE-12: per-decile Sharpe by VIX regime (10 buckets x 3 regimes)
+==============================================================================
+Loaded 75,765 rows across 11 symbols
+Computing features...
+  unique trading days: 8,340
+  ... 50 folds processed
+  ... 100 folds processed
+  ... 150 folds processed
+  ... 200 folds processed
+  ... 250 folds processed
+  ... 300 folds processed
+  total folds with preds: 336
+
+Total pred rows: 44,980
+Regime distribution (rows):
+regime
+vix_mid     24662
+vix_low     11527
+vix_high     8791
+Name: count, dtype: int64
+
+==============================================================================
+PER-DECILE SHARPE (annualized) — 10 deciles x 3 regimes
+==============================================================================
+decile |    vix_low    vix_mid   vix_high  |  n_low  n_mid n_high
+------------------------------------------------------------------------------
+D1     |     -0.301     -0.508     +0.705  |   1234   2897   1060
+D2     |     +0.277     -0.248     -0.073  |   1382   2747    932
+D3     |     +0.926     -0.400     -0.171  |    561   1015    418
+D4     |     +0.483     +0.173     +0.301  |   1327   2860    925
+D5     |     -0.439     +0.004     -0.000  |   1459   2995   1161
+D6     |     -0.206     +0.315     +0.278  |   1060   2629    960
+D7     |     +0.843     -0.282     +0.743  |   1331   2917    931
+D8     |     -0.354     +0.121     -0.035  |    557    958    412
+D9     |     +0.585     +0.227     +0.655  |   1386   2804    938
+D10    |     -0.117     +0.366     +0.858  |   1230   2840   1054
+
+==============================================================================
+PER-DECILE MEAN REALIZED RETURN (bps/day) — 10 deciles x 3 regimes
+==============================================================================
+decile |    vix_low    vix_mid   vix_high
+------------------------------------------------------------
+D1     |      -5.46      -9.63     +16.15
+D2     |      +6.74      -5.05      -1.63
+D3     |     +13.20      -6.59      -3.30
+D4     |      +7.69      +2.97      +5.15
+D5     |      -6.11      +0.05      -0.01
+D6     |      -2.29      +3.99      +4.40
+D7     |     +12.99      -4.13     +13.35
+D8     |      -4.29      +1.67      -0.58
+D9     |      +8.80      +3.47     +11.71
+D10    |      -1.20      +4.22      +9.39
+
+==============================================================================
+SHAPE CLASSIFICATION (per regime)
+==============================================================================
+  vix_low: D1=-0.301  D10=-0.117  D10-D1=+0.184  => U-shape (mean-reversion: extremes lose, middle wins)
+  vix_mid: D1=-0.508  D10=+0.366  D10-D1=+0.874  => monotonic_up (momentum)
+ vix_high: D1=+0.705  D10=+0.858  D10-D1=+0.153  => flat/noisy (no exploitable shape)
+
+==============================================================================
+VERDICT
+==============================================================================
+  vix_low  -> U-shape (mean-reversion: extremes lose, middle wins)
+  vix_mid  -> monotonic_up (momentum)
+  vix_high -> flat/noisy (no exploitable shape)
+
+  Hypothesis NOT cleanly confirmed; inspect tables above.

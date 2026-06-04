@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+Daily post-close benchmark logger — fires at 21:30 BST Mon-Fri.
+Writes bot vs B&H vs UnifStop-{1σ,2σ,3σ} P&L to data/benchmark_journal.parquet.
+Required by the 5-agent post-review for live falsification testing.
+
+DST: 21:30 BST = 16:30 ET during DST. In UK winter (GMT) = 16:30 ET.
+-->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.macminibot.benchmark-logger</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Users/weeoto/macminibot/.venv/bin/python</string>
+        <string>-u</string>
+        <string>/Users/weeoto/macminibot/scripts/45_benchmark_logger.py</string>
+    </array>
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PYTHONUNBUFFERED</key>
+        <string>1</string>
+        <key>PYTHONPATH</key>
+        <string>/Users/weeoto/macminibot/src</string>
+    </dict>
+    <key>WorkingDirectory</key>
+    <string>/Users/weeoto/macminibot</string>
+    <key>StartCalendarInterval</key>
+    <array>
+        <dict><key>Weekday</key><integer>1</integer><key>Hour</key><integer>21</integer><key>Minute</key><integer>30</integer></dict>
+        <dict><key>Weekday</key><integer>2</integer><key>Hour</key><integer>21</integer><key>Minute</key><integer>30</integer></dict>
+        <dict><key>Weekday</key><integer>3</integer><key>Hour</key><integer>21</integer><key>Minute</key><integer>30</integer></dict>
+        <dict><key>Weekday</key><integer>4</integer><key>Hour</key><integer>21</integer><key>Minute</key><integer>30</integer></dict>
+        <dict><key>Weekday</key><integer>5</integer><key>Hour</key><integer>21</integer><key>Minute</key><integer>30</integer></dict>
+    </array>
+    <key>StandardOutPath</key>
+    <string>/Users/weeoto/macminibot/data/launchd_benchmark_logger.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/weeoto/macminibot/data/launchd_benchmark_logger.err</string>
+    <key>RunAtLoad</key>
+    <false/>
+</dict>
+</plist>

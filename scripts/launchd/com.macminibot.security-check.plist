@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+Daily security audit. Runs at 06:00 LOCAL (BST) every day so credential
+rot or accidental .gitignore drift is caught before the trading session.
+The job is read-only — it can never perturb the live bot.
+
+Load:
+    launchctl bootstrap gui/$UID /Users/weeoto/macminibot/scripts/launchd/com.macminibot.security-check.plist
+Unload:
+    launchctl bootout gui/$UID/com.macminibot.security-check
+-->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.macminibot.security-check</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Users/weeoto/macminibot/.venv/bin/python</string>
+        <string>-u</string>
+        <string>/Users/weeoto/macminibot/scripts/45_security_check.py</string>
+    </array>
+
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PYTHONUNBUFFERED</key>
+        <string>1</string>
+        <key>PYTHONPATH</key>
+        <string>/Users/weeoto/macminibot/src</string>
+    </dict>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/weeoto/macminibot</string>
+
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Hour</key>
+        <integer>6</integer>
+        <key>Minute</key>
+        <integer>0</integer>
+    </dict>
+
+    <key>StandardOutPath</key>
+    <string>/Users/weeoto/macminibot/data/launchd_security_check.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/weeoto/macminibot/data/launchd_security_check.err</string>
+
+    <key>RunAtLoad</key>
+    <false/>
+</dict>
+</plist>

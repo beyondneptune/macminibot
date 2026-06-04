@@ -1,0 +1,6 @@
+targets: ['NVDA']  hours_back=8.0  client_id=28
+connecting to IBKR Gateway @ 127.0.0.1:4001 clientId=28
+connected (readonly)  server=178
+
+20260517 21:45:07.691536 4780757 W arcticdb | LMDB path at /Users/weeoto/macminibot/data/arctic/ has already been opened in this process which is not supported by LMDB. You should only open a single Arctic instance over a given LMDB path. To continue safely, you should delete this Arctic instance and any others over the LMDB path in this process and then try again. Current process ID=[37212]
+[NVDA] start session_end=2026-05-15T21:00:00+00:00 target_window=8.0h what=TRADES threshold=513,828,584 (calibrated-from-20d-median-dv)

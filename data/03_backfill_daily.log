@@ -1,0 +1,46 @@
+connecting to IBKR Gateway @ 127.0.0.1:4001 clientId=13
+connected in 304 ms (readonly)
+
+backfilling daily bars for 39 contracts...
+  ZN        TRADES       165 bars  2025-09-22 00:00:00 → 2026-05-15 00:00:00  -> future.daily_bars/CBOT.ZN
+  YM        TRADES       229 bars  2025-06-20 00:00:00 → 2026-05-15 00:00:00  -> future.daily_bars/CBOT.YM
+  SI        TRADES       242 bars  2025-05-30 00:00:00 → 2026-05-15 00:00:00  -> future.daily_bars/COMEX.SI
+  RTY       TRADES       290 bars  2025-03-24 00:00:00 → 2026-05-15 00:00:00  -> future.daily_bars/CME.RTY
+  NQ        TRADES      1015 bars  2022-05-24 00:00:00 → 2026-05-15 00:00:00  -> future.daily_bars/CME.NQ
+  ES        TRADES      1186 bars  2021-09-20 00:00:00 → 2026-05-15 00:00:00  -> future.daily_bars/CME.ES
+  HG        TRADES      1326 bars  2021-02-26 00:00:00 → 2026-05-15 00:00:00  -> future.daily_bars/COMEX.HG
+  GC        TRADES      1492 bars  2020-06-30 00:00:00 → 2026-05-15 00:00:00  -> future.daily_bars/COMEX.GC
+  CL        TRADES      2147 bars  2017-11-22 00:00:00 → 2026-05-15 00:00:00  -> future.daily_bars/NYMEX.CL
+  META      TRADES      3518 bars  2012-05-18 00:00:00 → 2026-05-15 00:00:00  -> equity.daily_bars/NASDAQ.META
+  TSLA      TRADES      3991 bars  2010-06-29 00:00:00 → 2026-05-15 00:00:00  -> equity.daily_bars/NASDAQ.TSLA
+  V         TRADES      4561 bars  2008-03-19 00:00:00 → 2026-05-15 00:00:00  -> equity.daily_bars/NYSE.V
+2026-05-17 10:11:40,674 ib_async.wrapper ERROR Error 162, reqId 611: Historical Market Data Service error message:HMDS query returned no data: NZD.USD@IDEALPRO Midpoint, contract: Contract(secType='CASH', conId=39453441, symbol='NZD.USD', exchange='IDEALPRO', currency='USD', localSymbol='NZD.USD')
+  NZDUSD    MIDPOINT    4747 bars  2007-11-02 00:00:00 → 2026-05-15 00:00:00  -> fx.daily_bars/IDEALPRO.NZDUSD
+  UNG       TRADES      4795 bars  2007-04-18 00:00:00 → 2026-05-15 00:00:00  -> etf.daily_bars/ARCA.UNG
+  GDX       TRADES      5027 bars  2006-05-22 00:00:00 → 2026-05-15 00:00:00  -> etf.daily_bars/ARCA.GDX
+  SLV       TRADES      5037 bars  2006-04-28 00:00:00 → 2026-05-15 00:00:00  -> etf.daily_bars/ARCA.SLV
+  USO       TRADES      5052 bars  2006-04-10 00:00:00 → 2026-05-15 00:00:00  -> etf.daily_bars/ARCA.USO
+  DBC       TRADES      5097 bars  2006-02-03 00:00:00 → 2026-05-15 00:00:00  -> etf.daily_bars/ARCA.DBC
+  AUDUSD    MIDPOINT    5494 bars  2005-03-09 00:00:00 → 2026-05-15 00:00:00  -> fx.daily_bars/IDEALPRO.AUDUSD
+  EURGBP    MIDPOINT    5494 bars  2005-03-09 00:00:00 → 2026-05-15 00:00:00  -> fx.daily_bars/IDEALPRO.EURGBP
+  EURJPY    MIDPOINT    5494 bars  2005-03-09 00:00:00 → 2026-05-15 00:00:00  -> fx.daily_bars/IDEALPRO.EURJPY
+  EURUSD    MIDPOINT    5494 bars  2005-03-09 00:00:00 → 2026-05-15 00:00:00  -> fx.daily_bars/IDEALPRO.EURUSD
+  GBPJPY    MIDPOINT    5494 bars  2005-03-09 00:00:00 → 2026-05-15 00:00:00  -> fx.daily_bars/IDEALPRO.GBPJPY
+  GBPUSD    MIDPOINT    5494 bars  2005-03-09 00:00:00 → 2026-05-15 00:00:00  -> fx.daily_bars/IDEALPRO.GBPUSD
+  USDCAD    MIDPOINT    5494 bars  2005-03-09 00:00:00 → 2026-05-15 00:00:00  -> fx.daily_bars/IDEALPRO.USDCAD
+  USDCHF    MIDPOINT    5494 bars  2005-03-09 00:00:00 → 2026-05-15 00:00:00  -> fx.daily_bars/IDEALPRO.USDCHF
+  USDJPY    MIDPOINT    5494 bars  2005-03-09 00:00:00 → 2026-05-15 00:00:00  -> fx.daily_bars/IDEALPRO.USDJPY
+  GLD       TRADES      5398 bars  2004-11-18 00:00:00 → 2026-05-15 00:00:00  -> etf.daily_bars/ARCA.GLD
+  GOOGL     TRADES      5471 bars  2004-08-19 00:00:00 → 2026-05-15 00:00:00  -> equity.daily_bars/NASDAQ.GOOGL
+  IWM       TRADES      6517 bars  2000-05-26 00:00:00 → 2026-05-15 00:00:00  -> etf.daily_bars/ARCA.IWM
+  QQQ       TRADES      6839 bars  1999-03-10 00:00:00 → 2026-05-15 00:00:00  -> etf.daily_bars/NASDAQ.QQQ
+  NVDA      TRADES      6858 bars  1999-01-22 00:00:00 → 2026-05-15 00:00:00  -> equity.daily_bars/NASDAQ.NVDA
+  XLE       TRADES      6883 bars  1998-12-22 00:00:00 → 2026-05-15 00:00:00  -> etf.daily_bars/ARCA.XLE
+  AMZN      TRADES      7282 bars  1997-05-15 00:00:00 → 2026-05-15 00:00:00  -> equity.daily_bars/NASDAQ.AMZN
+  BRK B     TRADES      7546 bars  1996-05-09 00:00:00 → 2026-05-15 00:00:00  -> equity.daily_bars/NYSE.BRK B
+  SPY       TRADES      8373 bars  1993-01-29 00:00:00 → 2026-05-15 00:00:00  -> etf.daily_bars/ARCA.SPY
+  MSFT      TRADES     10099 bars  1986-03-13 00:00:00 → 2026-05-15 00:00:00  -> equity.daily_bars/NASDAQ.MSFT
+  AAPL      TRADES     11419 bars  1980-12-12 00:00:00 → 2026-05-15 00:00:00  -> equity.daily_bars/NASDAQ.AAPL
+  JPM       TRADES     11605 bars  1980-03-17 00:00:00 → 2026-05-15 00:00:00  -> equity.daily_bars/NYSE.JPM
+
+done. 39/39 contracts written, 193,653 total bars

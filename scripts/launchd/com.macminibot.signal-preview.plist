@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+Pre-fire signal preview — fires Mon-Fri at 14:25 BST (10 min before the daily
+per-asset-runner). Shows exactly what the runner WILL emit at 14:35 BST so
+the operator has a chance to intervene (manual halt via state/HALT file) if
+a signal looks wrong.
+
+Read-only. Does not mutate state or submit orders. State file MD5 preserved.
+
+Activation:
+    launchctl bootstrap gui/$UID /Users/weeoto/macminibot/scripts/launchd/com.macminibot.signal-preview.plist
+Deactivation:
+    launchctl bootout gui/$UID/com.macminibot.signal-preview
+-->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.macminibot.signal-preview</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Users/weeoto/macminibot/.venv/bin/python</string>
+        <string>-u</string>
+        <string>/Users/weeoto/macminibot/scripts/47_signal_preview.py</string>
+    </array>
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PYTHONUNBUFFERED</key>
+        <string>1</string>
+    </dict>
+    <key>WorkingDirectory</key>
+    <string>/Users/weeoto/macminibot</string>
+    <key>StartCalendarInterval</key>
+    <array>
+        <dict><key>Weekday</key><integer>1</integer><key>Hour</key><integer>14</integer><key>Minute</key><integer>25</integer></dict>
+        <dict><key>Weekday</key><integer>2</integer><key>Hour</key><integer>14</integer><key>Minute</key><integer>25</integer></dict>
+        <dict><key>Weekday</key><integer>3</integer><key>Hour</key><integer>14</integer><key>Minute</key><integer>25</integer></dict>
+        <dict><key>Weekday</key><integer>4</integer><key>Hour</key><integer>14</integer><key>Minute</key><integer>25</integer></dict>
+        <dict><key>Weekday</key><integer>5</integer><key>Hour</key><integer>14</integer><key>Minute</key><integer>25</integer></dict>
+    </array>
+    <key>StandardOutPath</key>
+    <string>/Users/weeoto/macminibot/data/launchd_signal_preview.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/weeoto/macminibot/data/launchd_signal_preview.err</string>
+    <key>RunAtLoad</key>
+    <false/>
+</dict>
+</plist>

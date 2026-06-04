@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+Morning gap-feature pull. Runs at 09:35 ET on US trading days (Mon-Fri).
+The 5-min bar 09:30-09:35 ET is captured and the overnight gap computed.
+
+09:35 ET = 13:35 UTC = 14:35 BST.
+
+Load:
+    launchctl bootstrap gui/$UID /Users/weeoto/macminibot/scripts/launchd/com.macminibot.morning-gap.plist
+-->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.macminibot.morning-gap</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Users/weeoto/macminibot/.venv/bin/python</string>
+        <string>-u</string>
+        <string>/Users/weeoto/macminibot/scripts/08_morning_gap.py</string>
+    </array>
+
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>TARGETS</key>
+        <string>AAPL,MSFT,NVDA,GOOGL,AMZN,META,TSLA,ES,GLD,EURUSD</string>
+        <key>CLIENT_ID</key>
+        <string>31</string>
+        <key>PYTHONUNBUFFERED</key>
+        <string>1</string>
+    </dict>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/weeoto/macminibot</string>
+
+    <key>StartCalendarInterval</key>
+    <array>
+        <dict><key>Weekday</key><integer>1</integer><key>Hour</key><integer>9</integer><key>Minute</key><integer>35</integer></dict>
+        <dict><key>Weekday</key><integer>2</integer><key>Hour</key><integer>9</integer><key>Minute</key><integer>35</integer></dict>
+        <dict><key>Weekday</key><integer>3</integer><key>Hour</key><integer>9</integer><key>Minute</key><integer>35</integer></dict>
+        <dict><key>Weekday</key><integer>4</integer><key>Hour</key><integer>9</integer><key>Minute</key><integer>35</integer></dict>
+        <dict><key>Weekday</key><integer>5</integer><key>Hour</key><integer>9</integer><key>Minute</key><integer>35</integer></dict>
+    </array>
+
+    <key>StandardOutPath</key>
+    <string>/Users/weeoto/macminibot/data/launchd_morning_gap.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/weeoto/macminibot/data/launchd_morning_gap.err</string>
+
+    <key>RunAtLoad</key>
+    <false/>
+</dict>
+</plist>

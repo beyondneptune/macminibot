@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+Alpaca WebSocket microstructure streamer. READ-ONLY. Subscribes to live
+trades + quotes for the 10-asset universe, computes rolling VWAP-deviation
+and L1 order-book imbalance, writes per-asset feature snapshots to
+`data/microstructure/<asset>_<date>.parquet` every 30s.
+
+DOES NOT submit orders. DOES NOT mutate per_asset_state.json. Honors
+state/HALT.
+
+Activation:
+    launchctl bootstrap gui/$UID /Users/weeoto/macminibot/scripts/launchd/com.macminibot.async-streamer.plist
+Deactivation:
+    launchctl bootout gui/$UID/com.macminibot.async-streamer
+-->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.macminibot.async-streamer</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Users/weeoto/macminibot/.venv/bin/python</string>
+        <string>-u</string>
+        <string>-m</string>
+        <string>execution.async_streamer</string>
+    </array>
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PYTHONUNBUFFERED</key>
+        <string>1</string>
+        <key>PYTHONPATH</key>
+        <string>/Users/weeoto/macminibot/src</string>
+    </dict>
+    <key>WorkingDirectory</key>
+    <string>/Users/weeoto/macminibot</string>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>KeepAlive</key>
+    <dict>
+        <key>SuccessfulExit</key>
+        <false/>
+    </dict>
+    <key>StandardOutPath</key>
+    <string>/Users/weeoto/macminibot/data/launchd_async_streamer.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/weeoto/macminibot/data/launchd_async_streamer.err</string>
+</dict>
+</plist>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+Intraday Bollinger 3σ/3σ runner — fires every 5 minutes.
+
+The runner itself gates on US trading window (09:30-16:00 ET) and exits
+cleanly (exit 6) outside the window — so we use a simple StartInterval=300s
+and let the script self-gate. This avoids launchd's StartCalendarInterval
+limitations around composite Hour×Minute matches.
+
+To load:
+    launchctl bootstrap gui/$UID /Users/weeoto/macminibot/scripts/launchd/com.macminibot.intraday-runner.plist
+To unload:
+    launchctl bootout gui/$UID/com.macminibot.intraday-runner
+
+The intraday runner uses its OWN state file (data/intraday_state.json) so
+the daily per-asset runner (data/per_asset_state.json) is unaffected. The
+daily runner has been edited to SKIP AAPL/MSFT — they are managed solely
+by this plist.
+
+RunAtLoad = false. First fire is after the first 300-second tick.
+-->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.macminibot.intraday-runner</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Users/weeoto/macminibot/.venv/bin/python</string>
+        <string>-u</string>
+        <string>/Users/weeoto/macminibot/scripts/35_intraday_runner.py</string>
+    </array>
+
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PYTHONUNBUFFERED</key>
+        <string>1</string>
+        <key>PYTHONPATH</key>
+        <string>/Users/weeoto/macminibot/src</string>
+    </dict>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/weeoto/macminibot</string>
+
+    <key>StartInterval</key>
+    <integer>300</integer>
+
+    <key>StandardOutPath</key>
+    <string>/Users/weeoto/macminibot/data/launchd_intraday_runner.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/weeoto/macminibot/data/launchd_intraday_runner.err</string>
+
+    <key>RunAtLoad</key>
+    <false/>
+
+    <key>ProcessType</key>
+    <string>Interactive</string>
+</dict>
+</plist>

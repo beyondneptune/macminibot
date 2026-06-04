@@ -1,0 +1,38 @@
+targets: ['TSLA']  hours_back=8.0  client_id=29
+connecting to IBKR Gateway @ 127.0.0.1:4001 clientId=29
+connected (readonly)  server=178
+
+20260517 21:45:07.591866 4780756 W arcticdb | LMDB path at /Users/weeoto/macminibot/data/arctic/ has already been opened in this process which is not supported by LMDB. You should only open a single Arctic instance over a given LMDB path. To continue safely, you should delete this Arctic instance and any others over the LMDB path in this process and then try again. Current process ID=[37213]
+[TSLA] start session_end=2026-05-15T21:00:00+00:00 target_window=8.0h what=TRADES threshold=397,644,612 (calibrated-from-20d-median-dv)
+[TSLA] progress: req=25 ticks=27,084 bars=2 end=2026-05-15T19:58:59+00:00
+[TSLA] progress: req=50 ticks=55,276 bars=4 end=2026-05-15T19:54:40+00:00
+[TSLA] progress: req=75 ticks=81,423 bars=5 end=2026-05-15T19:46:28+00:00
+[TSLA] progress: req=100 ticks=106,978 bars=6 end=2026-05-15T19:34:00+00:00
+[TSLA] progress: req=125 ticks=134,568 bars=8 end=2026-05-15T19:23:55+00:00
+[TSLA] progress: req=150 ticks=160,328 bars=9 end=2026-05-15T19:10:24+00:00
+[TSLA] progress: req=175 ticks=186,156 bars=10 end=2026-05-15T18:54:24+00:00
+[TSLA] progress: req=200 ticks=211,516 bars=11 end=2026-05-15T18:36:51+00:00
+[TSLA] progress: req=225 ticks=236,921 bars=12 end=2026-05-15T18:22:53+00:00
+[TSLA] progress: req=250 ticks=262,860 bars=14 end=2026-05-15T18:07:22+00:00
+[TSLA] progress: req=275 ticks=289,228 bars=15 end=2026-05-15T17:49:41+00:00
+[TSLA] progress: req=300 ticks=314,712 bars=16 end=2026-05-15T17:34:02+00:00
+[TSLA] progress: req=325 ticks=340,545 bars=18 end=2026-05-15T17:21:50+00:00
+[TSLA] progress: req=350 ticks=366,216 bars=19 end=2026-05-15T17:08:55+00:00
+[TSLA] progress: req=375 ticks=392,238 bars=20 end=2026-05-15T16:56:00+00:00
+[TSLA] progress: req=400 ticks=418,041 bars=21 end=2026-05-15T16:42:03+00:00
+[TSLA] progress: req=425 ticks=443,718 bars=22 end=2026-05-15T16:26:26+00:00
+[TSLA] progress: req=450 ticks=469,500 bars=23 end=2026-05-15T16:16:40+00:00
+[TSLA] progress: req=475 ticks=495,513 bars=24 end=2026-05-15T16:10:04+00:00
+[TSLA] progress: req=500 ticks=521,435 bars=24 end=2026-05-15T16:03:04+00:00
+[TSLA] progress: req=525 ticks=547,454 bars=25 end=2026-05-15T15:56:57+00:00
+[TSLA] progress: req=550 ticks=574,507 bars=26 end=2026-05-15T15:51:07+00:00
+[TSLA] progress: req=575 ticks=601,287 bars=27 end=2026-05-15T15:44:39+00:00
+[TSLA] progress: req=600 ticks=627,224 bars=27 end=2026-05-15T15:37:58+00:00
+[TSLA] progress: req=625 ticks=653,573 bars=28 end=2026-05-15T15:31:43+00:00
+2026-05-17 23:45:08,824 ib_async.client ERROR Peer closed connection.
+[TSLA] error at end=20260515-15:29:17: ConnectionError: Socket disconnect
+[TSLA] DONE: requests=635 ticks=663,872 bars_emitted=28 bars_written=28 → equity.dollar_bars/NASDAQ.TSLA
+
+=== summary ===
+  TSLA      reqs= 635  ticks=   663,872  bars=  28
+nightly tick pull complete

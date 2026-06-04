@@ -1,0 +1,38 @@
+schema_version = 2
+config_id = "2026-06-04.paper.leveraged-sleeve-1pct-target"
+
+# 2026-06-04: switched from v2 (8 vanilla equities, $12.5k/name) to 1%/day
+# target deployment (8 leveraged ETFs, $50k/name = 4× intraday-margin stack
+# on $100k seed). All caps multiplied 4× to accommodate the larger book.
+
+[account]
+# 0.50 = up to $50k per name on $100k seed (= 4× nominal, but ETF embedded
+# leverage is 3× so effective per-name underlying exposure is ~$150k).
+max_single_name_pct = 0.50
+
+# 5.0 = allow up to 5× gross book vs net_liq (8 × $50k = $400k = 4×, with
+# 1× headroom for existing v2 carry-over positions managed by the
+# intraday-exit-monitor while they trail-stop out).
+max_gross_exposure_pct = 5.00
+
+# Daily turnover: full book enter + exit + re-enter capacity.
+max_daily_turnover_pct = 5.25
+
+# Kelly cap lifted in lockstep so KELLY_CAP rule doesn't pre-emptively
+# reject sized intents.
+kelly_fraction = 0.50
+fatfinger_band_pct = 0.15
+min_intent_notional_usd = 50.00
+
+# Drawdown breakers — kept at the same percentages (they auto-scale with
+# net_liq via the auto_halt daemon). NOTE: this strategy's sim shows
+# multi-hundred-percent DDs, so DD_DAILY at -2% WILL fire often and halt
+# the bot. That's intentional risk management.
+dd_daily_pct = -0.02
+dd_weekly_pct = -0.05
+dd_ptt_pct = -0.10
+
+[defaults.symbol]
+max_notional_pct = 0.50
+kelly_fraction = 0.50
+fatfinger_band_pct = 0.15

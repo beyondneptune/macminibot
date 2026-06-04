@@ -1,0 +1,7 @@
+backtesting
+control_plane
+execution
+ml_research
+risk_management
+shared_core
+strategy_engine

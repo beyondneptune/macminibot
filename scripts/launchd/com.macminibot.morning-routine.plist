@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+Daily morning routine — runs at 14:00 BST (09:00 ET, 35 min before paper-runner fires).
+Retrains Ridge + auto-tunes lambda_risk + target_vol so the runner picks up the latest.
+
+DST edge: 14:00 BST = 09:00 ET during DST. In winter (no DST in UK either) it becomes 14:00 GMT = 09:00 ET (since ET is also off DST). Stays aligned.
+-->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.macminibot.morning-routine</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Users/weeoto/macminibot/.venv/bin/python</string>
+        <string>-u</string>
+        <string>/Users/weeoto/macminibot/scripts/40_daily_morning_routine.py</string>
+    </array>
+    <key>WorkingDirectory</key>
+    <string>/Users/weeoto/macminibot</string>
+    <key>StartCalendarInterval</key>
+    <array>
+        <dict><key>Weekday</key><integer>1</integer><key>Hour</key><integer>14</integer><key>Minute</key><integer>0</integer></dict>
+        <dict><key>Weekday</key><integer>2</integer><key>Hour</key><integer>14</integer><key>Minute</key><integer>0</integer></dict>
+        <dict><key>Weekday</key><integer>3</integer><key>Hour</key><integer>14</integer><key>Minute</key><integer>0</integer></dict>
+        <dict><key>Weekday</key><integer>4</integer><key>Hour</key><integer>14</integer><key>Minute</key><integer>0</integer></dict>
+        <dict><key>Weekday</key><integer>5</integer><key>Hour</key><integer>14</integer><key>Minute</key><integer>0</integer></dict>
+    </array>
+    <key>StandardOutPath</key>
+    <string>/Users/weeoto/macminibot/data/launchd_morning_routine.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/weeoto/macminibot/data/launchd_morning_routine.err</string>
+    <key>RunAtLoad</key>
+    <false/>
+</dict>
+</plist>

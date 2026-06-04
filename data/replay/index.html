@@ -1,0 +1,57 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>macminibot — trailing-stop replay</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "SF Pro", sans-serif;
+          max-width: 1100px; margin: 40px auto; padding: 0 20px; color: #222; }
+  h1 { font-size: 22px; }
+  table { border-collapse: collapse; width: 100%; margin-top: 16px; font-size: 13px; }
+  th, td { padding: 8px 10px; border-bottom: 1px solid #eee; text-align: left; }
+  th { background: #fafafa; font-weight: 600; }
+  tr.total { background: #eef7e8; font-weight: 600; }
+  a { color: #0366d6; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .note { background: #fff8e1; padding: 12px 14px; border-left: 4px solid #ffb300;
+           font-size: 13px; line-height: 1.5; }
+  .summary { display: flex; gap: 20px; margin: 20px 0; }
+  .summary .box { background: #fafafa; padding: 14px 20px; border-radius: 6px;
+                   flex: 1; }
+  .summary .label { font-size: 11px; color: #666; text-transform: uppercase;
+                     letter-spacing: 0.04em; }
+  .summary .val { font-size: 22px; font-weight: 600; margin-top: 4px; }
+</style>
+<h1>macminibot — per-asset trailing-stop replay</h1>
+<p class="note">Each row links to an animated chart (press <b>▶ Play</b> to scrub
+through the last 252 trading days). P&L below is <b>realized</b> from closed
+round trips plus mark-to-market on any open position, sized at the production
+runner's per-name allocation of <b>$14,286</b>
+(net_liq / portfolio_size). This is the deployed state machine running on
+historical bars — <i>not</i> a backtest with statistical promotion gates
+(those live in <code>data/bakeoff_variants/FINAL_ANALYSIS.md</code>).</p>
+<div class="summary">
+  <div class="box"><div class="label">Portfolio net P&L</div>
+    <div class="val" style="color:#1a9850">$32,245.39</div>
+    <small style="color:#666">+32.25% on $100,000 deployed</small>
+  </div>
+  <div class="box"><div class="label">Realized</div>
+    <div class="val" style="color:#1a9850">$28,508.72</div>
+  </div>
+  <div class="box"><div class="label">Unrealized (open)</div>
+    <div class="val" style="color:#1a9850">$3,736.67</div>
+  </div>
+  <div class="box"><div class="label">Round trips</div>
+    <div class="val">152</div>
+    <small style="color:#666">43.4% win rate (66W / 86L)</small>
+  </div>
+</div>
+<table>
+  <tr><th>asset</th><th>model</th><th>trail</th>
+      <th style="text-align:right">round trips</th>
+      <th style="text-align:right">win rate</th>
+      <th style="text-align:right">realized $</th>
+      <th style="text-align:right">unrealized $</th>
+      <th style="text-align:right">net $</th>
+      <th style="text-align:right">return %</th>
+      <th>last close</th></tr>
+  <tr><td><b><a href="AAPL.html">AAPL</a></b></td><td>buy_and_hold</td><td>2.0σ</td><td style="text-align:right">17</td><td style="text-align:right">47.1% <small style="color:#888">(8W/9L)</small></td><td style="text-align:right;color:#1a9850">$2,381.29</td><td style="text-align:right;color:#1a9850">$3,166.80</td><td style="text-align:right;font-weight:600;color:#1a9850">$5,548.09</td><td style="text-align:right;color:#1a9850">+38.84%</td><td>$299.85 <small>(2026-05-15)</small></td></tr><tr><td><b><a href="MSFT.html">MSFT</a></b></td><td>rsi2_mr_10_90</td><td>2.0σ</td><td style="text-align:right">27</td><td style="text-align:right">40.7% <small style="color:#888">(11W/16L)</small></td><td style="text-align:right;color:#d73027">$-516.89</td><td style="text-align:right;color:#1a9850">$408.45</td><td style="text-align:right;font-weight:600;color:#d73027">$-108.44</td><td style="text-align:right;color:#d73027">-0.76%</td><td>$419.67 <small>(2026-05-15)</small></td></tr><tr><td><b><a href="GOOGL.html">GOOGL</a></b></td><td>buy_and_hold</td><td>2.0σ</td><td style="text-align:right">13</td><td style="text-align:right">61.5% <small style="color:#888">(8W/5L)</small></td><td style="text-align:right;color:#1a9850">$14,028.67</td><td style="text-align:right;color:#1a9850">$200.52</td><td style="text-align:right;font-weight:600;color:#1a9850">$14,229.19</td><td style="text-align:right;color:#1a9850">+99.60%</td><td>$395.25 <small>(2026-05-15)</small></td></tr><tr><td><b><a href="META.html">META</a></b></td><td>lgbm</td><td>2.0σ</td><td style="text-align:right">38</td><td style="text-align:right">36.8% <small style="color:#888">(14W/24L)</small></td><td style="text-align:right;color:#d73027">$-4,002.96</td><td style="text-align:right;color:#d73027">$-39.10</td><td style="text-align:right;font-weight:600;color:#d73027">$-4,042.06</td><td style="text-align:right;color:#d73027">-28.29%</td><td>$610.05 <small>(2026-05-15)</small></td></tr><tr><td><b><a href="TSLA.html">TSLA</a></b></td><td>macd_signal</td><td>0.5σ</td><td style="text-align:right">36</td><td style="text-align:right">44.4% <small style="color:#888">(16W/20L)</small></td><td style="text-align:right;color:#1a9850">$3,303.55</td><td style="text-align:right;color:#1a9850">$0.00</td><td style="text-align:right;font-weight:600;color:#1a9850">$3,303.55</td><td style="text-align:right;color:#1a9850">+23.12%</td><td>$418.57 <small>(2026-05-15)</small></td></tr><tr><td><b><a href="NVDA.html">NVDA</a></b></td><td>buy_and_hold</td><td>2.0σ</td><td style="text-align:right">16</td><td style="text-align:right">37.5% <small style="color:#888">(6W/10L)</small></td><td style="text-align:right;color:#1a9850">$7,310.93</td><td style="text-align:right;color:#1a9850">$0.00</td><td style="text-align:right;font-weight:600;color:#1a9850">$7,310.93</td><td style="text-align:right;color:#1a9850">+51.18%</td><td>$224.41 <small>(2026-05-15)</small></td></tr><tr><td><b><a href="GLD.html">GLD</a></b></td><td>buy_and_hold</td><td>3.0σ</td><td style="text-align:right">5</td><td style="text-align:right">60.0% <small style="color:#888">(3W/2L)</small></td><td style="text-align:right;color:#1a9850">$6,004.13</td><td style="text-align:right;color:#1a9850">$0.00</td><td style="text-align:right;font-weight:600;color:#1a9850">$6,004.13</td><td style="text-align:right;color:#1a9850">+42.03%</td><td>$417.00 <small>(2026-05-15)</small></td></tr>
+</table>

@@ -1,0 +1,23 @@
+targets: ['META']  hours_back=8.0  client_id=25
+connecting to IBKR Gateway @ 127.0.0.1:4001 clientId=25
+connected (readonly)  server=178
+
+20260517 20:40:55.119809 4753184 W arcticdb | LMDB path at /Users/weeoto/macminibot/data/arctic/ has already been opened in this process which is not supported by LMDB. You should only open a single Arctic instance over a given LMDB path. To continue safely, you should delete this Arctic instance and any others over the LMDB path in this process and then try again. Current process ID=[36402]
+[META] start session_end=2026-05-15T21:00:00+00:00 target_window=8.0h what=TRADES threshold=125,667,714 (calibrated-from-20d-median-dv)
+[META] progress: req=25 ticks=26,003 bars=8 end=2026-05-15T19:53:20+00:00
+[META] progress: req=50 ticks=52,545 bars=12 end=2026-05-15T19:25:14+00:00
+[META] progress: req=75 ticks=77,750 bars=17 end=2026-05-15T18:33:21+00:00
+[META] progress: req=100 ticks=103,282 bars=21 end=2026-05-15T17:51:20+00:00
+[META] progress: req=125 ticks=128,636 bars=25 end=2026-05-15T16:56:22+00:00
+[META] progress: req=150 ticks=153,915 bars=28 end=2026-05-15T16:05:11+00:00
+[META] progress: req=175 ticks=179,118 bars=31 end=2026-05-15T15:25:14+00:00
+[META] progress: req=200 ticks=204,466 bars=34 end=2026-05-15T14:52:29+00:00
+[META] progress: req=225 ticks=229,861 bars=37 end=2026-05-15T14:20:21+00:00
+[META] progress: req=250 ticks=255,545 bars=41 end=2026-05-15T13:52:00+00:00
+[META] progress: req=275 ticks=280,990 bars=45 end=2026-05-15T13:31:11+00:00
+[META] reached target window (2026-05-15T12:55:21+00:00) after 283 reqs / 290,208 ticks / 46 bars
+[META] DONE: requests=283 ticks=290,208 bars_emitted=46 bars_written=46 → equity.dollar_bars/NASDAQ.META
+
+=== summary ===
+  META      reqs= 283  ticks=   290,208  bars=  46
+nightly tick pull complete

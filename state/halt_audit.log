@@ -1,0 +1,39 @@
+{"action": "HALT", "reason": "auto_halt:BROKER_ACCOUNT_INACTIVE,POSITION_RECONCILE", "ts_unix": 1779124480.078027}
+{"action": "HALT", "reason": "architecture pivot to per-asset bracket-order bot", "ts_unix": 1779124875.481329}
+{"action": "HALT", "reason": "auto_halt:BROKER_ACCOUNT_INACTIVE", "ts_unix": 1779148847.570775}
+{"action": "UNHALT", "reason": "reality-ready activation; user authorized full automation", "ts_unix": 1779186485.434397}
+{"action": "HALT", "reason": "auto_halt:POSITION_RECONCILE", "ts_unix": 1779197879.0678668}
+{"action": "UNHALT", "reason": "journal backfilled with today's 7 fills; POSITION_RECONCILE will pass on next auto-halt run", "ts_unix": 1779212607.689375}
+{"action": "HALT", "reason": "auto_halt:BROKER_ACCOUNT_INACTIVE,POSITION_RECONCILE", "ts_unix": 1779235481.605199}
+{"action": "UNHALT", "reason": "daily v2 config bug fix: AAPL/MSFT/TSLA/GLD WINNER configs updated; state synced", "ts_unix": 1779279812.846889}
+{"action": "HALT", "reason": "auto_halt:BROKER_ACCOUNT_INACTIVE,POSITION_RECONCILE", "ts_unix": 1779321814.067143}
+{"action": "UNHALT", "reason": "smoke-test artifact cleaned: cancelled stray orders + state synced to broker (AAPL/GOOGL/META/NVDA)", "ts_unix": 1779347892.103978}
+{"action": "HALT", "reason": "auto_halt:BROKER_ACCOUNT_INACTIVE,POSITION_RECONCILE", "ts_unix": 1779408149.235349}
+{"action": "UNHALT", "reason": "overnight auto_halt cleared \u2014 broker now ACTIVE, positions reconcile (3 open on broker = 3 in state)", "ts_unix": 1779450828.2423098}
+{"action": "HALT", "reason": "auto_halt:BROKER_ACCOUNT_INACTIVE,POSITION_RECONCILE", "ts_unix": 1779494485.316482}
+{"action": "HALT", "reason": "auto_halt:BROKER_ACCOUNT_INACTIVE,POSITION_RECONCILE", "ts_unix": 1779580819.993969}
+{"action": "HALT", "reason": "auto_halt:BROKER_ACCOUNT_INACTIVE,POSITION_RECONCILE", "ts_unix": 1779667459.4845219}
+{"action": "UNHALT", "reason": "Monday pre-market: clearing overnight BROKER_ACCOUNT_INACTIVE auto-halt", "ts_unix": 1779694186.676932}
+{"action": "HALT", "reason": "auto_halt:BROKER_ACCOUNT_INACTIVE,POSITION_RECONCILE", "ts_unix": 1779753795.77335}
+{"action": "UNHALT", "reason": "Tuesday pre-market \u2014 clearing overnight auto-halt", "ts_unix": 1779782067.78822}
+{"action": "HALT", "reason": "auto_halt:BROKER_ACCOUNT_INACTIVE,POSITION_RECONCILE", "ts_unix": 1779840142.2950442}
+{"action": "UNHALT", "reason": "Wed pre-market \u2014 clearing overnight auto-halt", "ts_unix": 1779868891.7241862}
+{"action": "HALT", "reason": "auto_halt:BROKER_ACCOUNT_INACTIVE,POSITION_RECONCILE", "ts_unix": 1779926489.330107}
+{"action": "HALT", "reason": "auto_halt:BROKER_ACCOUNT_INACTIVE,POSITION_RECONCILE", "ts_unix": 1780012827.85628}
+{"action": "UNHALT", "reason": "user observation: bot should be live; clearing 38h-old overnight halt per durable authorization", "ts_unix": 1780067432.352229}
+{"action": "HALT", "reason": "auto_halt:BROKER_ACCOUNT_INACTIVE,POSITION_RECONCILE", "ts_unix": 1780068390.122852}
+{"action": "UNHALT_REFUSED", "reason": "broker_still_inactive: status=AccountStatus.ACTIVE", "ts_unix": 1780068390.826944}
+{"action": "UNHALT_REFUSED", "reason": "broker_still_inactive: status=AccountStatus.ACTIVE", "ts_unix": 1780068391.559392}
+{"action": "UNHALT_REFUSED", "reason": "position_reconcile_failed: 4 mismatches", "ts_unix": 1780068432.435207}
+{"action": "UNHALT_REFUSED", "reason": "position_reconcile_failed: 4 mismatches", "ts_unix": 1780068433.182348}
+{"action": "HALT", "reason": "manual halt for safety review", "ts_unix": 1780068433.294512}
+{"action": "UNHALT_REFUSED", "reason": "non_auto_halt_reason: manual halt for safety review", "ts_unix": 1780068433.338464}
+{"action": "UNHALT", "reason": "test cleanup \u2014 clearing manual test halt", "ts_unix": 1780068433.374699}
+{"action": "HALT", "reason": "auto_halt:BROKER_ACCOUNT_INACTIVE,POSITION_RECONCILE", "ts_unix": 1780068464.938426}
+{"action": "UNHALT", "reason": "auto-cleared at pre-market \u2014 original reason was auto_halt:BROKER_ACCOUNT_INACTIVE,POSITION_RECONCILE; broker=ACTIVE; positions reconciled (4 symbols)", "ts_unix": 1780068466.384224}
+{"action": "HALT", "reason": "auto_halt:BROKER_ACCOUNT_INACTIVE,POSITION_RECONCILE", "ts_unix": 1780099469.1931388}
+{"action": "HALT", "reason": "auto_halt:BROKER_ACCOUNT_INACTIVE,POSITION_RECONCILE", "ts_unix": 1780185804.251446}
+{"action": "HALT", "reason": "auto_halt:BROKER_ACCOUNT_INACTIVE,POSITION_RECONCILE", "ts_unix": 1780272140.545202}
+{"action": "UNHALT", "reason": "auto-cleared at pre-market \u2014 original reason was auto_halt:BROKER_ACCOUNT_INACTIVE,POSITION_RECONCILE; broker=ACTIVE; positions reconciled (4 symbols)", "ts_unix": 1780318805.957386}
+{"action": "HALT", "reason": "auto_halt:BROKER_ACCOUNT_INACTIVE,POSITION_RECONCILE", "ts_unix": 1780358475.55932}
+{"action": "UNHALT", "reason": "auto-cleared at pre-market \u2014 original reason was auto_halt:BROKER_ACCOUNT_INACTIVE,POSITION_RECONCILE; broker=ACTIVE; positions reconciled (3 symbols)", "ts_unix": 1780405205.609073}

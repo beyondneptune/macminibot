@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+macminibot Streamlit dashboard — bound to 0.0.0.0:8501.
+
+KeepAlive=true: launchd respawns the process if Streamlit dies.
+RunAtLoad=true: the dashboard is up as soon as the plist is bootstrapped.
+
+Access from any LAN device:  http://<mac-mini-lan-ip>:8501
+
+Load:
+    launchctl bootstrap gui/$UID /Users/weeoto/macminibot/scripts/launchd/com.macminibot.dashboard.plist
+-->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.macminibot.dashboard</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Users/weeoto/macminibot/.venv/bin/streamlit</string>
+        <string>run</string>
+        <string>/Users/weeoto/macminibot/scripts/dashboard.py</string>
+        <string>--server.address</string>
+        <string>0.0.0.0</string>
+        <string>--server.port</string>
+        <string>8501</string>
+        <string>--server.headless</string>
+        <string>true</string>
+        <string>--browser.gatherUsageStats</string>
+        <string>false</string>
+    </array>
+
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PYTHONUNBUFFERED</key>
+        <string>1</string>
+        <key>STREAMLIT_SERVER_HEADLESS</key>
+        <string>true</string>
+    </dict>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/weeoto/macminibot</string>
+
+    <key>StandardOutPath</key>
+    <string>/Users/weeoto/macminibot/data/launchd_dashboard.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/weeoto/macminibot/data/launchd_dashboard.err</string>
+
+    <key>RunAtLoad</key>
+    <true/>
+
+    <key>KeepAlive</key>
+    <true/>
+
+    <key>ThrottleInterval</key>
+    <integer>10</integer>
+
+    <key>ProcessType</key>
+    <string>Interactive</string>
+</dict>
+</plist>

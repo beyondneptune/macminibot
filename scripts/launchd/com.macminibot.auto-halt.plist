@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+Auto-halt daemon. Runs every 5 minutes during US market hours (Mon-Fri).
+
+Window: 09:30 ET -> 16:30 ET == 13:30 UTC -> 20:30 UTC (post DST).
+We schedule from 14:30 BST (09:30 ET) to 21:30 BST (16:30 ET) every
+5 minutes so the daemon sees post-close fills + final reconciliation.
+
+Load:
+    launchctl bootstrap gui/$UID /Users/weeoto/macminibot/scripts/launchd/com.macminibot.auto-halt.plist
+Unload:
+    launchctl bootout gui/$UID/com.macminibot.auto-halt
+-->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.macminibot.auto-halt</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Users/weeoto/macminibot/.venv/bin/python</string>
+        <string>-u</string>
+        <string>-m</string>
+        <string>risk_management.auto_halt_daemon</string>
+    </array>
+
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PYTHONUNBUFFERED</key>
+        <string>1</string>
+        <key>PYTHONPATH</key>
+        <string>/Users/weeoto/macminibot/src</string>
+    </dict>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/weeoto/macminibot</string>
+
+    <!--
+      Cadence: every 5 minutes, on the :00 :05 :10 :15 :20 :25 :30 :35 :40 :45 :50 :55
+      mark, between 14:30 and 21:30 BST, Mon-Fri (Weekday 1..5).
+
+      launchd's StartCalendarInterval matches if ALL specified fields match,
+      so we list one dict per (weekday, hour, minute). Twelve cycles/hour ×
+      eight hours × five days == 480 entries; we keep the file compact by
+      using StartInterval 300s (every 5 minutes) and gating the in-process
+      window in Python — see auto_halt_daemon.run_once which is safe to
+      call at any time (broker probe is cheap; off-hours it is a no-op
+      from a halt-rule perspective).
+    -->
+    <key>StartInterval</key>
+    <integer>300</integer>
+
+    <key>StandardOutPath</key>
+    <string>/Users/weeoto/macminibot/data/launchd_auto_halt.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/weeoto/macminibot/data/launchd_auto_halt.err</string>
+
+    <key>RunAtLoad</key>
+    <false/>
+</dict>
+</plist>

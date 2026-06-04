@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+macminibot leveraged sleeve runner — fires once per US trading day (Mon-Fri).
+
+This plist runs the leveraged-sleeve overlay (scripts/37_leveraged_sleeve_runner.py)
+alongside the per-asset trailing-stop runner. Both target the same Alpaca account,
+so this plist fires at 14:36 BST — exactly ONE MINUTE AFTER the v2 per-asset runner
+at 14:35 — to avoid contention on order submission and state-file writes.
+
+    14:35 BST → com.macminibot.per-asset-runner   (primary daily v2)
+    14:36 BST → com.macminibot.leveraged-sleeve-runner (this plist)
+
+Activation:
+
+    launchctl bootstrap gui/$UID /Users/weeoto/macminibot/scripts/launchd/com.macminibot.leveraged-sleeve-runner.plist
+
+Deactivation:
+
+    launchctl bootout gui/$UID/com.macminibot.leveraged-sleeve-runner
+
+Target time:  09:36 ET (6 minutes after the US cash open, 1 minute after v2 runner).
+Mac timezone: Europe/London (local clock); launchd schedules in LOCAL time.
+
+DST mapping (same edge-case as the per-asset runner):
+  US DST ON  + UK BST ON  → 09:36 ET == 14:36 BST   (Mar–Oct typical)
+  US DST OFF + UK GMT OFF → 09:36 ET == 14:36 GMT   (Nov–early Mar typical)
+  Transition weeks fire one hour LATE relative to the US open — accept the miss
+  or edit Minute/Hour manually for that week.
+
+RunAtLoad = false — never fire on bootstrap, only on schedule.
+-->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.macminibot.leveraged-sleeve-runner</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Users/weeoto/macminibot/.venv/bin/python</string>
+        <string>-u</string>
+        <string>/Users/weeoto/macminibot/scripts/37_leveraged_sleeve_runner.py</string>
+    </array>
+
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PYTHONUNBUFFERED</key>
+        <string>1</string>
+    </dict>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/weeoto/macminibot</string>
+
+    <key>StartCalendarInterval</key>
+    <array>
+        <dict><key>Weekday</key><integer>1</integer><key>Hour</key><integer>14</integer><key>Minute</key><integer>36</integer></dict>
+        <dict><key>Weekday</key><integer>2</integer><key>Hour</key><integer>14</integer><key>Minute</key><integer>36</integer></dict>
+        <dict><key>Weekday</key><integer>3</integer><key>Hour</key><integer>14</integer><key>Minute</key><integer>36</integer></dict>
+        <dict><key>Weekday</key><integer>4</integer><key>Hour</key><integer>14</integer><key>Minute</key><integer>36</integer></dict>
+        <dict><key>Weekday</key><integer>5</integer><key>Hour</key><integer>14</integer><key>Minute</key><integer>36</integer></dict>
+    </array>
+
+    <key>StandardOutPath</key>
+    <string>/Users/weeoto/macminibot/data/launchd_leveraged_sleeve_runner.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/weeoto/macminibot/data/launchd_leveraged_sleeve_runner.err</string>
+
+    <key>RunAtLoad</key>
+    <false/>
+
+    <key>ProcessType</key>
+    <string>Interactive</string>
+</dict>
+</plist>

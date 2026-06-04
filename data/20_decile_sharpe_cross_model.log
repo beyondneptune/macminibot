@@ -1,0 +1,92 @@
+==============================================================================
+CYCLE-13: cross-model decile-Sharpe diagnostic (OLS + LightGBM)
+==============================================================================
+Loaded 75,765 rows across 11 symbols
+
+[ols] Computing features...
+[ols]   unique trading days: 8,340
+[ols]   ... 50 folds processed
+[ols]   ... 100 folds processed
+[ols]   ... 150 folds processed
+[ols]   ... 200 folds processed
+[ols]   ... 250 folds processed
+[ols]   ... 300 folds processed
+[ols]   total folds with preds: 336
+
+[ols] Total pred rows: 44,980
+[ols] Regime distribution (rows):
+regime
+vix_mid     24662
+vix_low     11527
+vix_high     8791
+Name: count, dtype: int64
+
+==============================================================================
+[OLS] PER-DECILE SHARPE (annualized) — 10 deciles x 3 regimes
+==============================================================================
+decile |    vix_low    vix_mid   vix_high  |  n_low  n_mid n_high
+------------------------------------------------------------------------------
+D1     |     -0.301     -0.508     +0.705  |   1234   2897   1060
+D2     |     +0.277     -0.245     -0.073  |   1382   2747    932
+D3     |     +0.926     -0.400     -0.171  |    561   1015    418
+D4     |     +0.483     +0.170     +0.301  |   1327   2860    925
+D5     |     -0.439     +0.004     -0.000  |   1459   2995   1161
+D6     |     -0.206     +0.315     +0.287  |   1060   2629    960
+D7     |     +0.843     -0.269     +0.734  |   1331   2917    931
+D8     |     -0.354     +0.121     -0.035  |    557    958    412
+D9     |     +0.588     +0.215     +0.655  |   1386   2804    938
+D10    |     -0.122     +0.366     +0.858  |   1230   2840   1054
+
+[lgbm] Computing features...
+[lgbm]   unique trading days: 8,340
+[lgbm]   ... 50 folds processed
+[lgbm]   ... 100 folds processed
+[lgbm]   ... 150 folds processed
+[lgbm]   ... 200 folds processed
+[lgbm]   ... 250 folds processed
+[lgbm]   ... 300 folds processed
+[lgbm]   total folds with preds: 336
+
+[lgbm] Total pred rows: 44,980
+[lgbm] Regime distribution (rows):
+regime
+vix_mid     24662
+vix_low     11527
+vix_high     8791
+Name: count, dtype: int64
+
+==============================================================================
+[LGBM] PER-DECILE SHARPE (annualized) — 10 deciles x 3 regimes
+==============================================================================
+decile |    vix_low    vix_mid   vix_high  |  n_low  n_mid n_high
+------------------------------------------------------------------------------
+D1     |     -0.556     -0.561     +0.508  |   1234   2897   1060
+D2     |     +0.043     -0.519     +0.283  |   1382   2747    932
+D3     |     -0.383     +0.067     -2.062  |    561   1015    418
+D4     |     +0.689     -0.033     +0.850  |   1327   2860    925
+D5     |     +0.532     +0.087     +0.419  |   1459   2995   1161
+D6     |     +0.522     +0.364     +0.081  |   1060   2629    960
+D7     |     +0.502     +0.283     +0.789  |   1331   2917    931
+D8     |     -0.372     -0.129     +1.089  |    557    958    412
+D9     |     -0.123     -0.045     -0.618  |   1386   2804    938
+D10    |     +0.550     +0.291     +1.322  |   1230   2840   1054
+
+==============================================================================
+CROSS-MODEL COMPARISON: D10 - D1 Sharpe spread per regime
+==============================================================================
+   model |    vix_low    vix_mid   vix_high  |  mid_is_best?
+------------------------------------------------------------------------------
+  ridge* |     +0.184     +0.874     +0.153  |           YES
+     ols |     +0.179     +0.874     +0.153  |           YES
+    lgbm |     +1.106     +0.852     +0.815  |            NO
+------------------------------------------------------------------------------
+  *ridge: cycle-12 reference, re-loaded from script 18 log.
+
+==============================================================================
+VERDICT
+==============================================================================
+  Finding is NOT robust. The following models did NOT show
+  vix_mid as the dominant directional regime: ['lgbm']
+  This implies the cycle-12 Ridge result is either Ridge-specific
+  or partially data-mined. Do not gate trading on vix_mid alone
+  until additional cross-validation passes.

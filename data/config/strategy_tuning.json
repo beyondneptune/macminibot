@@ -1,0 +1,14 @@
+{
+  "2026-05-18": {
+    "clamped_lambda": false,
+    "clamped_target_vol": false,
+    "lambda_risk": 0.001,
+    "linf_at_lambda": 0.0499999999996191,
+    "linf_target": 0.1,
+    "n_iter": 0,
+    "notes": "",
+    "realized_vol_w": 0.029807994023967478,
+    "target_vol_annualized": 0.037259992529959346,
+    "written_at_utc": "2026-05-18T13:45:34"
+  }
+}

@@ -1,0 +1,19 @@
+# macminibot — alert sink config (Epic: auto-response).
+#
+# The auto-halt daemon + EOD summary publish AlertEvents to every sink
+# listed here. Supported URI schemes:
+#
+#   file://<path>      append a JSONL record (path is repo-root relative
+#                      unless absolute)
+#   desktop://         macOS notification via osascript
+#   webhook://<host>/<path>
+#                      POST a JSON payload (Slack-compatible)
+#
+# Reorder freely. Failures from individual sinks are swallowed so a
+# flaky webhook never blocks a halt; keep at least one file:// entry as
+# the local record-of-truth.
+
+sinks = [
+    "file://data/alerts.log",
+    "desktop://",
+]

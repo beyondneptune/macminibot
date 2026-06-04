@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+Continuous retraining daemon. Polls every 30 min; runs Ridge + LightGBM
+retrain when last model is >24h old. Atomic symlink hot-swap means the
+live per-asset runner picks up the fresh model on its next cold start
+(daily 14:35 BST) without explicit coordination.
+
+PAPER-BOUND. Does not submit orders. Reads ArcticDB + writes pickled
+model artifacts under data/models/.
+
+Activation:
+    launchctl bootstrap gui/$UID /Users/weeoto/macminibot/scripts/launchd/com.macminibot.auto-retrain-daemon.plist
+Deactivation:
+    launchctl bootout gui/$UID/com.macminibot.auto-retrain-daemon
+-->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.macminibot.auto-retrain-daemon</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Users/weeoto/macminibot/.venv/bin/python</string>
+        <string>-u</string>
+        <string>-m</string>
+        <string>ml_research.auto_retrain</string>
+        <string>--daemon</string>
+        <string>--retrain-interval-hours</string>
+        <string>24</string>
+        <string>--poll-seconds</string>
+        <string>1800</string>
+        <string>--years</string>
+        <string>5</string>
+    </array>
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PYTHONUNBUFFERED</key>
+        <string>1</string>
+        <key>PYTHONPATH</key>
+        <string>/Users/weeoto/macminibot/src</string>
+    </dict>
+    <key>WorkingDirectory</key>
+    <string>/Users/weeoto/macminibot</string>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>KeepAlive</key>
+    <dict>
+        <key>SuccessfulExit</key>
+        <false/>
+    </dict>
+    <key>StandardOutPath</key>
+    <string>/Users/weeoto/macminibot/data/launchd_auto_retrain_daemon.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/weeoto/macminibot/data/launchd_auto_retrain_daemon.err</string>
+</dict>
+</plist>

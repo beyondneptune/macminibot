@@ -1,0 +1,55 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "macminibot"
+version = "0.1.0"
+description = "IBKR-driven systematic trading bot on a Mac mini M4 (greenfield)."
+requires-python = ">=3.11"
+authors = [{ name = "weeoto", email = "rafeeqinea@gmail.com" }]
+readme = { content-type = "text/markdown", text = "macminibot — greenfield trading bot." }
+license = { text = "Proprietary" }
+dependencies = [
+    # Tick / bar substrate
+    "arcticdb",
+    # IBKR async client
+    "ib_async",
+    # Data manipulation
+    "polars",
+    "pandas",
+    "pyarrow",
+    # ML
+    "lightgbm",
+    "scikit-learn",
+    # Portfolio optimisation
+    "cvxpy",
+    # numpy is pulled transitively by pandas/polars/sklearn, list it for safety
+    "numpy",
+    "PyYAML",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-cov",
+    "mypy",
+    "ruff",
+]
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+minversion = "8.0"
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-ra"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+src = ["src", "tests"]

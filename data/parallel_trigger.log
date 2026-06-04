@@ -1,0 +1,9 @@
+[trigger 2026-05-17T19:28:25Z] polling for GOOGL DONE...
+[trigger 2026-05-17T19:40:48Z] GOOGL DONE
+  killed python PID 33080
+  killed chain PID 27731
+[trigger 2026-05-17T19:40:53Z] spawning parallel META(25), NVDA(26), TSLA(27)
+  META PID 36402
+  NVDA PID 36403
+  TSLA PID 36404
+[trigger 2026-05-17T19:40:53Z] all 3 spawned. trigger exiting.

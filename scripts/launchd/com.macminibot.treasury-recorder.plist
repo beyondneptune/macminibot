@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+macminibot treasury recorder — fires scripts/44_treasury_recorder.py
+every 15 minutes (900s).
+
+Per-run job: pull Alpaca account + positions, append balance snapshot to
+data/treasury/balances.parquet, reconcile against the execution journal,
+write any breaks to data/treasury/breaks.jsonl. Skips writes outside
+market hours via Alpaca's get_clock().is_open (heartbeat still emitted).
+
+Load:
+    launchctl bootstrap gui/$UID /Users/weeoto/macminibot/scripts/launchd/com.macminibot.treasury-recorder.plist
+
+Unload:
+    launchctl bootout gui/$UID/com.macminibot.treasury-recorder
+-->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.macminibot.treasury-recorder</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Users/weeoto/macminibot/.venv/bin/python</string>
+        <string>-u</string>
+        <string>/Users/weeoto/macminibot/scripts/44_treasury_recorder.py</string>
+    </array>
+
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PYTHONUNBUFFERED</key>
+        <string>1</string>
+    </dict>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/weeoto/macminibot</string>
+
+    <!-- 15 minutes between runs -->
+    <key>StartInterval</key>
+    <integer>900</integer>
+
+    <key>StandardOutPath</key>
+    <string>/Users/weeoto/macminibot/data/launchd_treasury.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/weeoto/macminibot/data/launchd_treasury.err</string>
+
+    <key>RunAtLoad</key>
+    <true/>
+</dict>
+</plist>

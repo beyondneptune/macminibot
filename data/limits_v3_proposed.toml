@@ -1,0 +1,94 @@
+schema_version = 2
+config_id = "2026-05-22.paper.v3-sleeve"
+
+# ----------------------------------------------------------------------------
+# v3 leveraged-ETF sleeve enablement (PROPOSED — not loaded by live runner).
+#
+# Sizing rationale (script 37_leveraged_sleeve_runner.py):
+#   - v3 sleeve: SOXL/NVDL/TSLL at $20k each = $60k = 60% of $100k NAV
+#   - v2 daily:  8 names at $12.5k each = $100k = 100% of NAV
+#   - Combined:  $160k = 1.6x gross at full allocation (requires 2x margin)
+#
+# What changed vs the live 2026-05-19 config:
+#   1. account.max_single_name_pct: 0.15 -> 0.20  (LOOSEN — required for $20k/name)
+#   2. account.max_gross_exposure_pct: 1.00 -> 1.70  (LOOSEN — Path B 1.6x + buffer)
+#   3. account.max_daily_turnover_pct: 1.05 -> 1.65  (LOOSEN — sleeve adds ~60%
+#      turnover floor on top of v2's 100% full-rebalance day)
+#   4. defaults.symbol.max_notional_pct: 0.15 -> 0.20  (must track account ceiling
+#      per Limits invariant #4: symbols.X.max_notional_pct <= account.max_single_name_pct)
+#   5. Per-symbol overrides for v2 (8 names) clamped at 0.125 to keep $12.5k cap.
+#      v3 sleeve (SOXL/NVDL/TSLL) takes default 0.20 -> $20k cap.
+#   6. dd_daily_pct: -0.02 -> -0.03   (loader classifies as TIGHTEN by its
+#      "closer-to-zero = looser" rule, BUT behaviorally this permits more
+#      daily downside before auto-halt. Leveraged ETFs realize 3x single-name
+#      vol; the -2% gate would auto-halt on routine SOXL drawdowns. -3%
+#      accommodates ~2 sigma daily moves on the sleeve while still firing
+#      well before the -5% weekly gate. Net effect: MORE risk tolerance.)
+#
+# Hot-reload note: 4 fields loosen by loader convention (account.{max_single_name_pct,
+# max_gross_exposure_pct, max_daily_turnover_pct}, defaults.symbol.max_notional_pct);
+# load_limits() requires ack_loosen=True. The dd_daily_pct change registers as
+# TIGHTEN by the loader's "closer-to-zero is looser" polarity, despite
+# behaviorally permitting more downside. Operator must invoke with --ack-loosen
+# and eyeball the full diff before deploy.
+#
+# Risk implications: see audit report 2026-05-22.
+# ----------------------------------------------------------------------------
+
+[account]
+max_single_name_pct = 0.20
+# Path B: v2 ($100k) + v3 ($60k) = 1.60x. 1.70 ceiling gives ~6% headroom
+# for trail-stop re-entries that briefly double-count notional within a session.
+max_gross_exposure_pct = 1.70
+# v2 full-rebalance day = 100% turnover; v3 sleeve adds ~60% on entry/exit
+# days. 1.65 ceiling = 100% + 60% + 5% trail-stop re-entry headroom.
+max_daily_turnover_pct = 1.65
+kelly_fraction = 0.25
+fatfinger_band_pct = 0.15
+min_intent_notional_usd = 50.00
+# Loosened to -3% — leveraged ETFs (3x underlying) routinely realize
+# -1.5% to -3% single-day swings even on neutral macro days; -2% would
+# auto-halt on ordinary volatility, defeating the sleeve. -3% still gates
+# well before the -5% weekly gate triggers on day 1.
+dd_daily_pct = -0.03
+dd_weekly_pct = -0.05
+dd_ptt_pct = -0.10
+
+[defaults.symbol]
+# MUST equal account.max_single_name_pct (invariant #4). Symbols listed in
+# [symbols.*] tighten this down to 0.125 for the v2 universe; v3 names
+# (SOXL/NVDL/TSLL) inherit this 0.20 default => $20k/name on $100k NAV.
+max_notional_pct = 0.20
+kelly_fraction = 0.25
+fatfinger_band_pct = 0.15
+
+# ----------------------------------------------------------------------------
+# Per-symbol overrides — TIGHTEN ONLY (per loader invariant #3).
+# v2 daily universe (SUPPORTED_ASSETS in ml_research.asset_specialists)
+# pinned at 12.5% = $12.5k/name on $100k.
+# v3 sleeve members (SOXL, NVDL, TSLL) left to inherit defaults at 20%.
+# ----------------------------------------------------------------------------
+
+[symbols.AAPL]
+max_notional_pct = 0.125
+
+[symbols.MSFT]
+max_notional_pct = 0.125
+
+[symbols.GOOGL]
+max_notional_pct = 0.125
+
+[symbols.AMZN]
+max_notional_pct = 0.125
+
+[symbols.META]
+max_notional_pct = 0.125
+
+[symbols.TSLA]
+max_notional_pct = 0.125
+
+[symbols.NVDA]
+max_notional_pct = 0.125
+
+[symbols.GLD]
+max_notional_pct = 0.125

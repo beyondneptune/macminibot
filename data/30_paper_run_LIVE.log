@@ -1,0 +1,82 @@
+2026-05-18 14:34:12,022 INFO    ========================================================================
+2026-05-18 14:34:12,022 INFO    PAPER TRADE RUNNER — start (dry_run=False, log=/Users/weeoto/macminibot/data/30_paper_run_2026-05-18.log)
+2026-05-18 14:34:12,022 INFO    ========================================================================
+2026-05-18 14:34:12,023 INFO    env loaded: ACCOUNT_EQUITY_INITIAL=$100000
+2026-05-18 14:34:12,387 INFO    quotes: {'AAPL': '$297.9950', 'MSFT': '$416.7900', 'GOOGL': '$397.4800', 'AMZN': '$264.1250', 'META': '$603.8400', 'TSLA': '$419.6200', 'NVDA': '$228.0000', 'GLD': '$420.3100'}
+2026-05-18 14:34:12,439 INFO    loaded panel: 75,765 rows, last_date=2026-05-15 00:00:00, n_symbols=11
+/Users/weeoto/macminibot/scripts/30_paper_trade_runner.py:234: PolarsInefficientMapWarning: 
+Expr.map_elements is significantly slower than the native expressions API.
+Only use if you absolutely CANNOT implement your logic otherwise.
+Replace this expression...
+  - pl.col("symbol").map_elements(lambda s: ...)
+with this one instead:
+  + pl.col("symbol").replace_strict(sym_to_id)
+
+  .map_elements(lambda s: sym_to_id[s], return_dtype=pl.Int32)
+2026-05-18 14:34:12,466 INFO    training rows (last 5y): 10,048, dates [2021-05-14 00:00:00 .. 2026-05-14 00:00:00]
+2026-05-18 14:34:12,475 INFO    ridge fit: n_train=10048, n_features=10, alpha=1.0
+/Users/weeoto/macminibot/scripts/30_paper_trade_runner.py:287: PolarsInefficientMapWarning: 
+Expr.map_elements is significantly slower than the native expressions API.
+Only use if you absolutely CANNOT implement your logic otherwise.
+Replace this expression...
+  - pl.col("symbol").map_elements(lambda s: ...)
+with this one instead:
+  + pl.col("symbol").replace_strict(sym_to_id)
+
+  .map_elements(lambda s: sym_to_id[s], return_dtype=pl.Int32)
+2026-05-18 14:34:12,494 INFO    signals built: 8 / 8
+2026-05-18 14:34:12,495 INFO    predictions:
+        r_hat_daily
+ticker             
+AAPL       0.002976
+AMZN       0.000442
+GLD        0.001403
+GOOGL      0.001168
+META      -0.000544
+MSFT      -0.001030
+NVDA      -0.000411
+TSLA      -0.001681
+2026-05-18 14:34:12,505 INFO    returns matrix shape=(252, 8)
+2026-05-18 14:34:12,518 INFO    vix_proxy series len=252 latest=0.036113
+2026-05-18 14:34:12,923 INFO    snapshots: net_liq=$100000 buying_power=$200000 positions=0
+2026-05-18 14:34:12,933 INFO    rebalance: solver_status=optimal targets=8 rules=['solver.ecos.optimal', 'vol_target.regime_dampening:regime=intermediate,effective_target_vol=0.060000,vix_percentile=0.7857', 'vol_target.regime_intermediate_dampened', 'vol_target.clamped_at_leverage_cap']
+2026-05-18 14:34:12,933 INFO      target AAPL: w=0.0000 r_hat=0.002976 w_prev=0.0000 hold=None
+2026-05-18 14:34:12,933 INFO      target AMZN: w=0.0000 r_hat=0.000442 w_prev=0.0000 hold=None
+2026-05-18 14:34:12,933 INFO      target GLD: w=0.0000 r_hat=0.001403 w_prev=0.0000 hold=None
+2026-05-18 14:34:12,933 INFO      target GOOGL: w=0.0000 r_hat=0.001168 w_prev=0.0000 hold=None
+2026-05-18 14:34:12,933 INFO      target META: w=0.0000 r_hat=-0.000544 w_prev=0.0000 hold=None
+2026-05-18 14:34:12,933 INFO      target MSFT: w=0.0000 r_hat=-0.001030 w_prev=0.0000 hold=None
+2026-05-18 14:34:12,933 INFO      target NVDA: w=0.0000 r_hat=-0.000411 w_prev=0.0000 hold=None
+2026-05-18 14:34:12,933 INFO      target TSLA: w=0.0000 r_hat=-0.001681 w_prev=0.0000 hold=None
+2026-05-18 14:34:12,933 WARNING FORCED RANKED BOOK: optimizer weights all below 0.1% NAV (max=0.000000). Falling back to ranked equal-weight ±1/n book.
+2026-05-18 14:34:12,933 INFO      forced AAPL: w=+0.0500 r_hat=+0.002976
+2026-05-18 14:34:12,933 INFO      forced GLD: w=+0.0500 r_hat=+0.001403
+2026-05-18 14:34:12,933 INFO      forced GOOGL: w=+0.0500 r_hat=+0.001168
+2026-05-18 14:34:12,933 INFO      forced AMZN: w=+0.0500 r_hat=+0.000442
+2026-05-18 14:34:12,933 INFO      forced NVDA: w=-0.0500 r_hat=-0.000411
+2026-05-18 14:34:12,933 INFO      forced META: w=-0.0500 r_hat=-0.000544
+2026-05-18 14:34:12,933 INFO      forced MSFT: w=-0.0500 r_hat=-0.001030
+2026-05-18 14:34:12,933 INFO      forced TSLA: w=-0.0500 r_hat=-0.001681
+2026-05-18 14:34:12,933 INFO    vix_high gate: triggered=False halt=False reason=current=0.0361134461 < p80(0.03643791996000000031036728)
+2026-05-18 14:34:12,933 INFO    diff: 8 intents emitted
+2026-05-18 14:34:12,934 INFO    APPROVED AAPL BUY 17 @ $297.9950 (intent_id=32be3b6c86b64922a8839ca0887cdb156806c22292444861fbf3df9dbc38847f:AAPL)
+2026-05-18 14:34:12,934 INFO    APPROVED AMZN BUY 19 @ $264.1250 (intent_id=32be3b6c86b64922a8839ca0887cdb156806c22292444861fbf3df9dbc38847f:AMZN)
+2026-05-18 14:34:12,934 INFO    APPROVED GLD BUY 12 @ $420.3100 (intent_id=32be3b6c86b64922a8839ca0887cdb156806c22292444861fbf3df9dbc38847f:GLD)
+2026-05-18 14:34:12,934 INFO    APPROVED GOOGL BUY 13 @ $397.4800 (intent_id=32be3b6c86b64922a8839ca0887cdb156806c22292444861fbf3df9dbc38847f:GOOGL)
+2026-05-18 14:34:12,934 INFO    APPROVED META SELL 8 @ $603.8400 (intent_id=32be3b6c86b64922a8839ca0887cdb156806c22292444861fbf3df9dbc38847f:META)
+2026-05-18 14:34:12,934 INFO    APPROVED MSFT SELL 12 @ $416.7900 (intent_id=32be3b6c86b64922a8839ca0887cdb156806c22292444861fbf3df9dbc38847f:MSFT)
+2026-05-18 14:34:12,934 INFO    APPROVED NVDA SELL 22 @ $228.0000 (intent_id=32be3b6c86b64922a8839ca0887cdb156806c22292444861fbf3df9dbc38847f:NVDA)
+2026-05-18 14:34:12,934 INFO    APPROVED TSLA SELL 12 @ $419.6200 (intent_id=32be3b6c86b64922a8839ca0887cdb156806c22292444861fbf3df9dbc38847f:TSLA)
+2026-05-18 14:34:12,934 INFO    chain results: 8 approved, 0 rejected
+2026-05-18 14:34:13,757 INFO    EXEC 32be3b6c86b64922a8839ca0887cdb156806c22292444861fbf3df9dbc38847f:AAPL status=SUBMITTED coid=mmb-2b33a22d82590e075786a9d5 reason=None
+2026-05-18 14:34:13,757 INFO    EXEC 32be3b6c86b64922a8839ca0887cdb156806c22292444861fbf3df9dbc38847f:AMZN status=SUBMITTED coid=mmb-84a97a15b28b53c13a4253eb reason=None
+2026-05-18 14:34:13,757 INFO    EXEC 32be3b6c86b64922a8839ca0887cdb156806c22292444861fbf3df9dbc38847f:GLD status=SUBMITTED coid=mmb-bb529d81cd4fa5d8f119f8af reason=None
+2026-05-18 14:34:13,758 INFO    EXEC 32be3b6c86b64922a8839ca0887cdb156806c22292444861fbf3df9dbc38847f:GOOGL status=SUBMITTED coid=mmb-da6854faa63d983ba04c680f reason=None
+2026-05-18 14:34:13,758 INFO    EXEC 32be3b6c86b64922a8839ca0887cdb156806c22292444861fbf3df9dbc38847f:META status=SUBMITTED coid=mmb-2c7f3d0f99bdb7b1fcb3eec6 reason=None
+2026-05-18 14:34:13,758 INFO    EXEC 32be3b6c86b64922a8839ca0887cdb156806c22292444861fbf3df9dbc38847f:MSFT status=SUBMITTED coid=mmb-e8819074041888195b1eab48 reason=None
+2026-05-18 14:34:13,758 INFO    EXEC 32be3b6c86b64922a8839ca0887cdb156806c22292444861fbf3df9dbc38847f:NVDA status=SUBMITTED coid=mmb-968f5bab52975ca046eaaa64 reason=None
+2026-05-18 14:34:13,758 INFO    EXEC 32be3b6c86b64922a8839ca0887cdb156806c22292444861fbf3df9dbc38847f:TSLA status=SUBMITTED coid=mmb-88d6a4cf6d2b441441d9cdf9 reason=None
+2026-05-18 14:34:13,758 INFO    execution: submitted=8 refused=0 whatif=0
+2026-05-18 14:34:13,758 INFO    ========================================================================
+2026-05-18 14:34:13,758 INFO    PAPER TRADE RUNNER — done
+2026-05-18 14:34:13,758 INFO    ========================================================================

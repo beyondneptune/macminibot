@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+Morning auto-unhalt for routine overnight halts. Fires Mon-Fri 14:00 BST
+(35 min before the daily per-asset-runner fires at 14:35 BST).
+
+Whitelist: clears ONLY when the most recent HALT entry in halt_audit.log
+matches `auto_halt:BROKER_ACCOUNT_INACTIVE` and/or
+`auto_halt:POSITION_RECONCILE` (subset). Refuses to clear for any other
+reason — manual halts, DD breakers, fat-finger, KILL_SWITCH, etc. stay.
+
+Hard pre-conditions checked before clearing:
+  - Alpaca account.status == ACTIVE
+  - broker positions == journal positions
+  - no broker probe failure
+
+Refusals are logged to halt_audit.log as UNHALT_REFUSED for audit.
+
+Activation:
+    launchctl bootstrap gui/$UID /Users/weeoto/macminibot/scripts/launchd/com.macminibot.morning-unhalt.plist
+Deactivation:
+    launchctl bootout gui/$UID/com.macminibot.morning-unhalt
+-->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.macminibot.morning-unhalt</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Users/weeoto/macminibot/.venv/bin/python</string>
+        <string>-u</string>
+        <string>/Users/weeoto/macminibot/scripts/49_morning_unhalt.py</string>
+        <string>--json</string>
+    </array>
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PYTHONUNBUFFERED</key>
+        <string>1</string>
+        <key>PYTHONPATH</key>
+        <string>/Users/weeoto/macminibot/src</string>
+    </dict>
+    <key>WorkingDirectory</key>
+    <string>/Users/weeoto/macminibot</string>
+    <key>StartCalendarInterval</key>
+    <array>
+        <dict><key>Weekday</key><integer>1</integer><key>Hour</key><integer>14</integer><key>Minute</key><integer>0</integer></dict>
+        <dict><key>Weekday</key><integer>2</integer><key>Hour</key><integer>14</integer><key>Minute</key><integer>0</integer></dict>
+        <dict><key>Weekday</key><integer>3</integer><key>Hour</key><integer>14</integer><key>Minute</key><integer>0</integer></dict>
+        <dict><key>Weekday</key><integer>4</integer><key>Hour</key><integer>14</integer><key>Minute</key><integer>0</integer></dict>
+        <dict><key>Weekday</key><integer>5</integer><key>Hour</key><integer>14</integer><key>Minute</key><integer>0</integer></dict>
+    </array>
+    <key>StandardOutPath</key>
+    <string>/Users/weeoto/macminibot/data/launchd_morning_unhalt.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/weeoto/macminibot/data/launchd_morning_unhalt.err</string>
+</dict>
+</plist>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+Nightly historical tick pull → dollar bars for the top-10 contracts.
+
+Runs at 22:00 ET on weekdays (Tue-Sat, since the pull targets the prior trading
+day). 22:00 ET = 02:00 UTC = 03:00 BST. Calendar-Interval in this plist uses
+LOCAL time; tune Hour value to whatever zone the Mac mini is set to.
+
+Load:
+    launchctl bootstrap gui/$UID /Users/weeoto/macminibot/scripts/launchd/com.macminibot.nightly-tick-pull.plist
+
+Unload:
+    launchctl bootout gui/$UID/com.macminibot.nightly-tick-pull
+
+Status:
+    launchctl print gui/$UID/com.macminibot.nightly-tick-pull
+-->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.macminibot.nightly-tick-pull</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Users/weeoto/macminibot/.venv/bin/python</string>
+        <string>-u</string>
+        <string>/Users/weeoto/macminibot/scripts/07_nightly_tick_pull.py</string>
+    </array>
+
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>TARGETS</key>
+        <string>AAPL,MSFT,NVDA,GOOGL,AMZN,META,TSLA,ES,GLD,EURUSD</string>
+        <key>HOURS_BACK</key>
+        <string>8</string>
+        <key>CLIENT_ID</key>
+        <string>30</string>
+        <key>PYTHONUNBUFFERED</key>
+        <string>1</string>
+    </dict>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/weeoto/macminibot</string>
+
+    <key>StartCalendarInterval</key>
+    <array>
+        <dict><key>Weekday</key><integer>2</integer><key>Hour</key><integer>22</integer><key>Minute</key><integer>0</integer></dict>
+        <dict><key>Weekday</key><integer>3</integer><key>Hour</key><integer>22</integer><key>Minute</key><integer>0</integer></dict>
+        <dict><key>Weekday</key><integer>4</integer><key>Hour</key><integer>22</integer><key>Minute</key><integer>0</integer></dict>
+        <dict><key>Weekday</key><integer>5</integer><key>Hour</key><integer>22</integer><key>Minute</key><integer>0</integer></dict>
+        <dict><key>Weekday</key><integer>6</integer><key>Hour</key><integer>22</integer><key>Minute</key><integer>0</integer></dict>
+    </array>
+
+    <key>StandardOutPath</key>
+    <string>/Users/weeoto/macminibot/data/launchd_nightly_tick_pull.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/weeoto/macminibot/data/launchd_nightly_tick_pull.err</string>
+
+    <key>RunAtLoad</key>
+    <false/>
+</dict>
+</plist>

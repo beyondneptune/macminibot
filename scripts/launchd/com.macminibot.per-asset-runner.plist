@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+macminibot per-asset trailing-stop runner — fires once per US trading day (Mon-Fri).
+
+This plist REPLACES com.macminibot.paper-runner (the old cross-sectional MV
+optimizer pipeline). Before loading this plist, you MUST bootout the old one:
+
+    launchctl bootout gui/$UID/com.macminibot.paper-runner
+
+Then bootstrap this one:
+
+    launchctl bootstrap gui/$UID /Users/weeoto/macminibot/scripts/launchd/com.macminibot.per-asset-runner.plist
+
+If both are loaded simultaneously they will fight over the same Alpaca
+account at 14:35 BST. The old paper-runner must be unloaded first.
+
+Target time:  09:35 ET (5 minutes after the US cash open).
+Mac timezone: Europe/London (local clock); launchd schedules in LOCAL time.
+
+DST mapping (same edge-case as the old paper-runner — see its comment block):
+  US DST ON  + UK BST ON  → 09:35 ET == 14:35 BST   (Mar–Oct typical)
+  US DST OFF + UK GMT OFF → 09:35 ET == 14:35 GMT   (Nov–early Mar typical)
+  Transition weeks: ~1 week per spring + ~1 week per autumn the schedule
+  fires one hour LATE relative to the US open. The runner exits cleanly if
+  outside the trading window, so accept the miss or edit Minute/Hour manually
+  for that week.
+
+RunAtLoad = false — never fire on bootstrap, only on schedule.
+
+This plist fires the PRODUCTION runner (scripts/30_per_asset_runner.py),
+NOT the WHATIF dryrun (scripts/60_per_asset_dryrun.py).
+-->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.macminibot.per-asset-runner</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Users/weeoto/macminibot/.venv/bin/python</string>
+        <string>-u</string>
+        <string>/Users/weeoto/macminibot/scripts/30_per_asset_runner.py</string>
+    </array>
+
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PYTHONUNBUFFERED</key>
+        <string>1</string>
+    </dict>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/weeoto/macminibot</string>
+
+    <key>StartCalendarInterval</key>
+    <array>
+        <dict><key>Weekday</key><integer>1</integer><key>Hour</key><integer>14</integer><key>Minute</key><integer>35</integer></dict>
+        <dict><key>Weekday</key><integer>2</integer><key>Hour</key><integer>14</integer><key>Minute</key><integer>35</integer></dict>
+        <dict><key>Weekday</key><integer>3</integer><key>Hour</key><integer>14</integer><key>Minute</key><integer>35</integer></dict>
+        <dict><key>Weekday</key><integer>4</integer><key>Hour</key><integer>14</integer><key>Minute</key><integer>35</integer></dict>
+        <dict><key>Weekday</key><integer>5</integer><key>Hour</key><integer>14</integer><key>Minute</key><integer>35</integer></dict>
+    </array>
+
+    <key>StandardOutPath</key>
+    <string>/Users/weeoto/macminibot/data/launchd_per_asset_runner.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/weeoto/macminibot/data/launchd_per_asset_runner.err</string>
+
+    <key>RunAtLoad</key>
+    <false/>
+
+    <key>ProcessType</key>
+    <string>Interactive</string>
+</dict>
+</plist>

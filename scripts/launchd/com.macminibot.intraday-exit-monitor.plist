@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+Intraday EXIT monitor — fires every 5 minutes during US session.
+
+Owns ONLY exit decisions on positions already opened by the daily runner.
+Does NOT compute new entry signals. Closes positions the moment a
+trailing-stop or profit-target hits — instead of waiting for next day's
+14:35 BST fire.
+
+Bootstrap:
+    launchctl bootstrap gui/$UID /Users/weeoto/macminibot/scripts/launchd/com.macminibot.intraday-exit-monitor.plist
+-->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.macminibot.intraday-exit-monitor</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Users/weeoto/macminibot/.venv/bin/python</string>
+        <string>-u</string>
+        <string>/Users/weeoto/macminibot/scripts/36_intraday_exit_monitor.py</string>
+    </array>
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PYTHONUNBUFFERED</key>
+        <string>1</string>
+        <key>PYTHONPATH</key>
+        <string>/Users/weeoto/macminibot/src</string>
+    </dict>
+    <key>WorkingDirectory</key>
+    <string>/Users/weeoto/macminibot</string>
+    <key>StartInterval</key>
+    <integer>300</integer>
+    <key>StandardOutPath</key>
+    <string>/Users/weeoto/macminibot/data/launchd_intraday_exit_monitor.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/weeoto/macminibot/data/launchd_intraday_exit_monitor.err</string>
+    <key>RunAtLoad</key>
+    <false/>
+    <key>ProcessType</key>
+    <string>Interactive</string>
+</dict>
+</plist>

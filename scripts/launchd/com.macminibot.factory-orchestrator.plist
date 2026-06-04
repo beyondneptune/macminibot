@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+Autonomous Quant Factory orchestrator. Fires every 15 minutes; each cycle:
+  1. detect_anomalies() reads latest microstructure snapshots from async-streamer
+  2. generator.generate_strategy() synthesises a Bollinger-MR Python file
+  3. validator.validate_strategy() backtests on 7d minute_bars; failed → deleted
+  4. continuous_router.route_passed_strategies() dry-runs survivors (5% BP cap)
+
+SAFETY: this plist runs WITHOUT --commit, so the router stays in dry-run.
+Live broker submission also requires env MACMINIBOT_FACTORY_LIVE=1 which is
+NOT set in EnvironmentVariables. Both safeties must be intentionally
+flipped to authorise real-money order submission.
+
+Outside US session hours the orchestrator exits clean with 0 anomalies.
+
+Activation:
+    launchctl bootstrap gui/$UID /Users/weeoto/macminibot/scripts/launchd/com.macminibot.factory-orchestrator.plist
+Deactivation:
+    launchctl bootout gui/$UID/com.macminibot.factory-orchestrator
+-->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.macminibot.factory-orchestrator</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Users/weeoto/macminibot/.venv/bin/python</string>
+        <string>-u</string>
+        <string>/Users/weeoto/macminibot/scripts/104_factory_orchestrator.py</string>
+        <string>--max-attempts</string>
+        <string>5</string>
+    </array>
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PYTHONUNBUFFERED</key>
+        <string>1</string>
+        <key>PYTHONPATH</key>
+        <string>/Users/weeoto/macminibot/src</string>
+    </dict>
+    <key>WorkingDirectory</key>
+    <string>/Users/weeoto/macminibot</string>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>StartInterval</key>
+    <integer>900</integer>
+    <key>StandardOutPath</key>
+    <string>/Users/weeoto/macminibot/data/launchd_factory_orchestrator.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/weeoto/macminibot/data/launchd_factory_orchestrator.err</string>
+</dict>
+</plist>

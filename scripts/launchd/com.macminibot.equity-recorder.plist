@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+macminibot equity recorder — fires scripts/42_equity_recorder.py every 5 min.
+
+The recorder script self-gates to the US regular session (09:30-16:00 ET,
+Mon-Fri) so this plist can stay on a simple StartInterval and we never
+have to chase DST drift across two timezones (Europe/London local clock,
+US/Eastern session).
+
+StartInterval = 300 seconds = 5 min  (matches the recording cadence
+the dashboard expects for the drawdown chart resolution).
+
+RunAtLoad = false — bootstrap should not append a midnight sample.
+
+Load:
+    launchctl bootstrap gui/$UID /Users/weeoto/macminibot/scripts/launchd/com.macminibot.equity-recorder.plist
+
+Unload:
+    launchctl bootout gui/$UID/com.macminibot.equity-recorder
+-->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.macminibot.equity-recorder</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Users/weeoto/macminibot/.venv/bin/python</string>
+        <string>-u</string>
+        <string>/Users/weeoto/macminibot/scripts/42_equity_recorder.py</string>
+    </array>
+
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PYTHONUNBUFFERED</key>
+        <string>1</string>
+        <key>MACMINIBOT_EQUITY_RECORDER_CID</key>
+        <string>42</string>
+    </dict>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/weeoto/macminibot</string>
+
+    <key>StartInterval</key>
+    <integer>300</integer>
+
+    <key>StandardOutPath</key>
+    <string>/Users/weeoto/macminibot/data/launchd_equity_recorder.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/weeoto/macminibot/data/launchd_equity_recorder.err</string>
+
+    <key>RunAtLoad</key>
+    <false/>
+</dict>
+</plist>

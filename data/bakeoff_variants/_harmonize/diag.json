@@ -1,0 +1,117 @@
+{
+  "bracket": {
+    "variant": "bracket",
+    "n_candidates_per_asset": {
+      "AAPL": 221,
+      "MSFT": 221,
+      "GOOGL": 221,
+      "AMZN": 221,
+      "META": 221,
+      "TSLA": 221,
+      "NVDA": 221,
+      "GLD": 221
+    },
+    "n_trials_eff": {
+      "AAPL": 7.0,
+      "MSFT": 7.0,
+      "GOOGL": 8.0,
+      "AMZN": 8.0,
+      "META": 8.0,
+      "TSLA": 8.0,
+      "NVDA": 9.0,
+      "GLD": 8.0
+    }
+  },
+  "signal_flip": {
+    "variant": "signal_flip",
+    "n_candidates_per_asset": {
+      "AAPL": 17,
+      "MSFT": 17,
+      "GOOGL": 17,
+      "AMZN": 17,
+      "META": 17,
+      "TSLA": 17,
+      "NVDA": 17,
+      "GLD": 17
+    },
+    "n_trials_eff": {
+      "AAPL": 2.0,
+      "MSFT": 2.0,
+      "GOOGL": 2.0,
+      "AMZN": 2.0,
+      "META": 2.0,
+      "TSLA": 2.0,
+      "NVDA": 2.0,
+      "GLD": 2.0
+    }
+  },
+  "long_only_ensemble": {
+    "variant": "long_only_ensemble",
+    "n_candidates_per_asset": {
+      "AAPL": 39,
+      "MSFT": 39,
+      "GOOGL": 39,
+      "AMZN": 39,
+      "META": 39,
+      "TSLA": 39,
+      "NVDA": 39,
+      "GLD": 39
+    },
+    "n_trials_eff": {
+      "AAPL": 39.0,
+      "MSFT": 39.0,
+      "GOOGL": 39.0,
+      "AMZN": 39.0,
+      "META": 39.0,
+      "TSLA": 39.0,
+      "NVDA": 39.0,
+      "GLD": 39.0
+    }
+  },
+  "trailing_stop": {
+    "variant": "trailing_stop",
+    "n_candidates_per_asset": {
+      "AAPL": 85,
+      "MSFT": 85,
+      "GOOGL": 85,
+      "AMZN": 85,
+      "META": 85,
+      "TSLA": 85,
+      "NVDA": 85,
+      "GLD": 85
+    },
+    "n_trials_eff": {
+      "AAPL": 4.0,
+      "MSFT": 4.0,
+      "GOOGL": 5.0,
+      "AMZN": 4.0,
+      "META": 5.0,
+      "TSLA": 5.0,
+      "NVDA": 5.0,
+      "GLD": 4.0
+    }
+  },
+  "time_decay": {
+    "variant": "time_decay",
+    "n_candidates_per_asset": {
+      "AAPL": 85,
+      "MSFT": 85,
+      "GOOGL": 85,
+      "AMZN": 85,
+      "META": 85,
+      "TSLA": 85,
+      "NVDA": 85,
+      "GLD": 85
+    },
+    "n_trials_eff": {
+      "AAPL": 4.0,
+      "MSFT": 3.0,
+      "GOOGL": 3.0,
+      "AMZN": 4.0,
+      "META": 4.0,
+      "TSLA": 4.0,
+      "NVDA": 3.0,
+      "GLD": 4.0
+    }
+  }
+}

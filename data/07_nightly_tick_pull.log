@@ -1,0 +1,16 @@
+targets: ['AAPL']  hours_back=2.0  client_id=22
+connecting to IBKR Gateway @ 127.0.0.1:4001 clientId=22
+connected (readonly)  server=178
+
+20260517 11:03:33.836218 4473219 W arcticdb | LMDB path at /Users/weeoto/macminibot/data/arctic/ has already been opened in this process which is not supported by LMDB. You should only open a single Arctic instance over a given LMDB path. To continue safely, you should delete this Arctic instance and any others over the LMDB path in this process and then try again. Current process ID=[25613]
+[AAPL] start session_end=2026-05-15T21:00:00+00:00 target_window=2.0h what=TRADES threshold=187,627,909 (calibrated-from-20d-median-dv)
+[AAPL] progress: req=25 ticks=28,516 bars=7 end=2026-05-15T19:57:34+00:00
+[AAPL] progress: req=50 ticks=54,880 bars=9 end=2026-05-15T19:51:58+00:00
+[AAPL] progress: req=75 ticks=80,693 bars=11 end=2026-05-15T19:38:12+00:00
+[AAPL] progress: req=100 ticks=106,908 bars=13 end=2026-05-15T19:18:31+00:00
+[AAPL] reached target window (2026-05-15T18:59:38+00:00) after 119 reqs / 126,322 ticks / 14 bars
+[AAPL] DONE: requests=119 ticks=126,322 bars_emitted=14 bars_written=14 → equity.dollar_bars/NASDAQ.AAPL
+
+=== summary ===
+  AAPL      reqs= 119  ticks=   126,322  bars=  14
+nightly tick pull complete

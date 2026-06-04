@@ -1,0 +1,86 @@
+connecting to IBKR Gateway @ 127.0.0.1:4001 clientId=20
+connected (readonly). subscribing to live ticks...
+
+  AAPL      Last       threshold=$5,000,000
+  MSFT      Last       threshold=$5,000,000
+  NVDA      Last       threshold=$5,000,000
+  GOOGL     Last       threshold=$5,000,000
+  AMZN      Last       threshold=$5,000,000
+  META      Last       threshold=$5,000,000
+  TSLA      Last       threshold=$5,000,000
+  JPM       MidPoint   threshold=100 ticks
+  V         MidPoint   threshold=100 ticks
+  BRK B     MidPoint   threshold=100 ticks
+  SPY       MidPoint   threshold=100 ticks
+  QQQ       Last       threshold=$30,000,000
+  IWM       MidPoint   threshold=100 ticks
+  GLD       Last       threshold=$20,000,000
+  SLV       Last       threshold=$5,000,000
+  USO       Last       threshold=$3,000,000
+  UNG       Last       threshold=$1,000,000
+  DBC       Last       threshold=$1,000,000
+  GDX       Last       threshold=$3,000,000
+  XLE       MidPoint   threshold=100 ticks
+  ES        Last       threshold=$50,000,000
+  NQ        Last       threshold=$50,000,000
+  YM        Last       threshold=$20,000,000
+  RTY       Last       threshold=$30,000,000
+  CL        Last       threshold=$50,000,000
+  GC        Last       threshold=$50,000,000
+  SI        Last       threshold=$5,000,000
+  HG        Last       threshold=$5,000,000
+  ZN        Last       threshold=$10,000,000
+  EURUSD    MidPoint   threshold=100 ticks
+  GBPUSD    MidPoint   threshold=100 ticks
+  USDJPY    MidPoint   threshold=100 ticks
+  USDCHF    MidPoint   threshold=100 ticks
+  AUDUSD    MidPoint   threshold=100 ticks
+  NZDUSD    MidPoint   threshold=100 ticks
+  USDCAD    MidPoint   threshold=100 ticks
+  EURGBP    MidPoint   threshold=100 ticks
+  EURJPY    MidPoint   threshold=100 ticks
+  GBPJPY    MidPoint   threshold=100 ticks
+
+subscribed to 39 contracts. streaming...
+
+2026-05-17 10:50:17,740 ib_async.wrapper ERROR Error 10189, reqId 3: Failed to request tick-by-tick data.No market data permissions for ISLAND STK. Requested market data requires additional subscription for API. See link in 'Market Data Connections' dialog for more details., contract: Contract(secType='STK', conId=265598, symbol='AAPL', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='AAPL')
+2026-05-17 10:50:17,832 ib_async.wrapper ERROR Error 10189, reqId 4: Failed to request tick-by-tick data.No market data permissions for ISLAND STK. Requested market data requires additional subscription for API. See link in 'Market Data Connections' dialog for more details., contract: Contract(secType='STK', conId=272093, symbol='MSFT', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='MSFT')
+2026-05-17 10:50:17,937 ib_async.wrapper ERROR Error 10189, reqId 5: Failed to request tick-by-tick data.No market data permissions for ISLAND STK. Requested market data requires additional subscription for API. See link in 'Market Data Connections' dialog for more details., contract: Contract(secType='STK', conId=4815747, symbol='NVDA', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='NVDA')
+2026-05-17 10:50:18,031 ib_async.wrapper ERROR Error 10189, reqId 6: Failed to request tick-by-tick data.No market data permissions for ISLAND STK. Requested market data requires additional subscription for API. See link in 'Market Data Connections' dialog for more details., contract: Contract(secType='STK', conId=208813719, symbol='GOOGL', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='GOOGL')
+2026-05-17 10:50:18,138 ib_async.wrapper ERROR Error 10189, reqId 7: Failed to request tick-by-tick data.No market data permissions for ISLAND STK. Requested market data requires additional subscription for API. See link in 'Market Data Connections' dialog for more details., contract: Contract(secType='STK', conId=3691937, symbol='AMZN', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='AMZN')
+2026-05-17 10:50:18,239 ib_async.wrapper ERROR Error 10189, reqId 8: Failed to request tick-by-tick data.No market data permissions for ISLAND STK. Requested market data requires additional subscription for API. See link in 'Market Data Connections' dialog for more details., contract: Contract(secType='STK', conId=107113386, symbol='META', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='META')
+2026-05-17 10:50:18,335 ib_async.wrapper ERROR Error 10189, reqId 9: Failed to request tick-by-tick data.No market data permissions for ISLAND STK. Requested market data requires additional subscription for API. See link in 'Market Data Connections' dialog for more details., contract: Contract(secType='STK', conId=76792991, symbol='TSLA', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='TSLA')
+2026-05-17 10:50:18,429 ib_async.wrapper ERROR Error 10189, reqId 10: Failed to request tick-by-tick data.No market data permissions for NYSE STK. Requested market data requires additional subscription for API. See link in 'Market Data Connections' dialog for more details., contract: Contract(secType='STK', conId=1520593, symbol='JPM', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='JPM')
+2026-05-17 10:50:18,547 ib_async.wrapper ERROR Error 10189, reqId 11: Failed to request tick-by-tick data.No market data permissions for NYSE STK. Requested market data requires additional subscription for API. See link in 'Market Data Connections' dialog for more details., contract: Contract(secType='STK', conId=49462172, symbol='V', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='V')
+2026-05-17 10:50:18,630 ib_async.wrapper ERROR Error 10189, reqId 12: Failed to request tick-by-tick data.No market data permissions for NYSE STK. Requested market data requires additional subscription for API. See link in 'Market Data Connections' dialog for more details., contract: Contract(secType='STK', conId=72063691, symbol='BRK B', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='BRK B')
+2026-05-17 10:50:18,655 ib_async.wrapper ERROR Error 10190, reqId 18: Max number of tick-by-tick requests has been reached., contract: Contract(secType='STK', conId=418893644, symbol='USO', exchange='SMART', primaryExchange='ARCA', currency='USD', localSymbol='USO')
+2026-05-17 10:50:18,656 ib_async.wrapper ERROR Error 10190, reqId 20: Max number of tick-by-tick requests has been reached., contract: Contract(secType='STK', conId=319355208, symbol='DBC', exchange='SMART', primaryExchange='ARCA', currency='USD', localSymbol='DBC')
+2026-05-17 10:50:18,656 ib_async.wrapper ERROR Error 10190, reqId 21: Max number of tick-by-tick requests has been reached., contract: Contract(secType='STK', conId=229726316, symbol='GDX', exchange='SMART', primaryExchange='ARCA', currency='USD', localSymbol='GDX')
+2026-05-17 10:50:18,695 ib_async.wrapper ERROR Error 10190, reqId 19: Max number of tick-by-tick requests has been reached., contract: Contract(secType='STK', conId=676612559, symbol='UNG', exchange='SMART', primaryExchange='ARCA', currency='USD', localSymbol='UNG')
+2026-05-17 10:50:18,730 ib_async.wrapper ERROR Error 10190, reqId 22: Max number of tick-by-tick requests has been reached., contract: Contract(secType='STK', conId=4215217, symbol='XLE', exchange='SMART', primaryExchange='ARCA', currency='USD', localSymbol='XLE')
+2026-05-17 10:50:18,732 ib_async.wrapper ERROR Error 10190, reqId 23: Max number of tick-by-tick requests has been reached., contract: Contract(secType='FUT', conId=515416632, symbol='ESZ6', exchange='CME', currency='USD', localSymbol='ESZ6')
+2026-05-17 10:50:18,732 ib_async.wrapper ERROR Error 10190, reqId 24: Max number of tick-by-tick requests has been reached., contract: Contract(secType='FUT', conId=563947726, symbol='NQZ6', exchange='CME', currency='USD', localSymbol='NQZ6')
+2026-05-17 10:50:18,732 ib_async.wrapper ERROR Error 10190, reqId 27: Max number of tick-by-tick requests has been reached., contract: Contract(secType='FUT', conId=296574762, symbol='CLM6', exchange='NYMEX', currency='USD', localSymbol='CLM6')
+2026-05-17 10:50:18,733 ib_async.wrapper ERROR Error 10189, reqId 13: Failed to request tick-by-tick data.No market data permissions for AMEX STK. Requested market data requires additional subscription for API. See link in 'Market Data Connections' dialog for more details., contract: Contract(secType='STK', conId=756733, symbol='SPY', exchange='SMART', primaryExchange='ARCA', currency='USD', localSymbol='SPY')
+2026-05-17 10:50:18,747 ib_async.wrapper ERROR Error 10190, reqId 26: Max number of tick-by-tick requests has been reached., contract: Contract(secType='FUT', conId=770561234, symbol='RTYM6', exchange='CME', currency='USD', localSymbol='RTYM6')
+2026-05-17 10:50:18,747 ib_async.wrapper ERROR Error 10190, reqId 28: Max number of tick-by-tick requests has been reached., contract: Contract(secType='FUT', conId=430360630, symbol='GCM6', exchange='COMEX', currency='USD', localSymbol='GCM6')
+2026-05-17 10:50:18,749 ib_async.wrapper ERROR Error 10190, reqId 31: Max number of tick-by-tick requests has been reached., contract: Contract(secType='FUT', conId=815824229, symbol='ZNM6', exchange='CBOT', currency='USD', localSymbol='ZNM6')
+2026-05-17 10:50:18,752 ib_async.wrapper ERROR Error 10190, reqId 29: Max number of tick-by-tick requests has been reached., contract: Contract(secType='FUT', conId=788288505, symbol='SILK6', exchange='COMEX', currency='USD', localSymbol='SILK6')
+2026-05-17 10:50:18,752 ib_async.wrapper ERROR Error 10190, reqId 30: Max number of tick-by-tick requests has been reached., contract: Contract(secType='FUT', conId=473509991, symbol='HGK6', exchange='COMEX', currency='USD', localSymbol='HGK6')
+2026-05-17 10:50:18,817 ib_async.wrapper ERROR Error 10189, reqId 14: Failed to request tick-by-tick data.No market data permissions for ISLAND STK. Requested market data requires additional subscription for API. See link in 'Market Data Connections' dialog for more details., contract: Contract(secType='STK', conId=320227571, symbol='QQQ', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='QQQ')
+2026-05-17 10:50:18,897 ib_async.wrapper ERROR Error 10189, reqId 15: Failed to request tick-by-tick data.No market data permissions for AMEX STK. Requested market data requires additional subscription for API. See link in 'Market Data Connections' dialog for more details., contract: Contract(secType='STK', conId=9579970, symbol='IWM', exchange='SMART', primaryExchange='ARCA', currency='USD', localSymbol='IWM')
+2026-05-17 10:50:18,897 ib_async.wrapper ERROR Error 10189, reqId 16: Failed to request tick-by-tick data.No market data permissions for AMEX STK. Requested market data requires additional subscription for API. See link in 'Market Data Connections' dialog for more details., contract: Contract(secType='STK', conId=51529211, symbol='GLD', exchange='SMART', primaryExchange='ARCA', currency='USD', localSymbol='GLD')
+2026-05-17 10:50:18,898 ib_async.wrapper ERROR Error 10189, reqId 17: Failed to request tick-by-tick data.No market data permissions for AMEX STK. Requested market data requires additional subscription for API. See link in 'Market Data Connections' dialog for more details., contract: Contract(secType='STK', conId=39039301, symbol='SLV', exchange='SMART', primaryExchange='ARCA', currency='USD', localSymbol='SLV')
+2026-05-17 10:50:18,934 ib_async.wrapper ERROR Error 10190, reqId 37: Max number of tick-by-tick requests has been reached., contract: Contract(secType='CASH', conId=39453441, symbol='NZD.USD', exchange='IDEALPRO', currency='USD', localSymbol='NZD.USD')
+2026-05-17 10:50:18,935 ib_async.wrapper ERROR Error 10190, reqId 38: Max number of tick-by-tick requests has been reached., contract: Contract(secType='CASH', conId=15016062, symbol='USD.CAD', exchange='IDEALPRO', currency='CAD', localSymbol='USD.CAD')
+2026-05-17 10:50:18,935 ib_async.wrapper ERROR Error 10190, reqId 39: Max number of tick-by-tick requests has been reached., contract: Contract(secType='CASH', conId=12087807, symbol='EUR.GBP', exchange='IDEALPRO', currency='GBP', localSymbol='EUR.GBP')
+2026-05-17 10:50:18,979 ib_async.wrapper ERROR Error 10189, reqId 25: Failed to request tick-by-tick data.No market data permissions for CBOT FUT, contract: Contract(secType='FUT', conId=793356190, symbol='YMM6', exchange='CBOT', currency='USD', localSymbol='YMM6')
+2026-05-17 10:50:19,014 ib_async.wrapper ERROR Error 10190, reqId 40: Max number of tick-by-tick requests has been reached., contract: Contract(secType='CASH', conId=14321016, symbol='EUR.JPY', exchange='IDEALPRO', currency='JPY', localSymbol='EUR.JPY')
+2026-05-17 10:50:19,015 ib_async.wrapper ERROR Error 10190, reqId 41: Max number of tick-by-tick requests has been reached., contract: Contract(secType='CASH', conId=14321015, symbol='GBP.JPY', exchange='IDEALPRO', currency='JPY', localSymbol='GBP.JPY')
+[heartbeat] ticks=0  bars_written=0  pending=0  active_symbols=0/39
+
+[signal] received SIGTERM, shutting down...
+
+[shutdown] flushing pending bars...
+[heartbeat] ticks=0  bars_written=0  pending=0  active_symbols=0/39
+[shutdown] clean. total bars written: 0

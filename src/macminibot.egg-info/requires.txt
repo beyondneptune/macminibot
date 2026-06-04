@@ -1,0 +1,16 @@
+arcticdb
+ib_async
+polars
+pandas
+pyarrow
+lightgbm
+scikit-learn
+cvxpy
+numpy
+PyYAML
+
+[dev]
+pytest>=8.0
+pytest-cov
+mypy
+ruff

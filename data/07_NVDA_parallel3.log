@@ -1,0 +1,35 @@
+targets: ['NVDA']  hours_back=8.0  client_id=32
+connecting to IBKR Gateway @ 127.0.0.1:4001 clientId=32
+connected (readonly)  server=178
+
+20260517 21:59:38.353187 4787457 W arcticdb | LMDB path at /Users/weeoto/macminibot/data/arctic/ has already been opened in this process which is not supported by LMDB. You should only open a single Arctic instance over a given LMDB path. To continue safely, you should delete this Arctic instance and any others over the LMDB path in this process and then try again. Current process ID=[37432]
+[NVDA] start session_end=2026-05-15T21:00:00+00:00 target_window=8.0h what=TRADES threshold=513,828,584 (calibrated-from-20d-median-dv)
+[NVDA] progress: req=25 ticks=27,772 bars=4 end=2026-05-15T19:59:54+00:00
+[NVDA] progress: req=50 ticks=57,894 bars=5 end=2026-05-15T19:58:33+00:00
+[NVDA] progress: req=75 ticks=86,108 bars=6 end=2026-05-15T19:56:34+00:00
+[NVDA] progress: req=100 ticks=114,970 bars=7 end=2026-05-15T19:54:22+00:00
+[NVDA] progress: req=125 ticks=144,282 bars=8 end=2026-05-15T19:51:24+00:00
+[NVDA] progress: req=150 ticks=171,644 bars=8 end=2026-05-15T19:46:50+00:00
+[NVDA] progress: req=175 ticks=197,790 bars=9 end=2026-05-15T19:39:40+00:00
+[NVDA] progress: req=200 ticks=224,345 bars=10 end=2026-05-15T19:31:03+00:00
+[NVDA] progress: req=225 ticks=250,702 bars=11 end=2026-05-15T19:23:59+00:00
+[NVDA] progress: req=250 ticks=278,887 bars=12 end=2026-05-15T19:17:31+00:00
+[NVDA] progress: req=275 ticks=306,158 bars=13 end=2026-05-15T19:08:45+00:00
+[NVDA] progress: req=300 ticks=332,774 bars=14 end=2026-05-15T18:58:51+00:00
+[NVDA] progress: req=325 ticks=358,701 bars=15 end=2026-05-15T18:48:54+00:00
+[NVDA] progress: req=350 ticks=385,766 bars=16 end=2026-05-15T18:40:04+00:00
+[NVDA] progress: req=375 ticks=412,197 bars=17 end=2026-05-15T18:31:02+00:00
+[NVDA] progress: req=400 ticks=438,298 bars=18 end=2026-05-15T18:21:43+00:00
+[NVDA] progress: req=425 ticks=464,024 bars=18 end=2026-05-15T18:12:44+00:00
+[NVDA] progress: req=450 ticks=490,944 bars=20 end=2026-05-15T18:04:53+00:00
+[NVDA] progress: req=475 ticks=517,228 bars=20 end=2026-05-15T17:57:34+00:00
+[NVDA] progress: req=500 ticks=542,816 bars=21 end=2026-05-15T17:47:33+00:00
+[NVDA] progress: req=525 ticks=568,631 bars=22 end=2026-05-15T17:38:46+00:00
+[NVDA] progress: req=550 ticks=594,955 bars=23 end=2026-05-15T17:30:22+00:00
+2026-05-17 23:45:08,733 ib_async.client ERROR [Errno 54] Connection reset by peer
+[NVDA] error at end=20260515-17:27:06: ConnectionError: Socket disconnect
+[NVDA] DONE: requests=558 ticks=603,595 bars_emitted=24 bars_written=24 → equity.dollar_bars/NASDAQ.NVDA
+
+=== summary ===
+  NVDA      reqs= 558  ticks=   603,595  bars=  24
+nightly tick pull complete

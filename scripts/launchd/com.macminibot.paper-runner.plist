@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+macminibot paper trade runner — fires once per US trading day (Mon-Fri).
+
+Target time:  09:35 ET (5 minutes after the US cash open).
+Mac timezone: Europe/London (local clock); launchd schedules in LOCAL time.
+
+DST mapping (this is the edge case to be aware of):
+  US DST ON  + UK BST  ON  → 09:35 ET == 14:35 BST   (Mar–Oct typical)
+  US DST OFF + UK GMT  OFF → 09:35 ET == 14:35 GMT   (Nov–early Mar typical)
+  Transition weeks (US flips 2nd Sun in Mar / 1st Sun in Nov, UK flips
+  last Sun in Mar / last Sun in Oct): for ~1 week per spring and ~1 week
+  per autumn, 09:35 ET == 13:35 LOCAL. During those weeks this plist
+  will fire one hour LATE relative to the US open. Either accept the
+  miss (the runner exits cleanly if outside the trading window) or
+  manually edit Minute/Hour for that week.
+
+RunAtLoad = false — we never fire on bootstrap, only on the schedule.
+The runner already fired today by hand; this entry is for TOMORROW onward.
+
+Load:
+    launchctl bootstrap gui/$UID /Users/weeoto/macminibot/scripts/launchd/com.macminibot.paper-runner.plist
+-->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.macminibot.paper-runner</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Users/weeoto/macminibot/.venv/bin/python</string>
+        <string>-u</string>
+        <string>/Users/weeoto/macminibot/scripts/30_paper_trade_runner.py</string>
+    </array>
+
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PYTHONUNBUFFERED</key>
+        <string>1</string>
+    </dict>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/weeoto/macminibot</string>
+
+    <key>StartCalendarInterval</key>
+    <array>
+        <dict><key>Weekday</key><integer>1</integer><key>Hour</key><integer>14</integer><key>Minute</key><integer>35</integer></dict>
+        <dict><key>Weekday</key><integer>2</integer><key>Hour</key><integer>14</integer><key>Minute</key><integer>35</integer></dict>
+        <dict><key>Weekday</key><integer>3</integer><key>Hour</key><integer>14</integer><key>Minute</key><integer>35</integer></dict>
+        <dict><key>Weekday</key><integer>4</integer><key>Hour</key><integer>14</integer><key>Minute</key><integer>35</integer></dict>
+        <dict><key>Weekday</key><integer>5</integer><key>Hour</key><integer>14</integer><key>Minute</key><integer>35</integer></dict>
+    </array>
+
+    <key>StandardOutPath</key>
+    <string>/Users/weeoto/macminibot/data/launchd_paper_runner.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/weeoto/macminibot/data/launchd_paper_runner.err</string>
+
+    <key>RunAtLoad</key>
+    <false/>
+
+    <key>ProcessType</key>
+    <string>Interactive</string>
+</dict>
+</plist>

@@ -1,0 +1,569 @@
+2026-05-18 13:56:03,265 INFO    ========================================================================
+2026-05-18 13:56:03,265 INFO    PAPER TRADE RUNNER — start (dry_run=True, log=/Users/weeoto/macminibot/data/30_paper_run_2026-05-18.log)
+2026-05-18 13:56:03,266 INFO    ========================================================================
+2026-05-18 13:56:03,266 INFO    env loaded: ACCOUNT_EQUITY_INITIAL=$100000
+2026-05-18 13:56:03,627 INFO    quotes: {'AAPL': '$283.0100', 'MSFT': '$402.4400', 'GOOGL': '$376.7200', 'AMZN': '$262.7300', 'META': '$614.6000', 'TSLA': '$404.0300', 'NVDA': '$213.1050', 'GLD': '$417.2700'}
+2026-05-18 13:56:03,676 INFO    loaded panel: 75,765 rows, last_date=2026-05-15 00:00:00, n_symbols=11
+2026-05-18 13:56:03,702 INFO    training rows (last 5y): 10,048, dates [2021-05-14 00:00:00 .. 2026-05-14 00:00:00]
+2026-05-18 13:56:03,710 INFO    ridge fit: n_train=10048, n_features=10, alpha=1.0
+2026-05-18 13:56:03,730 INFO    signals built: 8 / 8
+2026-05-18 13:56:03,731 INFO    predictions:
+        r_hat_daily
+ticker             
+AAPL       0.000446
+AMZN       0.000066
+GLD        0.000210
+GOOGL      0.000175
+META      -0.000082
+MSFT      -0.000154
+NVDA      -0.000062
+TSLA      -0.000252
+2026-05-18 13:56:03,743 INFO    returns matrix shape=(252, 8)
+2026-05-18 13:56:03,757 INFO    vix_proxy series len=252 latest=0.036113
+2026-05-18 13:56:04,141 INFO    snapshots: net_liq=$100000 buying_power=$200000 positions=0
+2026-05-18 13:56:04,142 INFO    rebalance: solver_status=zero_signal_decay targets=8 rules=['signal.zero_day_decay']
+2026-05-18 13:56:04,142 INFO      target AAPL: w=0.0000 r_hat=0.000000 w_prev=0.0000 hold=None
+2026-05-18 13:56:04,142 INFO      target AMZN: w=0.0000 r_hat=0.000000 w_prev=0.0000 hold=None
+2026-05-18 13:56:04,142 INFO      target GLD: w=0.0000 r_hat=0.000000 w_prev=0.0000 hold=None
+2026-05-18 13:56:04,142 INFO      target GOOGL: w=0.0000 r_hat=0.000000 w_prev=0.0000 hold=None
+2026-05-18 13:56:04,142 INFO      target META: w=0.0000 r_hat=0.000000 w_prev=0.0000 hold=None
+2026-05-18 13:56:04,142 INFO      target MSFT: w=0.0000 r_hat=0.000000 w_prev=0.0000 hold=None
+2026-05-18 13:56:04,142 INFO      target NVDA: w=0.0000 r_hat=0.000000 w_prev=0.0000 hold=None
+2026-05-18 13:56:04,142 INFO      target TSLA: w=0.0000 r_hat=0.000000 w_prev=0.0000 hold=None
+2026-05-18 13:56:04,143 INFO    vix_high gate: triggered=False halt=False reason=current=0.0361134461 < p80(0.03643791996000000031036728)
+2026-05-18 13:56:04,143 INFO    diff: 0 intents emitted
+2026-05-18 13:56:04,143 INFO    chain results: 0 approved, 0 rejected
+2026-05-18 13:56:04,143 INFO    no approved intents — skipping execution.
+2026-05-18 13:56:46,546 INFO    ========================================================================
+2026-05-18 13:56:46,546 INFO    PAPER TRADE RUNNER — start (dry_run=True, log=/Users/weeoto/macminibot/data/30_paper_run_2026-05-18.log)
+2026-05-18 13:56:46,546 INFO    ========================================================================
+2026-05-18 13:56:46,546 INFO    env loaded: ACCOUNT_EQUITY_INITIAL=$100000
+2026-05-18 13:56:46,896 INFO    quotes: {'AAPL': '$283.0100', 'MSFT': '$402.4400', 'GOOGL': '$376.7200', 'AMZN': '$262.7300', 'META': '$614.6000', 'TSLA': '$404.0300', 'NVDA': '$213.1050', 'GLD': '$417.2700'}
+2026-05-18 13:56:46,925 INFO    loaded panel: 75,765 rows, last_date=2026-05-15 00:00:00, n_symbols=11
+2026-05-18 13:56:46,949 INFO    training rows (last 5y): 10,048, dates [2021-05-14 00:00:00 .. 2026-05-14 00:00:00]
+2026-05-18 13:56:46,958 INFO    ridge fit: n_train=10048, n_features=10, alpha=1.0
+2026-05-18 13:56:46,977 INFO    signals built: 8 / 8
+2026-05-18 13:56:46,978 INFO    predictions:
+        r_hat_daily
+ticker             
+AAPL       0.001488
+AMZN       0.000221
+GLD        0.000701
+GOOGL      0.000584
+META      -0.000272
+MSFT      -0.000515
+NVDA      -0.000205
+TSLA      -0.000841
+2026-05-18 13:56:46,988 INFO    returns matrix shape=(252, 8)
+2026-05-18 13:56:47,001 INFO    vix_proxy series len=252 latest=0.036113
+2026-05-18 13:56:47,384 INFO    snapshots: net_liq=$100000 buying_power=$200000 positions=0
+2026-05-18 13:56:47,395 INFO    rebalance: solver_status=optimal targets=8 rules=['solver.ecos.optimal', 'vol_target.regime_dampening:regime=intermediate,effective_target_vol=0.060000,vix_percentile=0.7857', 'vol_target.regime_intermediate_dampened', 'vol_target.clamped_at_leverage_cap']
+2026-05-18 13:56:47,395 INFO      target AAPL: w=0.0000 r_hat=0.001488 w_prev=0.0000 hold=None
+2026-05-18 13:56:47,395 INFO      target AMZN: w=0.0000 r_hat=0.000221 w_prev=0.0000 hold=None
+2026-05-18 13:56:47,395 INFO      target GLD: w=0.0000 r_hat=0.000701 w_prev=0.0000 hold=None
+2026-05-18 13:56:47,395 INFO      target GOOGL: w=0.0000 r_hat=0.000584 w_prev=0.0000 hold=None
+2026-05-18 13:56:47,395 INFO      target META: w=0.0000 r_hat=-0.000272 w_prev=0.0000 hold=None
+2026-05-18 13:56:47,395 INFO      target MSFT: w=0.0000 r_hat=-0.000515 w_prev=0.0000 hold=None
+2026-05-18 13:56:47,395 INFO      target NVDA: w=0.0000 r_hat=-0.000205 w_prev=0.0000 hold=None
+2026-05-18 13:56:47,395 INFO      target TSLA: w=0.0000 r_hat=-0.000841 w_prev=0.0000 hold=None
+2026-05-18 13:56:47,395 INFO    vix_high gate: triggered=False halt=False reason=current=0.0361134461 < p80(0.03643791996000000031036728)
+2026-05-18 13:56:47,395 INFO    diff: 0 intents emitted
+2026-05-18 13:56:47,395 INFO    chain results: 0 approved, 0 rejected
+2026-05-18 13:56:47,395 INFO    no approved intents — skipping execution.
+2026-05-18 13:57:24,353 INFO    ========================================================================
+2026-05-18 13:57:24,353 INFO    PAPER TRADE RUNNER — start (dry_run=True, log=/Users/weeoto/macminibot/data/30_paper_run_2026-05-18.log)
+2026-05-18 13:57:24,353 INFO    ========================================================================
+2026-05-18 13:57:24,353 INFO    env loaded: ACCOUNT_EQUITY_INITIAL=$100000
+2026-05-18 13:57:24,702 INFO    quotes: {'AAPL': '$283.0100', 'MSFT': '$402.4400', 'GOOGL': '$376.7200', 'AMZN': '$262.7300', 'META': '$614.6000', 'TSLA': '$404.0300', 'NVDA': '$213.1050', 'GLD': '$417.2700'}
+2026-05-18 13:57:24,733 INFO    loaded panel: 75,765 rows, last_date=2026-05-15 00:00:00, n_symbols=11
+2026-05-18 13:57:24,758 INFO    training rows (last 5y): 10,048, dates [2021-05-14 00:00:00 .. 2026-05-14 00:00:00]
+2026-05-18 13:57:24,766 INFO    ridge fit: n_train=10048, n_features=10, alpha=1.0
+2026-05-18 13:57:24,787 INFO    signals built: 8 / 8
+2026-05-18 13:57:24,788 INFO    predictions:
+        r_hat_daily
+ticker             
+AAPL       0.002976
+AMZN       0.000442
+GLD        0.001403
+GOOGL      0.001168
+META      -0.000544
+MSFT      -0.001030
+NVDA      -0.000411
+TSLA      -0.001681
+2026-05-18 13:57:24,798 INFO    returns matrix shape=(252, 8)
+2026-05-18 13:57:24,812 INFO    vix_proxy series len=252 latest=0.036113
+2026-05-18 13:57:25,160 INFO    snapshots: net_liq=$100000 buying_power=$200000 positions=0
+2026-05-18 13:57:25,166 INFO    rebalance: solver_status=optimal targets=8 rules=['solver.ecos.optimal', 'vol_target.regime_dampening:regime=intermediate,effective_target_vol=0.060000,vix_percentile=0.7857', 'vol_target.regime_intermediate_dampened', 'vol_target.clamped_at_leverage_cap']
+2026-05-18 13:57:25,166 INFO      target AAPL: w=0.0000 r_hat=0.002976 w_prev=0.0000 hold=None
+2026-05-18 13:57:25,166 INFO      target AMZN: w=0.0000 r_hat=0.000442 w_prev=0.0000 hold=None
+2026-05-18 13:57:25,166 INFO      target GLD: w=0.0000 r_hat=0.001403 w_prev=0.0000 hold=None
+2026-05-18 13:57:25,166 INFO      target GOOGL: w=0.0000 r_hat=0.001168 w_prev=0.0000 hold=None
+2026-05-18 13:57:25,166 INFO      target META: w=0.0000 r_hat=-0.000544 w_prev=0.0000 hold=None
+2026-05-18 13:57:25,166 INFO      target MSFT: w=0.0000 r_hat=-0.001030 w_prev=0.0000 hold=None
+2026-05-18 13:57:25,166 INFO      target NVDA: w=0.0000 r_hat=-0.000411 w_prev=0.0000 hold=None
+2026-05-18 13:57:25,166 INFO      target TSLA: w=0.0000 r_hat=-0.001681 w_prev=0.0000 hold=None
+2026-05-18 13:57:25,166 INFO    vix_high gate: triggered=False halt=False reason=current=0.0361134461 < p80(0.03643791996000000031036728)
+2026-05-18 13:57:25,166 INFO    diff: 0 intents emitted
+2026-05-18 13:57:25,167 INFO    chain results: 0 approved, 0 rejected
+2026-05-18 13:57:25,167 INFO    no approved intents — skipping execution.
+2026-05-18 13:57:25,649 INFO    ========================================================================
+2026-05-18 13:57:25,649 INFO    PAPER TRADE RUNNER — start (dry_run=True, log=/Users/weeoto/macminibot/data/30_paper_run_2026-05-18.log)
+2026-05-18 13:57:25,649 INFO    ========================================================================
+2026-05-18 13:57:25,649 INFO    env loaded: ACCOUNT_EQUITY_INITIAL=$100000
+2026-05-18 13:57:26,001 INFO    quotes: {'AAPL': '$283.0100', 'MSFT': '$402.4400', 'GOOGL': '$376.7200', 'AMZN': '$262.7300', 'META': '$614.6000', 'TSLA': '$404.0300', 'NVDA': '$213.1050', 'GLD': '$417.2700'}
+2026-05-18 13:57:26,058 INFO    loaded panel: 75,765 rows, last_date=2026-05-15 00:00:00, n_symbols=11
+2026-05-18 13:57:26,085 INFO    training rows (last 5y): 10,048, dates [2021-05-14 00:00:00 .. 2026-05-14 00:00:00]
+2026-05-18 13:57:26,094 INFO    ridge fit: n_train=10048, n_features=10, alpha=1.0
+2026-05-18 13:57:26,114 INFO    signals built: 8 / 8
+2026-05-18 13:57:26,114 INFO    predictions:
+        r_hat_daily
+ticker             
+AAPL       0.002976
+AMZN       0.000442
+GLD        0.001403
+GOOGL      0.001168
+META      -0.000544
+MSFT      -0.001030
+NVDA      -0.000411
+TSLA      -0.001681
+2026-05-18 13:57:26,125 INFO    returns matrix shape=(252, 8)
+2026-05-18 13:57:26,138 INFO    vix_proxy series len=252 latest=0.036113
+2026-05-18 13:57:26,518 INFO    snapshots: net_liq=$100000 buying_power=$200000 positions=0
+2026-05-18 13:57:26,527 INFO    rebalance: solver_status=optimal targets=8 rules=['solver.ecos.optimal', 'vol_target.regime_dampening:regime=intermediate,effective_target_vol=0.060000,vix_percentile=0.7857', 'vol_target.regime_intermediate_dampened', 'vol_target.clamped_at_leverage_cap']
+2026-05-18 13:57:26,528 INFO      target AAPL: w=0.0000 r_hat=0.002976 w_prev=0.0000 hold=None
+2026-05-18 13:57:26,528 INFO      target AMZN: w=0.0000 r_hat=0.000442 w_prev=0.0000 hold=None
+2026-05-18 13:57:26,528 INFO      target GLD: w=0.0000 r_hat=0.001403 w_prev=0.0000 hold=None
+2026-05-18 13:57:26,528 INFO      target GOOGL: w=0.0000 r_hat=0.001168 w_prev=0.0000 hold=None
+2026-05-18 13:57:26,528 INFO      target META: w=0.0000 r_hat=-0.000544 w_prev=0.0000 hold=None
+2026-05-18 13:57:26,528 INFO      target MSFT: w=0.0000 r_hat=-0.001030 w_prev=0.0000 hold=None
+2026-05-18 13:57:26,528 INFO      target NVDA: w=0.0000 r_hat=-0.000411 w_prev=0.0000 hold=None
+2026-05-18 13:57:26,528 INFO      target TSLA: w=0.0000 r_hat=-0.001681 w_prev=0.0000 hold=None
+2026-05-18 13:57:26,528 INFO    vix_high gate: triggered=False halt=False reason=current=0.0361134461 < p80(0.03643791996000000031036728)
+2026-05-18 13:57:26,528 INFO    diff: 0 intents emitted
+2026-05-18 13:57:26,528 INFO    chain results: 0 approved, 0 rejected
+2026-05-18 13:57:26,528 INFO    no approved intents — skipping execution.
+2026-05-18 13:57:47,299 INFO    ========================================================================
+2026-05-18 13:57:47,299 INFO    PAPER TRADE RUNNER — start (dry_run=True, log=/Users/weeoto/macminibot/data/30_paper_run_2026-05-18.log)
+2026-05-18 13:57:47,299 INFO    ========================================================================
+2026-05-18 13:57:47,299 INFO    env loaded: ACCOUNT_EQUITY_INITIAL=$100000
+2026-05-18 13:57:47,649 INFO    quotes: {'AAPL': '$283.0100', 'MSFT': '$402.4400', 'GOOGL': '$376.7200', 'AMZN': '$262.7300', 'META': '$614.6000', 'TSLA': '$404.0300', 'NVDA': '$213.1050', 'GLD': '$417.2700'}
+2026-05-18 13:57:47,697 INFO    loaded panel: 75,765 rows, last_date=2026-05-15 00:00:00, n_symbols=11
+2026-05-18 13:57:47,724 INFO    training rows (last 5y): 10,048, dates [2021-05-14 00:00:00 .. 2026-05-14 00:00:00]
+2026-05-18 13:57:47,732 INFO    ridge fit: n_train=10048, n_features=10, alpha=1.0
+2026-05-18 13:57:47,751 INFO    signals built: 8 / 8
+2026-05-18 13:57:47,751 INFO    predictions:
+        r_hat_daily
+ticker             
+AAPL       0.002976
+AMZN       0.000442
+GLD        0.001403
+GOOGL      0.001168
+META      -0.000544
+MSFT      -0.001030
+NVDA      -0.000411
+TSLA      -0.001681
+2026-05-18 13:57:47,762 INFO    returns matrix shape=(252, 8)
+2026-05-18 13:57:47,775 INFO    vix_proxy series len=252 latest=0.036113
+2026-05-18 13:57:48,159 INFO    snapshots: net_liq=$100000 buying_power=$200000 positions=0
+2026-05-18 13:57:48,170 INFO    rebalance: solver_status=optimal targets=8 rules=['solver.ecos.optimal', 'vol_target.regime_dampening:regime=intermediate,effective_target_vol=0.060000,vix_percentile=0.7857', 'vol_target.regime_intermediate_dampened', 'vol_target.clamped_at_leverage_cap']
+2026-05-18 13:57:48,170 INFO      target AAPL: w=0.0000 r_hat=0.002976 w_prev=0.0000 hold=None
+2026-05-18 13:57:48,170 INFO      target AMZN: w=0.0000 r_hat=0.000442 w_prev=0.0000 hold=None
+2026-05-18 13:57:48,170 INFO      target GLD: w=0.0000 r_hat=0.001403 w_prev=0.0000 hold=None
+2026-05-18 13:57:48,170 INFO      target GOOGL: w=0.0000 r_hat=0.001168 w_prev=0.0000 hold=None
+2026-05-18 13:57:48,170 INFO      target META: w=0.0000 r_hat=-0.000544 w_prev=0.0000 hold=None
+2026-05-18 13:57:48,170 INFO      target MSFT: w=0.0000 r_hat=-0.001030 w_prev=0.0000 hold=None
+2026-05-18 13:57:48,170 INFO      target NVDA: w=0.0000 r_hat=-0.000411 w_prev=0.0000 hold=None
+2026-05-18 13:57:48,170 INFO      target TSLA: w=0.0000 r_hat=-0.001681 w_prev=0.0000 hold=None
+2026-05-18 13:57:48,170 INFO    vix_high gate: triggered=False halt=False reason=current=0.0361134461 < p80(0.03643791996000000031036728)
+2026-05-18 13:57:48,170 INFO    diff: 0 intents emitted
+2026-05-18 13:57:48,170 INFO    chain results: 0 approved, 0 rejected
+2026-05-18 13:57:48,170 INFO    no approved intents — skipping execution.
+2026-05-18 13:58:08,441 INFO    ========================================================================
+2026-05-18 13:58:08,441 INFO    PAPER TRADE RUNNER — start (dry_run=True, log=/Users/weeoto/macminibot/data/30_paper_run_2026-05-18.log)
+2026-05-18 13:58:08,441 INFO    ========================================================================
+2026-05-18 13:58:08,441 INFO    env loaded: ACCOUNT_EQUITY_INITIAL=$100000
+2026-05-18 13:58:08,790 INFO    quotes: {'AAPL': '$283.0100', 'MSFT': '$402.4400', 'GOOGL': '$376.7200', 'AMZN': '$262.7300', 'META': '$614.6000', 'TSLA': '$404.0300', 'NVDA': '$213.1050', 'GLD': '$417.2700'}
+2026-05-18 13:58:08,838 INFO    loaded panel: 75,765 rows, last_date=2026-05-15 00:00:00, n_symbols=11
+2026-05-18 13:58:08,864 INFO    training rows (last 5y): 10,048, dates [2021-05-14 00:00:00 .. 2026-05-14 00:00:00]
+2026-05-18 13:58:08,872 INFO    ridge fit: n_train=10048, n_features=10, alpha=1.0
+2026-05-18 13:58:08,891 INFO    signals built: 8 / 8
+2026-05-18 13:58:08,892 INFO    predictions:
+        r_hat_daily
+ticker             
+AAPL       0.002976
+AMZN       0.000442
+GLD        0.001403
+GOOGL      0.001168
+META      -0.000544
+MSFT      -0.001030
+NVDA      -0.000411
+TSLA      -0.001681
+2026-05-18 13:58:08,902 INFO    returns matrix shape=(252, 8)
+2026-05-18 13:58:08,915 INFO    vix_proxy series len=252 latest=0.036113
+2026-05-18 13:58:09,295 INFO    snapshots: net_liq=$100000 buying_power=$200000 positions=0
+2026-05-18 13:58:09,306 INFO    rebalance: solver_status=optimal targets=8 rules=['solver.ecos.optimal', 'vol_target.regime_dampening:regime=intermediate,effective_target_vol=0.060000,vix_percentile=0.7857', 'vol_target.regime_intermediate_dampened', 'vol_target.clamped_at_leverage_cap']
+2026-05-18 13:58:09,306 INFO      target AAPL: w=0.0000 r_hat=0.002976 w_prev=0.0000 hold=None
+2026-05-18 13:58:09,306 INFO      target AMZN: w=0.0000 r_hat=0.000442 w_prev=0.0000 hold=None
+2026-05-18 13:58:09,306 INFO      target GLD: w=0.0000 r_hat=0.001403 w_prev=0.0000 hold=None
+2026-05-18 13:58:09,306 INFO      target GOOGL: w=0.0000 r_hat=0.001168 w_prev=0.0000 hold=None
+2026-05-18 13:58:09,306 INFO      target META: w=0.0000 r_hat=-0.000544 w_prev=0.0000 hold=None
+2026-05-18 13:58:09,306 INFO      target MSFT: w=0.0000 r_hat=-0.001030 w_prev=0.0000 hold=None
+2026-05-18 13:58:09,306 INFO      target NVDA: w=0.0000 r_hat=-0.000411 w_prev=0.0000 hold=None
+2026-05-18 13:58:09,306 INFO      target TSLA: w=0.0000 r_hat=-0.001681 w_prev=0.0000 hold=None
+2026-05-18 13:58:09,307 INFO    vix_high gate: triggered=False halt=False reason=current=0.0361134461 < p80(0.03643791996000000031036728)
+2026-05-18 13:58:09,307 INFO    diff: 0 intents emitted
+2026-05-18 13:58:09,307 INFO    chain results: 0 approved, 0 rejected
+2026-05-18 13:58:09,307 INFO    no approved intents — skipping execution.
+2026-05-18 13:59:08,195 INFO    ========================================================================
+2026-05-18 13:59:08,195 INFO    PAPER TRADE RUNNER — start (dry_run=True, log=/Users/weeoto/macminibot/data/30_paper_run_2026-05-18.log)
+2026-05-18 13:59:08,195 INFO    ========================================================================
+2026-05-18 13:59:08,195 INFO    env loaded: ACCOUNT_EQUITY_INITIAL=$100000
+2026-05-18 13:59:08,552 INFO    quotes: {'AAPL': '$283.0100', 'MSFT': '$402.4400', 'GOOGL': '$376.7200', 'AMZN': '$262.7300', 'META': '$614.6000', 'TSLA': '$404.0300', 'NVDA': '$213.1050', 'GLD': '$417.2700'}
+2026-05-18 13:59:08,599 INFO    loaded panel: 75,765 rows, last_date=2026-05-15 00:00:00, n_symbols=11
+2026-05-18 13:59:08,625 INFO    training rows (last 5y): 10,048, dates [2021-05-14 00:00:00 .. 2026-05-14 00:00:00]
+2026-05-18 13:59:08,633 INFO    ridge fit: n_train=10048, n_features=10, alpha=1.0
+2026-05-18 13:59:08,652 INFO    signals built: 8 / 8
+2026-05-18 13:59:08,652 INFO    predictions:
+        r_hat_daily
+ticker             
+AAPL       0.002976
+AMZN       0.000442
+GLD        0.001403
+GOOGL      0.001168
+META      -0.000544
+MSFT      -0.001030
+NVDA      -0.000411
+TSLA      -0.001681
+2026-05-18 13:59:08,663 INFO    returns matrix shape=(252, 8)
+2026-05-18 13:59:08,676 INFO    vix_proxy series len=252 latest=0.036113
+2026-05-18 13:59:09,067 INFO    snapshots: net_liq=$100000 buying_power=$200000 positions=0
+2026-05-18 13:59:09,078 INFO    rebalance: solver_status=optimal targets=8 rules=['solver.ecos.optimal', 'vol_target.regime_dampening:regime=intermediate,effective_target_vol=0.060000,vix_percentile=0.7857', 'vol_target.regime_intermediate_dampened', 'vol_target.clamped_at_leverage_cap']
+2026-05-18 13:59:09,078 INFO      target AAPL: w=0.0000 r_hat=0.002976 w_prev=0.0000 hold=None
+2026-05-18 13:59:09,078 INFO      target AMZN: w=0.0000 r_hat=0.000442 w_prev=0.0000 hold=None
+2026-05-18 13:59:09,078 INFO      target GLD: w=0.0000 r_hat=0.001403 w_prev=0.0000 hold=None
+2026-05-18 13:59:09,078 INFO      target GOOGL: w=0.0000 r_hat=0.001168 w_prev=0.0000 hold=None
+2026-05-18 13:59:09,078 INFO      target META: w=0.0000 r_hat=-0.000544 w_prev=0.0000 hold=None
+2026-05-18 13:59:09,078 INFO      target MSFT: w=0.0000 r_hat=-0.001030 w_prev=0.0000 hold=None
+2026-05-18 13:59:09,078 INFO      target NVDA: w=0.0000 r_hat=-0.000411 w_prev=0.0000 hold=None
+2026-05-18 13:59:09,078 INFO      target TSLA: w=0.0000 r_hat=-0.001681 w_prev=0.0000 hold=None
+2026-05-18 13:59:09,078 WARNING FORCED RANKED BOOK: optimizer weights all below 0.1% NAV (max=0.000000). Falling back to ranked equal-weight ±1/n book.
+2026-05-18 13:59:09,078 INFO      forced AAPL: w=+0.1250 r_hat=+0.002976
+2026-05-18 13:59:09,078 INFO      forced GLD: w=+0.1250 r_hat=+0.001403
+2026-05-18 13:59:09,078 INFO      forced GOOGL: w=+0.1250 r_hat=+0.001168
+2026-05-18 13:59:09,078 INFO      forced AMZN: w=+0.1250 r_hat=+0.000442
+2026-05-18 13:59:09,078 INFO      forced NVDA: w=-0.1250 r_hat=-0.000411
+2026-05-18 13:59:09,078 INFO      forced META: w=-0.1250 r_hat=-0.000544
+2026-05-18 13:59:09,078 INFO      forced MSFT: w=-0.1250 r_hat=-0.001030
+2026-05-18 13:59:09,078 INFO      forced TSLA: w=-0.1250 r_hat=-0.001681
+2026-05-18 13:59:09,078 INFO    vix_high gate: triggered=False halt=False reason=current=0.0361134461 < p80(0.03643791996000000031036728)
+2026-05-18 13:59:09,079 INFO    diff: 8 intents emitted
+2026-05-18 13:59:09,079 WARNING REJECTED AAPL rule=KILL_SWITCH_ACTIVE observed=heartbeat_age_s=inf threshold=heartbeat_age_s<300.0
+2026-05-18 13:59:09,079 WARNING REJECTED AMZN rule=KILL_SWITCH_ACTIVE observed=heartbeat_age_s=inf threshold=heartbeat_age_s<300.0
+2026-05-18 13:59:09,080 WARNING REJECTED GLD rule=KILL_SWITCH_ACTIVE observed=heartbeat_age_s=inf threshold=heartbeat_age_s<300.0
+2026-05-18 13:59:09,080 WARNING REJECTED GOOGL rule=KILL_SWITCH_ACTIVE observed=heartbeat_age_s=inf threshold=heartbeat_age_s<300.0
+2026-05-18 13:59:09,080 WARNING REJECTED META rule=KILL_SWITCH_ACTIVE observed=heartbeat_age_s=inf threshold=heartbeat_age_s<300.0
+2026-05-18 13:59:09,080 WARNING REJECTED MSFT rule=KILL_SWITCH_ACTIVE observed=heartbeat_age_s=inf threshold=heartbeat_age_s<300.0
+2026-05-18 13:59:09,080 WARNING REJECTED NVDA rule=KILL_SWITCH_ACTIVE observed=heartbeat_age_s=inf threshold=heartbeat_age_s<300.0
+2026-05-18 13:59:09,080 WARNING REJECTED TSLA rule=KILL_SWITCH_ACTIVE observed=heartbeat_age_s=inf threshold=heartbeat_age_s<300.0
+2026-05-18 13:59:09,080 INFO    chain results: 0 approved, 8 rejected
+2026-05-18 13:59:09,080 INFO    no approved intents — skipping execution.
+2026-05-18 13:59:34,914 INFO    ========================================================================
+2026-05-18 13:59:34,914 INFO    PAPER TRADE RUNNER — start (dry_run=True, log=/Users/weeoto/macminibot/data/30_paper_run_2026-05-18.log)
+2026-05-18 13:59:34,914 INFO    ========================================================================
+2026-05-18 13:59:34,915 INFO    env loaded: ACCOUNT_EQUITY_INITIAL=$100000
+2026-05-18 13:59:35,281 INFO    quotes: {'AAPL': '$283.0100', 'MSFT': '$402.4400', 'GOOGL': '$376.7200', 'AMZN': '$262.7300', 'META': '$614.6000', 'TSLA': '$404.0300', 'NVDA': '$213.1050', 'GLD': '$417.2700'}
+2026-05-18 13:59:35,331 INFO    loaded panel: 75,765 rows, last_date=2026-05-15 00:00:00, n_symbols=11
+2026-05-18 13:59:35,356 INFO    training rows (last 5y): 10,048, dates [2021-05-14 00:00:00 .. 2026-05-14 00:00:00]
+2026-05-18 13:59:35,365 INFO    ridge fit: n_train=10048, n_features=10, alpha=1.0
+2026-05-18 13:59:35,384 INFO    signals built: 8 / 8
+2026-05-18 13:59:35,385 INFO    predictions:
+        r_hat_daily
+ticker             
+AAPL       0.002976
+AMZN       0.000442
+GLD        0.001403
+GOOGL      0.001168
+META      -0.000544
+MSFT      -0.001030
+NVDA      -0.000411
+TSLA      -0.001681
+2026-05-18 13:59:35,395 INFO    returns matrix shape=(252, 8)
+2026-05-18 13:59:35,408 INFO    vix_proxy series len=252 latest=0.036113
+2026-05-18 13:59:35,795 INFO    snapshots: net_liq=$100000 buying_power=$200000 positions=0
+2026-05-18 13:59:35,805 INFO    rebalance: solver_status=optimal targets=8 rules=['solver.ecos.optimal', 'vol_target.regime_dampening:regime=intermediate,effective_target_vol=0.060000,vix_percentile=0.7857', 'vol_target.regime_intermediate_dampened', 'vol_target.clamped_at_leverage_cap']
+2026-05-18 13:59:35,805 INFO      target AAPL: w=0.0000 r_hat=0.002976 w_prev=0.0000 hold=None
+2026-05-18 13:59:35,805 INFO      target AMZN: w=0.0000 r_hat=0.000442 w_prev=0.0000 hold=None
+2026-05-18 13:59:35,805 INFO      target GLD: w=0.0000 r_hat=0.001403 w_prev=0.0000 hold=None
+2026-05-18 13:59:35,805 INFO      target GOOGL: w=0.0000 r_hat=0.001168 w_prev=0.0000 hold=None
+2026-05-18 13:59:35,805 INFO      target META: w=0.0000 r_hat=-0.000544 w_prev=0.0000 hold=None
+2026-05-18 13:59:35,805 INFO      target MSFT: w=0.0000 r_hat=-0.001030 w_prev=0.0000 hold=None
+2026-05-18 13:59:35,805 INFO      target NVDA: w=0.0000 r_hat=-0.000411 w_prev=0.0000 hold=None
+2026-05-18 13:59:35,805 INFO      target TSLA: w=0.0000 r_hat=-0.001681 w_prev=0.0000 hold=None
+2026-05-18 13:59:35,806 WARNING FORCED RANKED BOOK: optimizer weights all below 0.1% NAV (max=0.000000). Falling back to ranked equal-weight ±1/n book.
+2026-05-18 13:59:35,806 INFO      forced AAPL: w=+0.1250 r_hat=+0.002976
+2026-05-18 13:59:35,806 INFO      forced GLD: w=+0.1250 r_hat=+0.001403
+2026-05-18 13:59:35,806 INFO      forced GOOGL: w=+0.1250 r_hat=+0.001168
+2026-05-18 13:59:35,806 INFO      forced AMZN: w=+0.1250 r_hat=+0.000442
+2026-05-18 13:59:35,806 INFO      forced NVDA: w=-0.1250 r_hat=-0.000411
+2026-05-18 13:59:35,806 INFO      forced META: w=-0.1250 r_hat=-0.000544
+2026-05-18 13:59:35,806 INFO      forced MSFT: w=-0.1250 r_hat=-0.001030
+2026-05-18 13:59:35,806 INFO      forced TSLA: w=-0.1250 r_hat=-0.001681
+2026-05-18 13:59:35,806 INFO    vix_high gate: triggered=False halt=False reason=current=0.0361134461 < p80(0.03643791996000000031036728)
+2026-05-18 13:59:35,806 INFO    diff: 8 intents emitted
+2026-05-18 13:59:35,807 WARNING REJECTED AAPL rule=DAILY_TURNOVER_CAP observed=99879.1050 threshold=50000.0
+2026-05-18 13:59:35,807 WARNING REJECTED AMZN rule=DAILY_TURNOVER_CAP observed=99879.1050 threshold=50000.0
+2026-05-18 13:59:35,807 WARNING REJECTED GLD rule=DAILY_TURNOVER_CAP observed=99879.1050 threshold=50000.0
+2026-05-18 13:59:35,807 WARNING REJECTED GOOGL rule=DAILY_TURNOVER_CAP observed=99879.1050 threshold=50000.0
+2026-05-18 13:59:35,807 WARNING REJECTED META rule=DAILY_TURNOVER_CAP observed=99879.1050 threshold=50000.0
+2026-05-18 13:59:35,808 WARNING REJECTED MSFT rule=DAILY_TURNOVER_CAP observed=99879.1050 threshold=50000.0
+2026-05-18 13:59:35,808 WARNING REJECTED NVDA rule=DAILY_TURNOVER_CAP observed=99879.1050 threshold=50000.0
+2026-05-18 13:59:35,808 WARNING REJECTED TSLA rule=DAILY_TURNOVER_CAP observed=99879.1050 threshold=50000.0
+2026-05-18 13:59:35,808 INFO    chain results: 0 approved, 8 rejected
+2026-05-18 13:59:35,808 INFO    no approved intents — skipping execution.
+2026-05-18 13:59:43,443 INFO    ========================================================================
+2026-05-18 13:59:43,443 INFO    PAPER TRADE RUNNER — start (dry_run=True, log=/Users/weeoto/macminibot/data/30_paper_run_2026-05-18.log)
+2026-05-18 13:59:43,443 INFO    ========================================================================
+2026-05-18 13:59:43,443 INFO    env loaded: ACCOUNT_EQUITY_INITIAL=$100000
+2026-05-18 13:59:43,800 INFO    quotes: {'AAPL': '$283.0100', 'MSFT': '$402.4400', 'GOOGL': '$376.7200', 'AMZN': '$262.7300', 'META': '$614.6000', 'TSLA': '$404.0300', 'NVDA': '$213.1050', 'GLD': '$417.2700'}
+2026-05-18 13:59:43,846 INFO    loaded panel: 75,765 rows, last_date=2026-05-15 00:00:00, n_symbols=11
+2026-05-18 13:59:43,873 INFO    training rows (last 5y): 10,048, dates [2021-05-14 00:00:00 .. 2026-05-14 00:00:00]
+2026-05-18 13:59:43,881 INFO    ridge fit: n_train=10048, n_features=10, alpha=1.0
+2026-05-18 13:59:43,900 INFO    signals built: 8 / 8
+2026-05-18 13:59:43,901 INFO    predictions:
+        r_hat_daily
+ticker             
+AAPL       0.002976
+AMZN       0.000442
+GLD        0.001403
+GOOGL      0.001168
+META      -0.000544
+MSFT      -0.001030
+NVDA      -0.000411
+TSLA      -0.001681
+2026-05-18 13:59:43,911 INFO    returns matrix shape=(252, 8)
+2026-05-18 13:59:43,924 INFO    vix_proxy series len=252 latest=0.036113
+2026-05-18 13:59:44,310 INFO    snapshots: net_liq=$100000 buying_power=$200000 positions=0
+2026-05-18 13:59:44,320 INFO    rebalance: solver_status=optimal targets=8 rules=['solver.ecos.optimal', 'vol_target.regime_dampening:regime=intermediate,effective_target_vol=0.060000,vix_percentile=0.7857', 'vol_target.regime_intermediate_dampened', 'vol_target.clamped_at_leverage_cap']
+2026-05-18 13:59:44,320 INFO      target AAPL: w=0.0000 r_hat=0.002976 w_prev=0.0000 hold=None
+2026-05-18 13:59:44,320 INFO      target AMZN: w=0.0000 r_hat=0.000442 w_prev=0.0000 hold=None
+2026-05-18 13:59:44,320 INFO      target GLD: w=0.0000 r_hat=0.001403 w_prev=0.0000 hold=None
+2026-05-18 13:59:44,320 INFO      target GOOGL: w=0.0000 r_hat=0.001168 w_prev=0.0000 hold=None
+2026-05-18 13:59:44,320 INFO      target META: w=0.0000 r_hat=-0.000544 w_prev=0.0000 hold=None
+2026-05-18 13:59:44,320 INFO      target MSFT: w=0.0000 r_hat=-0.001030 w_prev=0.0000 hold=None
+2026-05-18 13:59:44,320 INFO      target NVDA: w=0.0000 r_hat=-0.000411 w_prev=0.0000 hold=None
+2026-05-18 13:59:44,320 INFO      target TSLA: w=0.0000 r_hat=-0.001681 w_prev=0.0000 hold=None
+2026-05-18 13:59:44,320 WARNING FORCED RANKED BOOK: optimizer weights all below 0.1% NAV (max=0.000000). Falling back to ranked equal-weight ±1/n book.
+2026-05-18 13:59:44,320 INFO      forced AAPL: w=+0.1250 r_hat=+0.002976
+2026-05-18 13:59:44,320 INFO      forced GLD: w=+0.1250 r_hat=+0.001403
+2026-05-18 13:59:44,320 INFO      forced GOOGL: w=+0.1250 r_hat=+0.001168
+2026-05-18 13:59:44,320 INFO      forced AMZN: w=+0.1250 r_hat=+0.000442
+2026-05-18 13:59:44,320 INFO      forced NVDA: w=-0.1250 r_hat=-0.000411
+2026-05-18 13:59:44,320 INFO      forced META: w=-0.1250 r_hat=-0.000544
+2026-05-18 13:59:44,320 INFO      forced MSFT: w=-0.1250 r_hat=-0.001030
+2026-05-18 13:59:44,320 INFO      forced TSLA: w=-0.1250 r_hat=-0.001681
+2026-05-18 13:59:44,320 INFO    vix_high gate: triggered=False halt=False reason=current=0.0361134461 < p80(0.03643791996000000031036728)
+2026-05-18 13:59:44,320 INFO    diff: 8 intents emitted
+2026-05-18 13:59:44,321 WARNING REJECTED AAPL rule=DAILY_TURNOVER_CAP observed=99879.1050 threshold=50000.0
+2026-05-18 13:59:44,322 WARNING REJECTED AMZN rule=DAILY_TURNOVER_CAP observed=99879.1050 threshold=50000.0
+2026-05-18 13:59:44,322 WARNING REJECTED GLD rule=DAILY_TURNOVER_CAP observed=99879.1050 threshold=50000.0
+2026-05-18 13:59:44,322 WARNING REJECTED GOOGL rule=DAILY_TURNOVER_CAP observed=99879.1050 threshold=50000.0
+2026-05-18 13:59:44,322 WARNING REJECTED META rule=DAILY_TURNOVER_CAP observed=99879.1050 threshold=50000.0
+2026-05-18 13:59:44,322 WARNING REJECTED MSFT rule=DAILY_TURNOVER_CAP observed=99879.1050 threshold=50000.0
+2026-05-18 13:59:44,323 WARNING REJECTED NVDA rule=DAILY_TURNOVER_CAP observed=99879.1050 threshold=50000.0
+2026-05-18 13:59:44,323 WARNING REJECTED TSLA rule=DAILY_TURNOVER_CAP observed=99879.1050 threshold=50000.0
+2026-05-18 13:59:44,323 INFO    chain results: 0 approved, 8 rejected
+2026-05-18 13:59:44,323 INFO    no approved intents — skipping execution.
+2026-05-18 14:00:07,622 INFO    ========================================================================
+2026-05-18 14:00:07,622 INFO    PAPER TRADE RUNNER — start (dry_run=True, log=/Users/weeoto/macminibot/data/30_paper_run_2026-05-18.log)
+2026-05-18 14:00:07,622 INFO    ========================================================================
+2026-05-18 14:00:07,622 INFO    env loaded: ACCOUNT_EQUITY_INITIAL=$100000
+2026-05-18 14:00:07,969 INFO    quotes: {'AAPL': '$283.0100', 'MSFT': '$402.4400', 'GOOGL': '$376.7200', 'AMZN': '$262.7300', 'META': '$614.6000', 'TSLA': '$404.0300', 'NVDA': '$213.1050', 'GLD': '$417.2700'}
+2026-05-18 14:00:08,020 INFO    loaded panel: 75,765 rows, last_date=2026-05-15 00:00:00, n_symbols=11
+2026-05-18 14:00:08,046 INFO    training rows (last 5y): 10,048, dates [2021-05-14 00:00:00 .. 2026-05-14 00:00:00]
+2026-05-18 14:00:08,054 INFO    ridge fit: n_train=10048, n_features=10, alpha=1.0
+2026-05-18 14:00:08,073 INFO    signals built: 8 / 8
+2026-05-18 14:00:08,073 INFO    predictions:
+        r_hat_daily
+ticker             
+AAPL       0.002976
+AMZN       0.000442
+GLD        0.001403
+GOOGL      0.001168
+META      -0.000544
+MSFT      -0.001030
+NVDA      -0.000411
+TSLA      -0.001681
+2026-05-18 14:00:08,083 INFO    returns matrix shape=(252, 8)
+2026-05-18 14:00:08,097 INFO    vix_proxy series len=252 latest=0.036113
+2026-05-18 14:00:08,496 INFO    snapshots: net_liq=$100000 buying_power=$200000 positions=0
+2026-05-18 14:00:08,506 INFO    rebalance: solver_status=optimal targets=8 rules=['solver.ecos.optimal', 'vol_target.regime_dampening:regime=intermediate,effective_target_vol=0.060000,vix_percentile=0.7857', 'vol_target.regime_intermediate_dampened', 'vol_target.clamped_at_leverage_cap']
+2026-05-18 14:00:08,506 INFO      target AAPL: w=0.0000 r_hat=0.002976 w_prev=0.0000 hold=None
+2026-05-18 14:00:08,506 INFO      target AMZN: w=0.0000 r_hat=0.000442 w_prev=0.0000 hold=None
+2026-05-18 14:00:08,506 INFO      target GLD: w=0.0000 r_hat=0.001403 w_prev=0.0000 hold=None
+2026-05-18 14:00:08,506 INFO      target GOOGL: w=0.0000 r_hat=0.001168 w_prev=0.0000 hold=None
+2026-05-18 14:00:08,506 INFO      target META: w=0.0000 r_hat=-0.000544 w_prev=0.0000 hold=None
+2026-05-18 14:00:08,506 INFO      target MSFT: w=0.0000 r_hat=-0.001030 w_prev=0.0000 hold=None
+2026-05-18 14:00:08,506 INFO      target NVDA: w=0.0000 r_hat=-0.000411 w_prev=0.0000 hold=None
+2026-05-18 14:00:08,506 INFO      target TSLA: w=0.0000 r_hat=-0.001681 w_prev=0.0000 hold=None
+2026-05-18 14:00:08,506 WARNING FORCED RANKED BOOK: optimizer weights all below 0.1% NAV (max=0.000000). Falling back to ranked equal-weight ±1/n book.
+2026-05-18 14:00:08,506 INFO      forced AAPL: w=+0.0500 r_hat=+0.002976
+2026-05-18 14:00:08,506 INFO      forced GLD: w=+0.0500 r_hat=+0.001403
+2026-05-18 14:00:08,506 INFO      forced GOOGL: w=+0.0500 r_hat=+0.001168
+2026-05-18 14:00:08,506 INFO      forced AMZN: w=+0.0500 r_hat=+0.000442
+2026-05-18 14:00:08,506 INFO      forced NVDA: w=-0.0500 r_hat=-0.000411
+2026-05-18 14:00:08,506 INFO      forced META: w=-0.0500 r_hat=-0.000544
+2026-05-18 14:00:08,507 INFO      forced MSFT: w=-0.0500 r_hat=-0.001030
+2026-05-18 14:00:08,507 INFO      forced TSLA: w=-0.0500 r_hat=-0.001681
+2026-05-18 14:00:08,507 INFO    vix_high gate: triggered=False halt=False reason=current=0.0361134461 < p80(0.03643791996000000031036728)
+2026-05-18 14:00:08,507 INFO    diff: 8 intents emitted
+2026-05-18 14:00:08,507 INFO    APPROVED AAPL BUY 18 @ $283.0100 (intent_id=0c9bfc5b0dbb15fd3331b13b22ed75c71148b9f0489e71c926ee34eae23cadf3:AAPL)
+2026-05-18 14:00:08,507 INFO    APPROVED AMZN BUY 19 @ $262.7300 (intent_id=0c9bfc5b0dbb15fd3331b13b22ed75c71148b9f0489e71c926ee34eae23cadf3:AMZN)
+2026-05-18 14:00:08,507 INFO    APPROVED GLD BUY 12 @ $417.2700 (intent_id=0c9bfc5b0dbb15fd3331b13b22ed75c71148b9f0489e71c926ee34eae23cadf3:GLD)
+2026-05-18 14:00:08,507 INFO    APPROVED GOOGL BUY 13 @ $376.7200 (intent_id=0c9bfc5b0dbb15fd3331b13b22ed75c71148b9f0489e71c926ee34eae23cadf3:GOOGL)
+2026-05-18 14:00:08,508 INFO    APPROVED META SELL 8 @ $614.6000 (intent_id=0c9bfc5b0dbb15fd3331b13b22ed75c71148b9f0489e71c926ee34eae23cadf3:META)
+2026-05-18 14:00:08,508 INFO    APPROVED MSFT SELL 12 @ $402.4400 (intent_id=0c9bfc5b0dbb15fd3331b13b22ed75c71148b9f0489e71c926ee34eae23cadf3:MSFT)
+2026-05-18 14:00:08,508 INFO    APPROVED NVDA SELL 23 @ $213.1050 (intent_id=0c9bfc5b0dbb15fd3331b13b22ed75c71148b9f0489e71c926ee34eae23cadf3:NVDA)
+2026-05-18 14:00:08,508 INFO    APPROVED TSLA SELL 12 @ $404.0300 (intent_id=0c9bfc5b0dbb15fd3331b13b22ed75c71148b9f0489e71c926ee34eae23cadf3:TSLA)
+2026-05-18 14:00:08,508 INFO    chain results: 8 approved, 0 rejected
+2026-05-18 14:00:08,508 INFO    STUB EXECUTOR (mode=whatif) — printing what we would send:
+2026-05-18 14:00:08,508 INFO      WOULD-SEND AAPL BUY qty=18 @ $283.0100 [intent_id=0c9bfc5b0dbb15fd3331b13b22ed75c71148b9f0489e71c926ee34eae23cadf3:AAPL]
+2026-05-18 14:00:08,508 INFO      WOULD-SEND AMZN BUY qty=19 @ $262.7300 [intent_id=0c9bfc5b0dbb15fd3331b13b22ed75c71148b9f0489e71c926ee34eae23cadf3:AMZN]
+2026-05-18 14:00:08,508 INFO      WOULD-SEND GLD BUY qty=12 @ $417.2700 [intent_id=0c9bfc5b0dbb15fd3331b13b22ed75c71148b9f0489e71c926ee34eae23cadf3:GLD]
+2026-05-18 14:00:08,508 INFO      WOULD-SEND GOOGL BUY qty=13 @ $376.7200 [intent_id=0c9bfc5b0dbb15fd3331b13b22ed75c71148b9f0489e71c926ee34eae23cadf3:GOOGL]
+2026-05-18 14:00:08,508 INFO      WOULD-SEND META SELL qty=8 @ $614.6000 [intent_id=0c9bfc5b0dbb15fd3331b13b22ed75c71148b9f0489e71c926ee34eae23cadf3:META]
+2026-05-18 14:00:08,508 INFO      WOULD-SEND MSFT SELL qty=12 @ $402.4400 [intent_id=0c9bfc5b0dbb15fd3331b13b22ed75c71148b9f0489e71c926ee34eae23cadf3:MSFT]
+2026-05-18 14:00:08,508 INFO      WOULD-SEND NVDA SELL qty=23 @ $213.1050 [intent_id=0c9bfc5b0dbb15fd3331b13b22ed75c71148b9f0489e71c926ee34eae23cadf3:NVDA]
+2026-05-18 14:00:08,508 INFO      WOULD-SEND TSLA SELL qty=12 @ $404.0300 [intent_id=0c9bfc5b0dbb15fd3331b13b22ed75c71148b9f0489e71c926ee34eae23cadf3:TSLA]
+2026-05-18 14:00:08,508 INFO    STUB EXECUTOR done. (8 mock fills)
+2026-05-18 14:00:08,508 INFO    ========================================================================
+2026-05-18 14:00:08,508 INFO    PAPER TRADE RUNNER — done
+2026-05-18 14:00:08,508 INFO    ========================================================================
+2026-05-18 14:00:42,755 INFO    ========================================================================
+2026-05-18 14:00:42,755 INFO    PAPER TRADE RUNNER — start (dry_run=True, log=/Users/weeoto/macminibot/data/30_paper_run_2026-05-18.log)
+2026-05-18 14:00:42,755 INFO    ========================================================================
+2026-05-18 14:00:42,755 INFO    env loaded: ACCOUNT_EQUITY_INITIAL=$100000
+2026-05-18 14:00:43,101 INFO    quotes: {'AAPL': '$283.0100', 'MSFT': '$402.4400', 'GOOGL': '$376.7200', 'AMZN': '$262.7300', 'META': '$614.6000', 'TSLA': '$404.0300', 'NVDA': '$213.1050', 'GLD': '$417.2700'}
+2026-05-18 14:00:43,152 INFO    loaded panel: 75,765 rows, last_date=2026-05-15 00:00:00, n_symbols=11
+2026-05-18 14:00:43,179 INFO    training rows (last 5y): 10,048, dates [2021-05-14 00:00:00 .. 2026-05-14 00:00:00]
+2026-05-18 14:00:43,187 INFO    ridge fit: n_train=10048, n_features=10, alpha=1.0
+2026-05-18 14:00:43,206 INFO    signals built: 8 / 8
+2026-05-18 14:00:43,206 INFO    predictions:
+        r_hat_daily
+ticker             
+AAPL       0.002976
+AMZN       0.000442
+GLD        0.001403
+GOOGL      0.001168
+META      -0.000544
+MSFT      -0.001030
+NVDA      -0.000411
+TSLA      -0.001681
+2026-05-18 14:00:43,216 INFO    returns matrix shape=(252, 8)
+2026-05-18 14:00:43,229 INFO    vix_proxy series len=252 latest=0.036113
+2026-05-18 14:00:43,619 INFO    snapshots: net_liq=$100000 buying_power=$200000 positions=0
+2026-05-18 14:00:43,629 INFO    rebalance: solver_status=optimal targets=8 rules=['solver.ecos.optimal', 'vol_target.regime_dampening:regime=intermediate,effective_target_vol=0.060000,vix_percentile=0.7857', 'vol_target.regime_intermediate_dampened', 'vol_target.clamped_at_leverage_cap']
+2026-05-18 14:00:43,629 INFO      target AAPL: w=0.0000 r_hat=0.002976 w_prev=0.0000 hold=None
+2026-05-18 14:00:43,629 INFO      target AMZN: w=0.0000 r_hat=0.000442 w_prev=0.0000 hold=None
+2026-05-18 14:00:43,629 INFO      target GLD: w=0.0000 r_hat=0.001403 w_prev=0.0000 hold=None
+2026-05-18 14:00:43,629 INFO      target GOOGL: w=0.0000 r_hat=0.001168 w_prev=0.0000 hold=None
+2026-05-18 14:00:43,629 INFO      target META: w=0.0000 r_hat=-0.000544 w_prev=0.0000 hold=None
+2026-05-18 14:00:43,629 INFO      target MSFT: w=0.0000 r_hat=-0.001030 w_prev=0.0000 hold=None
+2026-05-18 14:00:43,629 INFO      target NVDA: w=0.0000 r_hat=-0.000411 w_prev=0.0000 hold=None
+2026-05-18 14:00:43,629 INFO      target TSLA: w=0.0000 r_hat=-0.001681 w_prev=0.0000 hold=None
+2026-05-18 14:00:43,629 WARNING FORCED RANKED BOOK: optimizer weights all below 0.1% NAV (max=0.000000). Falling back to ranked equal-weight ±1/n book.
+2026-05-18 14:00:43,629 INFO      forced AAPL: w=+0.0500 r_hat=+0.002976
+2026-05-18 14:00:43,629 INFO      forced GLD: w=+0.0500 r_hat=+0.001403
+2026-05-18 14:00:43,629 INFO      forced GOOGL: w=+0.0500 r_hat=+0.001168
+2026-05-18 14:00:43,629 INFO      forced AMZN: w=+0.0500 r_hat=+0.000442
+2026-05-18 14:00:43,629 INFO      forced NVDA: w=-0.0500 r_hat=-0.000411
+2026-05-18 14:00:43,629 INFO      forced META: w=-0.0500 r_hat=-0.000544
+2026-05-18 14:00:43,629 INFO      forced MSFT: w=-0.0500 r_hat=-0.001030
+2026-05-18 14:00:43,629 INFO      forced TSLA: w=-0.0500 r_hat=-0.001681
+2026-05-18 14:00:43,629 INFO    vix_high gate: triggered=False halt=False reason=current=0.0361134461 < p80(0.03643791996000000031036728)
+2026-05-18 14:00:43,629 INFO    diff: 8 intents emitted
+2026-05-18 14:00:43,630 INFO    APPROVED AAPL BUY 18 @ $283.0100 (intent_id=7de1ed23e584d4314216116717edf3807d444e004ec5874d957dac8d86f66be2:AAPL)
+2026-05-18 14:00:43,630 INFO    APPROVED AMZN BUY 19 @ $262.7300 (intent_id=7de1ed23e584d4314216116717edf3807d444e004ec5874d957dac8d86f66be2:AMZN)
+2026-05-18 14:00:43,630 INFO    APPROVED GLD BUY 12 @ $417.2700 (intent_id=7de1ed23e584d4314216116717edf3807d444e004ec5874d957dac8d86f66be2:GLD)
+2026-05-18 14:00:43,630 INFO    APPROVED GOOGL BUY 13 @ $376.7200 (intent_id=7de1ed23e584d4314216116717edf3807d444e004ec5874d957dac8d86f66be2:GOOGL)
+2026-05-18 14:00:43,630 INFO    APPROVED META SELL 8 @ $614.6000 (intent_id=7de1ed23e584d4314216116717edf3807d444e004ec5874d957dac8d86f66be2:META)
+2026-05-18 14:00:43,630 INFO    APPROVED MSFT SELL 12 @ $402.4400 (intent_id=7de1ed23e584d4314216116717edf3807d444e004ec5874d957dac8d86f66be2:MSFT)
+2026-05-18 14:00:43,630 INFO    APPROVED NVDA SELL 23 @ $213.1050 (intent_id=7de1ed23e584d4314216116717edf3807d444e004ec5874d957dac8d86f66be2:NVDA)
+2026-05-18 14:00:43,630 INFO    APPROVED TSLA SELL 12 @ $404.0300 (intent_id=7de1ed23e584d4314216116717edf3807d444e004ec5874d957dac8d86f66be2:TSLA)
+2026-05-18 14:00:43,630 INFO    chain results: 8 approved, 0 rejected
+2026-05-18 14:00:43,630 INFO    STUB EXECUTOR (mode=whatif) — printing what we would send:
+2026-05-18 14:00:43,630 INFO      WOULD-SEND AAPL BUY qty=18 @ $283.0100 [intent_id=7de1ed23e584d4314216116717edf3807d444e004ec5874d957dac8d86f66be2:AAPL]
+2026-05-18 14:00:43,630 INFO      WOULD-SEND AMZN BUY qty=19 @ $262.7300 [intent_id=7de1ed23e584d4314216116717edf3807d444e004ec5874d957dac8d86f66be2:AMZN]
+2026-05-18 14:00:43,630 INFO      WOULD-SEND GLD BUY qty=12 @ $417.2700 [intent_id=7de1ed23e584d4314216116717edf3807d444e004ec5874d957dac8d86f66be2:GLD]
+2026-05-18 14:00:43,630 INFO      WOULD-SEND GOOGL BUY qty=13 @ $376.7200 [intent_id=7de1ed23e584d4314216116717edf3807d444e004ec5874d957dac8d86f66be2:GOOGL]
+2026-05-18 14:00:43,630 INFO      WOULD-SEND META SELL qty=8 @ $614.6000 [intent_id=7de1ed23e584d4314216116717edf3807d444e004ec5874d957dac8d86f66be2:META]
+2026-05-18 14:00:43,631 INFO      WOULD-SEND MSFT SELL qty=12 @ $402.4400 [intent_id=7de1ed23e584d4314216116717edf3807d444e004ec5874d957dac8d86f66be2:MSFT]
+2026-05-18 14:00:43,631 INFO      WOULD-SEND NVDA SELL qty=23 @ $213.1050 [intent_id=7de1ed23e584d4314216116717edf3807d444e004ec5874d957dac8d86f66be2:NVDA]
+2026-05-18 14:00:43,631 INFO      WOULD-SEND TSLA SELL qty=12 @ $404.0300 [intent_id=7de1ed23e584d4314216116717edf3807d444e004ec5874d957dac8d86f66be2:TSLA]
+2026-05-18 14:00:43,631 INFO    STUB EXECUTOR done. (8 mock fills)
+2026-05-18 14:00:43,631 INFO    ========================================================================
+2026-05-18 14:00:43,631 INFO    PAPER TRADE RUNNER — done
+2026-05-18 14:00:43,631 INFO    ========================================================================
+2026-05-18 14:34:12,022 INFO    ========================================================================
+2026-05-18 14:34:12,022 INFO    PAPER TRADE RUNNER — start (dry_run=False, log=/Users/weeoto/macminibot/data/30_paper_run_2026-05-18.log)
+2026-05-18 14:34:12,022 INFO    ========================================================================
+2026-05-18 14:34:12,023 INFO    env loaded: ACCOUNT_EQUITY_INITIAL=$100000
+2026-05-18 14:34:12,387 INFO    quotes: {'AAPL': '$297.9950', 'MSFT': '$416.7900', 'GOOGL': '$397.4800', 'AMZN': '$264.1250', 'META': '$603.8400', 'TSLA': '$419.6200', 'NVDA': '$228.0000', 'GLD': '$420.3100'}
+2026-05-18 14:34:12,439 INFO    loaded panel: 75,765 rows, last_date=2026-05-15 00:00:00, n_symbols=11
+2026-05-18 14:34:12,466 INFO    training rows (last 5y): 10,048, dates [2021-05-14 00:00:00 .. 2026-05-14 00:00:00]
+2026-05-18 14:34:12,475 INFO    ridge fit: n_train=10048, n_features=10, alpha=1.0
+2026-05-18 14:34:12,494 INFO    signals built: 8 / 8
+2026-05-18 14:34:12,495 INFO    predictions:
+        r_hat_daily
+ticker             
+AAPL       0.002976
+AMZN       0.000442
+GLD        0.001403
+GOOGL      0.001168
+META      -0.000544
+MSFT      -0.001030
+NVDA      -0.000411
+TSLA      -0.001681
+2026-05-18 14:34:12,505 INFO    returns matrix shape=(252, 8)
+2026-05-18 14:34:12,518 INFO    vix_proxy series len=252 latest=0.036113
+2026-05-18 14:34:12,923 INFO    snapshots: net_liq=$100000 buying_power=$200000 positions=0
+2026-05-18 14:34:12,933 INFO    rebalance: solver_status=optimal targets=8 rules=['solver.ecos.optimal', 'vol_target.regime_dampening:regime=intermediate,effective_target_vol=0.060000,vix_percentile=0.7857', 'vol_target.regime_intermediate_dampened', 'vol_target.clamped_at_leverage_cap']
+2026-05-18 14:34:12,933 INFO      target AAPL: w=0.0000 r_hat=0.002976 w_prev=0.0000 hold=None
+2026-05-18 14:34:12,933 INFO      target AMZN: w=0.0000 r_hat=0.000442 w_prev=0.0000 hold=None
+2026-05-18 14:34:12,933 INFO      target GLD: w=0.0000 r_hat=0.001403 w_prev=0.0000 hold=None
+2026-05-18 14:34:12,933 INFO      target GOOGL: w=0.0000 r_hat=0.001168 w_prev=0.0000 hold=None
+2026-05-18 14:34:12,933 INFO      target META: w=0.0000 r_hat=-0.000544 w_prev=0.0000 hold=None
+2026-05-18 14:34:12,933 INFO      target MSFT: w=0.0000 r_hat=-0.001030 w_prev=0.0000 hold=None
+2026-05-18 14:34:12,933 INFO      target NVDA: w=0.0000 r_hat=-0.000411 w_prev=0.0000 hold=None
+2026-05-18 14:34:12,933 INFO      target TSLA: w=0.0000 r_hat=-0.001681 w_prev=0.0000 hold=None
+2026-05-18 14:34:12,933 WARNING FORCED RANKED BOOK: optimizer weights all below 0.1% NAV (max=0.000000). Falling back to ranked equal-weight ±1/n book.
+2026-05-18 14:34:12,933 INFO      forced AAPL: w=+0.0500 r_hat=+0.002976
+2026-05-18 14:34:12,933 INFO      forced GLD: w=+0.0500 r_hat=+0.001403
+2026-05-18 14:34:12,933 INFO      forced GOOGL: w=+0.0500 r_hat=+0.001168
+2026-05-18 14:34:12,933 INFO      forced AMZN: w=+0.0500 r_hat=+0.000442
+2026-05-18 14:34:12,933 INFO      forced NVDA: w=-0.0500 r_hat=-0.000411
+2026-05-18 14:34:12,933 INFO      forced META: w=-0.0500 r_hat=-0.000544
+2026-05-18 14:34:12,933 INFO      forced MSFT: w=-0.0500 r_hat=-0.001030
+2026-05-18 14:34:12,933 INFO      forced TSLA: w=-0.0500 r_hat=-0.001681
+2026-05-18 14:34:12,933 INFO    vix_high gate: triggered=False halt=False reason=current=0.0361134461 < p80(0.03643791996000000031036728)
+2026-05-18 14:34:12,933 INFO    diff: 8 intents emitted
+2026-05-18 14:34:12,934 INFO    APPROVED AAPL BUY 17 @ $297.9950 (intent_id=32be3b6c86b64922a8839ca0887cdb156806c22292444861fbf3df9dbc38847f:AAPL)
+2026-05-18 14:34:12,934 INFO    APPROVED AMZN BUY 19 @ $264.1250 (intent_id=32be3b6c86b64922a8839ca0887cdb156806c22292444861fbf3df9dbc38847f:AMZN)
+2026-05-18 14:34:12,934 INFO    APPROVED GLD BUY 12 @ $420.3100 (intent_id=32be3b6c86b64922a8839ca0887cdb156806c22292444861fbf3df9dbc38847f:GLD)
+2026-05-18 14:34:12,934 INFO    APPROVED GOOGL BUY 13 @ $397.4800 (intent_id=32be3b6c86b64922a8839ca0887cdb156806c22292444861fbf3df9dbc38847f:GOOGL)
+2026-05-18 14:34:12,934 INFO    APPROVED META SELL 8 @ $603.8400 (intent_id=32be3b6c86b64922a8839ca0887cdb156806c22292444861fbf3df9dbc38847f:META)
+2026-05-18 14:34:12,934 INFO    APPROVED MSFT SELL 12 @ $416.7900 (intent_id=32be3b6c86b64922a8839ca0887cdb156806c22292444861fbf3df9dbc38847f:MSFT)
+2026-05-18 14:34:12,934 INFO    APPROVED NVDA SELL 22 @ $228.0000 (intent_id=32be3b6c86b64922a8839ca0887cdb156806c22292444861fbf3df9dbc38847f:NVDA)
+2026-05-18 14:34:12,934 INFO    APPROVED TSLA SELL 12 @ $419.6200 (intent_id=32be3b6c86b64922a8839ca0887cdb156806c22292444861fbf3df9dbc38847f:TSLA)
+2026-05-18 14:34:12,934 INFO    chain results: 8 approved, 0 rejected
+2026-05-18 14:34:13,757 INFO    EXEC 32be3b6c86b64922a8839ca0887cdb156806c22292444861fbf3df9dbc38847f:AAPL status=SUBMITTED coid=mmb-2b33a22d82590e075786a9d5 reason=None
+2026-05-18 14:34:13,757 INFO    EXEC 32be3b6c86b64922a8839ca0887cdb156806c22292444861fbf3df9dbc38847f:AMZN status=SUBMITTED coid=mmb-84a97a15b28b53c13a4253eb reason=None
+2026-05-18 14:34:13,757 INFO    EXEC 32be3b6c86b64922a8839ca0887cdb156806c22292444861fbf3df9dbc38847f:GLD status=SUBMITTED coid=mmb-bb529d81cd4fa5d8f119f8af reason=None
+2026-05-18 14:34:13,758 INFO    EXEC 32be3b6c86b64922a8839ca0887cdb156806c22292444861fbf3df9dbc38847f:GOOGL status=SUBMITTED coid=mmb-da6854faa63d983ba04c680f reason=None
+2026-05-18 14:34:13,758 INFO    EXEC 32be3b6c86b64922a8839ca0887cdb156806c22292444861fbf3df9dbc38847f:META status=SUBMITTED coid=mmb-2c7f3d0f99bdb7b1fcb3eec6 reason=None
+2026-05-18 14:34:13,758 INFO    EXEC 32be3b6c86b64922a8839ca0887cdb156806c22292444861fbf3df9dbc38847f:MSFT status=SUBMITTED coid=mmb-e8819074041888195b1eab48 reason=None
+2026-05-18 14:34:13,758 INFO    EXEC 32be3b6c86b64922a8839ca0887cdb156806c22292444861fbf3df9dbc38847f:NVDA status=SUBMITTED coid=mmb-968f5bab52975ca046eaaa64 reason=None
+2026-05-18 14:34:13,758 INFO    EXEC 32be3b6c86b64922a8839ca0887cdb156806c22292444861fbf3df9dbc38847f:TSLA status=SUBMITTED coid=mmb-88d6a4cf6d2b441441d9cdf9 reason=None
+2026-05-18 14:34:13,758 INFO    execution: submitted=8 refused=0 whatif=0
+2026-05-18 14:34:13,758 INFO    ========================================================================
+2026-05-18 14:34:13,758 INFO    PAPER TRADE RUNNER — done
+2026-05-18 14:34:13,758 INFO    ========================================================================

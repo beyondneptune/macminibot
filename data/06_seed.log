@@ -1,0 +1,26 @@
+seed targets: ['AAPL', 'ES', 'EURUSD', 'GLD', 'MSFT']  hours_back=1.0
+connecting to IBKR Gateway @ 127.0.0.1:4001 clientId=21
+connected (readonly)
+
+
+[AAPL] starting — what=TRADES threshold=5000000.0 hours_back=1.0 → library=equity.dollar_bars_seed/NASDAQ.AAPL
+  [AAPL] reached target window (2026-05-15 22:37:23+00:00) — done
+[AAPL] DONE — ticks=1,005 requests=1 bars_total=2
+
+[ES] starting — what=TRADES threshold=50000000.0 hours_back=1.0 → library=future.dollar_bars_seed/CME.ES
+  [ES] reached target window (2026-05-14 23:32:09+00:00) — done
+[ES] DONE — ticks=20 requests=1 bars_total=0
+
+[EURUSD] starting — what=MIDPOINT threshold=100 hours_back=1.0 → library=fx.dollar_bars_seed/IDEALPRO.EURUSD
+  [EURUSD] reached target window (2026-05-15 20:41:18+00:00) — done
+[EURUSD] DONE — ticks=1,004 requests=1 bars_total=10
+
+[GLD] starting — what=TRADES threshold=20000000.0 hours_back=1.0 → library=etf.dollar_bars_seed/ARCA.GLD
+  [GLD] reached target window (2026-05-15 21:07:16+00:00) — done
+[GLD] DONE — ticks=1,000 requests=1 bars_total=1
+
+[MSFT] starting — what=TRADES threshold=5000000.0 hours_back=1.0 → library=equity.dollar_bars_seed/NASDAQ.MSFT
+  [MSFT] reached target window (2026-05-15 23:30:00+00:00) — done
+[MSFT] DONE — ticks=1,235 requests=1 bars_total=3
+
+seed backfill complete

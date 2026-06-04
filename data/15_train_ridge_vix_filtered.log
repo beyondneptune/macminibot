@@ -1,0 +1,95 @@
+/Users/weeoto/macminibot/scripts/15_train_ridge_vix_filtered.py:161: PolarsInefficientMapWarning: 
+Expr.map_elements is significantly slower than the native expressions API.
+Only use if you absolutely CANNOT implement your logic otherwise.
+Replace this expression...
+  - pl.col("symbol").map_elements(lambda s: ...)
+with this one instead:
+  + pl.col("symbol").replace_strict(sym_to_id)
+
+  .map_elements(lambda s: sym_to_id[s], return_dtype=pl.Int32)
+/Users/weeoto/macminibot/scripts/15_train_ridge_vix_filtered.py:161: PolarsInefficientMapWarning: 
+Expr.map_elements is significantly slower than the native expressions API.
+Only use if you absolutely CANNOT implement your logic otherwise.
+Replace this expression...
+  - pl.col("symbol").map_elements(lambda s: ...)
+with this one instead:
+  + pl.col("symbol").replace_strict(sym_to_id)
+
+  .map_elements(lambda s: sym_to_id[s], return_dtype=pl.Int32)
+==============================================================================
+Cycle-10 bake-off: Ridge on FULL train set vs Ridge on {low,mid}-only train
+Anchor (cycle-6 Ridge v0): mean IC = +0.021   mean Sharpe = +0.452
+Cycle-9 found vix_high Sharpe = -0.252 in the baseline — this script
+tests whether removing vix_high TRAINING days lifts OOS performance.
+==============================================================================
+Loaded 75,765 rows across 11 symbols
+Date range: 1980-12-12 00:00:00  ->  2026-05-15 00:00:00
+
+Computing features (drop_vix_high_train=False)...
+  regime distribution: low=3098, mid=6988, high=1353 (total=11439)
+  training-eligible rows: 47,660
+  unique trading days: 8,340
+
+Computing features (drop_vix_high_train=True)...
+  regime distribution: low=3098, mid=6988, high=1353 (total=11439)
+  training-eligible rows: 47,660
+  unique trading days: 8,340
+
+==============================================================================
+PER-FOLD COMPARISON (aggregate ridge Sharpe per fold)
+==============================================================================
+fold   0  1998-03-11T00:00:00->1998-04-08T00:00:00  train n: 2016->2016  base IC=-0.1068 Sh=-0.41  |  filt IC=-0.1068 Sh=-0.41  |  dIC=+0.0000 dSh=+0.00
+fold   1  1998-04-09T00:00:00->1998-05-08T00:00:00  train n: 2058->2058  base IC=-0.0632 Sh=-0.42  |  filt IC=-0.0632 Sh=-0.42  |  dIC=+0.0000 dSh=+0.00
+fold   2  1998-05-11T00:00:00->1998-06-10T00:00:00  train n: 2100->2100  base IC=-0.2729 Sh=-4.26  |  filt IC=-0.2729 Sh=-4.26  |  dIC=+0.0000 dSh=+0.00
+fold   3  1998-06-11T00:00:00->1998-07-10T00:00:00  train n: 2142->2142  base IC=-0.2778 Sh=+1.13  |  filt IC=-0.2778 Sh=+1.13  |  dIC=+0.0000 dSh=+0.00
+fold   4  1998-07-13T00:00:00->1998-08-10T00:00:00  train n: 2184->2184  base IC=+0.0727 Sh=-3.74  |  filt IC=+0.0727 Sh=-3.74  |  dIC=+0.0000 dSh=+0.00
+fold   5  1998-08-11T00:00:00->1998-09-09T00:00:00  train n: 2226->2226  base IC=-0.0395 Sh=-2.16  |  filt IC=-0.0395 Sh=-2.16  |  dIC=+0.0000 dSh=+0.00
+fold   6  1998-09-10T00:00:00->1998-10-08T00:00:00  train n: 2268->2268  base IC=-0.0271 Sh=-4.17  |  filt IC=-0.0271 Sh=-4.17  |  dIC=+0.0000 dSh=+0.00
+fold   7  1998-10-09T00:00:00->1998-11-06T00:00:00  train n: 2310->2310  base IC=+0.0056 Sh=+4.05  |  filt IC=+0.0056 Sh=+4.05  |  dIC=+0.0000 dSh=+0.00
+fold   8  1998-11-09T00:00:00->1998-12-08T00:00:00  train n: 2352->2352  base IC=+0.0902 Sh=+3.66  |  filt IC=+0.0902 Sh=+3.66  |  dIC=+0.0000 dSh=+0.00
+fold   9  1998-12-09T00:00:00->1999-01-08T00:00:00  train n: 2394->2394  base IC=-0.1646 Sh=+3.26  |  filt IC=-0.1646 Sh=+3.26  |  dIC=+0.0000 dSh=+0.00
+fold  10  1999-01-11T00:00:00->1999-02-09T00:00:00  train n: 2436->2436  base IC=+0.4282 Sh=+5.85  |  filt IC=+0.4282 Sh=+5.85  |  dIC=+0.0000 dSh=+0.00
+fold  11  1999-02-10T00:00:00->1999-03-11T00:00:00  train n: 2478->2478  base IC=+0.1539 Sh=-0.18  |  filt IC=+0.1539 Sh=-0.18  |  dIC=+0.0000 dSh=+0.00
+  ... (318 folds omitted from middle of run) ...
+fold 330  2025-10-17T00:00:00->2025-11-14T00:00:00  train n: 27365->21735  base IC=+0.1090 Sh=+5.80  |  filt IC=+0.1037 Sh=+4.20  |  dIC=-0.0053 dSh=-1.60
+fold 331  2025-11-17T00:00:00->2025-12-16T00:00:00  train n: 27407->21789  base IC=-0.0002 Sh=+1.26  |  filt IC=+0.0137 Sh=-0.02  |  dIC=+0.0139 dSh=-1.28
+fold 332  2025-12-17T00:00:00->2026-01-16T00:00:00  train n: 27449->21831  base IC=-0.0647 Sh=-3.90  |  filt IC=-0.0832 Sh=-5.35  |  dIC=-0.0185 dSh=-1.46
+fold 333  2026-01-20T00:00:00->2026-02-18T00:00:00  train n: 27491->21873  base IC=-0.0593 Sh=-2.96  |  filt IC=-0.0623 Sh=-0.87  |  dIC=-0.0030 dSh=+2.09
+fold 334  2026-02-19T00:00:00->2026-03-19T00:00:00  train n: 27533->21915  base IC=-0.0783 Sh=-5.00  |  filt IC=-0.0570 Sh=-7.39  |  dIC=+0.0213 dSh=-2.39
+fold 335  2026-03-20T00:00:00->2026-04-20T00:00:00  train n: 27575->21957  base IC=-0.0271 Sh=-3.84  |  filt IC=-0.0425 Sh=-5.48  |  dIC=-0.0154 dSh=-1.64
+
+BASELINE (full train set): 336 folds
+  Ridge mean IC      = +0.0210   median IC = +0.0176   std IC = 0.1163
+  Ridge mean Sharpe  = +0.452   median Sharpe = +0.322
+  Ridge mean hit     = 0.4710
+  Per-regime weighted Sharpe (test side):
+    vix_low  : +0.881
+    vix_mid  : +0.684
+    vix_high : +0.611
+
+FILTERED (drop vix_high training days): 336 folds
+  Ridge mean IC      = +0.0203   median IC = +0.0173   std IC = 0.1174
+  Ridge mean Sharpe  = +0.386   median Sharpe = +0.110
+  Ridge mean hit     = 0.4713
+  Per-regime weighted Sharpe (test side):
+    vix_low  : -0.325
+    vix_mid  : +0.744
+    vix_high : +0.466
+
+==============================================================================
+PROMOTION RULE (CONTEXT improvement #12, training-filter variant)
+==============================================================================
+  mean IC delta vs baseline rerun     : -0.0007
+  mean Sharpe delta vs baseline rerun : -0.066
+  folds with IC delta >= +0.005       : 126 / 336 (38%, need >= 67%)
+  no Sharpe drop vs baseline rerun    : FAIL (-0.066)
+  Sharpe floor vs anchor (>= +0.452)  : FAIL (+0.386)
+  shuffle-label canary                : (CI gate, not run in this script)
+
+  Per-regime weighted-Sharpe delta (filtered minus baseline):
+    vix_low : base=+0.881  filt=-0.325  delta=-1.206
+    vix_mid : base=+0.684  filt=+0.744  delta=+0.060
+    vix_high: base=+0.611  filt=+0.466  delta=-0.145
+
+  RESULT: measurable rules FAIL — training-filter rejected.
+  Document as negative result; baseline Ridge stays on full train set.
